@@ -1,0 +1,55 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr!==null) {%> 
+<div class="label label-info">welcome:<%= usr%></div>
+<br><br>
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- side left ------->
+
+<div class="well col-md-8 col-sm-12" style="color:black">
+<h3 class="text-center">
+<% if (title) {%>
+<%= title %>
+<% } else { %>
+no title
+<% } %></h3>
+
+<br>
+<%if(usr!==null){%>
+<form action="/mer/ins_fin" method="post">
+タイトル<br><input name="tit" type="text" ><br>
+sku<br> <input name="sku" type="text" >&nbsp;ex: 328<br>
+プライス<br><input name="pri" type="text" >&nbsp;ex: 2000<br>
+リリース<br><input name="rel" type="text" >&nbsp;ex: 12-05-2018<br>
+カテゴリ<br><input name="cat" type="text" >&nbsp;ex: ドラマCD &nbsp;<br>
+detail<br><input name="des" type="text" >
+&nbsp;<input type="submit" class="btn btn btn-black" value="submit">
+<br><br>
+</form>
+
+<%}else{%>
+ログインしてください。
+
+<%}%>
+
+</div>
+<% include par/2side %>
+
+</div>
+
+
+</div>
+
+</body>
+

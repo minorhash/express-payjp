@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<body>
+
+<!-- menu -->
+ <% include par/nav %>
+<!-- menu -->
+
+<div class="container-fluid">
+<div class="row">
+
+<!-- col1 -->
+<div class="col-sm-1 hidden-xs">
+</div><!-- /col1 -->
+<!-- col1 -->
+
+
+<!-- col10 -->
+<div class="col-sm-10" style="color:black">
+
+<% include par/info/inf0%><!-- ガイドライン -->
+
+<!-------------- 更新記事-------------->
+
+<div id="0613"><% include par/info/20180613%></div>
+<div id="0811"><% include par/info/20180811%></div>
+<div id="0617"><% include par/info/20180617%></div>
+
+<div id="0614"><% include par/info/20180614%></div>
+
+<!-------------/更新記事---------------->
+    
+<!--------------past------------------>
+
+<section>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">2018年 </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse">
+        <div class="panel-body">
+        
+<!-- 2018 -->
+<div id="info2018"></div>
+　<% include par/info/2018%>
+<!-- 2018 -->
+        </div>
+      </div>
+    </div>
+<!----------------------------------------->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"
+>2017年 </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+
+<!-- 2017 -->
+<div id="info2017"></div>
+<% include par/info/2017%>
+<!-- 2017 -->
+        </div>
+      </div>
+    </div>
+<!----------------------------------------->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"
+>2016年以前 </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body"> 
+
+<!-- 2016 -->
+<div id="info2016"></div>
+<% include par/info/2016%>
+<!-- 2016 -->
+
+        </div>
+      </div>
+    </div>
+  </div><!-- /panel panel-default -->
+</section>
+
+</div><!-- /col10 -->
+
+<!--/pastここまで-->
+
+    
+<!-- col1 -->
+<div class="col-sm-1 hidden-xs"></div><!-- /col1 -->
+
+</div>
+</div>
+
+<!--/上段ここまで-->
+
+<!--フッター-->
+
+<div class="footer"> <% include par/foot %> </div>
+
+</div><!-- /col12-->
+</div><!-- /cot-->
+
+</body>
+</html>

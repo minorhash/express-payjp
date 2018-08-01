@@ -1,0 +1,49 @@
+<div id="container-fluid">
+<div class="row">
+
+<div class="col-md-2 hidden-xs"></div>
+
+<div class="well col-md-3">
+<img class="img-responsive center-block" src="img/cd/355.png"/>
+<font size="3"><b><%=shop.STIT11%></b></font>
+
+<div class="title20">
+<div style="text align=center"></div> 
+<%=shop.SRER4%><br>
+<%=shop.SPRI3%>/
+<%=shop.SCOR7%>
+<br><br>
+<%=shop.SSON16%>&nbsp;/&nbsp;<%=shop.SSON17%>&nbsp;/<br>
+<%=shop.SSON18%>/<br>
+<%=shop.SSON19%>
+
+</div>
+</div>
+
+<div class="well col-md-5">
+
+
+【お支払い方法】<br>
+お支払い方法は下記の2種類からお選びいただけます。<br><br>
+
+
+<h22>paypal</h22><br><br>
+対応クレジットカード<br>
+(VISA／MasterCard／アメリカンエキスプレス／JCBの提携カード）<br>
+
+<img class="img-responsive"  src="img/shop/checkout_banner.png" width=300,height=50/>
+<br>
+
+<h22>paidy</h22><br><br>
+コンビニエンスストア決済・キャリア決済<br>
+
+<img class="img-responsive"  src="img/shop/checkout_banner.png" width=300,height=50/>
+
+</div><!--md4-->
+
+
+<div class="well col-md-2 hidden-xs"></div>
+
+</div><!--row-->
+</div><!--cont-->
+

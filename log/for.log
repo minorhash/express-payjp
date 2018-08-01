@@ -1,0 +1,61 @@
+/mnt/dat/exp/aid/3bs/routes/shop/pay.js:9
+var trans=mypal.transactions[0];
+                ^
+
+TypeError: Cannot read property 'transactions' of undefined
+    at Object.<anonymous> (/mnt/dat/exp/aid/3bs/routes/shop/pay.js:9:17)
+    at Module._compile (internal/modules/cjs/loader.js:702:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)
+    at Module.load (internal/modules/cjs/loader.js:612:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:543:3)
+    at Module.require (internal/modules/cjs/loader.js:650:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.<anonymous> (/mnt/dat/exp/aid/3bs/app.js:38:11)
+    at Module._compile (internal/modules/cjs/loader.js:702:30)
+error: Forever detected script exited with code: 1
+internal/fs/utils.js:409
+    throw err;
+    ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be one of type string, Buffer, or URL. Received type boolean
+    at Object.fs.open (fs.js:555:3)
+    at WriteStream.open (fs.js:2246:6)
+    at new WriteStream (fs.js:2232:10)
+    at Object.fs.createWriteStream (fs.js:2188:10)
+    at exports.Monitor.exports.attach (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/plugins/logger.js:35:43)
+    at Object.bootstrap (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:34:27)
+    at exports.Monitor.exports.App (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/broadway/lib/broadway/app.js:47:21)
+    at new exports.Monitor (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:141:16)
+    at start (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:23:17)
+    at process.<anonymous> (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:85:5)
+internal/fs/utils.js:409
+    throw err;
+    ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be one of type string, Buffer, or URL. Received type boolean
+    at Object.fs.open (fs.js:555:3)
+    at WriteStream.open (fs.js:2246:6)
+    at new WriteStream (fs.js:2232:10)
+    at Object.fs.createWriteStream (fs.js:2188:10)
+    at exports.Monitor.exports.attach (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/plugins/logger.js:35:43)
+    at Object.bootstrap (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:34:27)
+    at exports.Monitor.exports.App (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/broadway/lib/broadway/app.js:47:21)
+    at new exports.Monitor (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:141:16)
+    at start (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:23:17)
+    at process.<anonymous> (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:85:5)
+internal/fs/utils.js:409
+    throw err;
+    ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be one of type string, Buffer, or URL. Received type boolean
+    at Object.fs.open (fs.js:555:3)
+    at WriteStream.open (fs.js:2246:6)
+    at new WriteStream (fs.js:2232:10)
+    at Object.fs.createWriteStream (fs.js:2188:10)
+    at exports.Monitor.exports.attach (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/plugins/logger.js:35:43)
+    at Object.bootstrap (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:34:27)
+    at exports.Monitor.exports.App (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/broadway/lib/broadway/app.js:47:21)
+    at new exports.Monitor (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:141:16)
+    at start (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:23:17)
+    at process.<anonymous> (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:85:5)

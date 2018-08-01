@@ -1,0 +1,62 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<div class="well col-lg-2 col-sm-12">
+<% if(typeof usr!=="undefined") {%> 
+
+<div class="label label-info">
+welcome: 
+<%= usr%>
+</div>
+<%}else{%>
+<div class="label label-warning">
+not logged in
+</div>
+<%} %>
+</div>
+
+<div style="background-color:lime" class="well col-lg-8 col-md-12">
+<h2 class="text-center">
+
+<%if (typeof title!=="undefined"){%>
+<%= title %>
+'s cart
+<%}  %>
+</h2>
+
+<%if (typeof sku!=="undefined"){%>
+<%= sku %>
+<%}  %>
+<br>
+<%if (typeof pri!=="undefined"){%>
+<%= pri %>
+<%}  %>
+<br>
+<%if (typeof uni!=="undefined"){%>
+uni:
+<%= uni %>
+<%}  %>
+<br>
+<%if (typeof sum!=="undefined"){%>
+sum:
+<%= sum %>
+<%}  %>
+<br>
+<%if (typeof err!=="undefined"){%>
+err:
+<%= err %>
+<%}  %>
+
+</div>
+<% include par/2side %>
+
+</div>
+
+</div>
+
+</body>
+
+

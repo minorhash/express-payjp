@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<body>
+
+<!--menu-->
+<% include par/nav %>
+<!--menu-->
+
+<div id="container-fluid">
+<div id="wrap">
+<div class="row">
+
+<div class="well col-md-2 col-xs-12" style="color:black"></div>
+
+<div class="well col-md-8 col-xs-12" style="color:black">
+<%if(mer){%>
+<%for(var i=0;i<mer.length;i++){%>
+
+<%if(mer[i].rowid%2!==0){%>
+<div class="well col-md-4 col-xs-12" style="color:black">
+<a href="shop#<%=mer[i].sku%>" target="_blank">
+
+<div align="center"><img src=<%=mer[i].img%>></div></a><br>
+
+- <%=mer[i].name%><br>
+- TMS-<%=mer[i].sku%><br>
+- <%=mer[i].pri.toLocaleString()%>JPY<br>
+</div>
+
+<%}else if (mer[i].rowid%2==0){%>
+<div class="well col-md-4 col-xs-12" style="color:black">
+<a href="shop#<%=mer[i].sku%>" target="_blank">
+<div align="center"><img src=<%=mer[i].img%>></div></a><br>
+- <%=mer[i].name%><br>
+- TMS-<%=mer[i].sku%>
+</div>
+
+<%}%>
+
+<%}%>
+<%}%>
+</div>
+
+</div>
+</div><!--row-->
+
+
+</div><!-- /container -->
+</div><!--row-->
+
+<!--ここからフッター-->
+
+<br>
+<div class="footer">
+<% include par/foot %>
+</div>
+
+</div>
+
+</body>
+

@@ -1,0 +1,30 @@
+<% include par/head %>
+<body>
+<% include par/shop/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2 col-sm-12"></div>
+
+<div class="col-sm-8" style="color:black">
+
+<h4><div class="label label-default"><%=shop.LOG%></div></h4>
+<form action="/par/login" method="post">
+E-mail:<br><input type="email" name="email"  size="15"><br>
+Password:<br><input type="text" name="pss" value="" size="15"><br><br>
+<button type="submit" class="btn btn-default">LOG IN</button>
+</form>
+
+</div>
+
+
+</div>
+
+
+<div class="col-md-2 col-sm-12" style="color:black">
+</div></div>
+</div>
+
+<div class="footer"><% include par/foot %></div>
+
+

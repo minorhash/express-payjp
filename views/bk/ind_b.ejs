@@ -1,0 +1,94 @@
+    <div class="col-sm-8" style="background-color:lavenderblush">
+
+     <h1><% include jap %> </h1>
+    <% include ind1 %> 
+
+
+<div id="paypal-button"></div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+    var CREATE_PAYMENT_URL  = 'https://my-store.com/paypal/create-payment';
+    var EXECUTE_PAYMENT_URL = 'https://my-store.com/paypal/execute-payment';
+
+    paypal.Button.render({
+
+        env: 'sandbox', // Or 'sandbox'
+
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function() {
+            return paypal.request.post(CREATE_PAYMENT_URL).then(function(data) {
+                return data.id;
+            });
+        },
+
+        onAuthorize: function(data) {
+            return paypal.request.post(EXECUTE_PAYMENT_URL, {
+                paymentID: data.paymentID,
+                payerID:   data.payerID
+            }).then(function() {
+
+                // The payment is complete!
+                // You can now show a confirmation message to the customer
+            });
+        }
+
+    }, '#paypal-button');
+</script>
+<br>
+     start
+
+<div id="paypal-button"></div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<div id="paypal-button-container"></div>
+
+    <script>
+        paypal.Button.render({
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+client: {
+sandbox:    'ASPamnv7vwUzLMWruWirR69Ulja-gKH-cdWmwM9QU-X081B2f0trf8vB8CFX5Q9Qia0jbdwFtm6H9xqX',
+production:'AQKNgdfqDoxAX-O2HT5qUDFeLK1H-JytiatrFOhE6vyHqBPokRZVkHdSriVs-M6APKt6xIcMn628y_Ha'
+},
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+            // payment() is called when the button is clicked
+            payment: function(data, actions) {
+
+                // Make a call to the REST api to create the payment
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: '100', currency: 'JPY' }
+                            }
+                        ]
+                    }
+                });
+            },
+
+            // onAuthorize() is called when the buyer approves the payment
+            onAuthorize: function(data, actions) {
+
+                // Make a call to the REST api to execute the payment
+                return actions.payment.execute().then(function() {
+
+window.location.replace("http://localhost:3000/ret");
+//                    window.alert('しはらいかんりょう!');
+                });
+            }
+
+        }, '#paypal-button-container');
+
+    </script>
+    </div>
+
+

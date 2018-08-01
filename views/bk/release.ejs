@@ -1,0 +1,104 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<div class="well col-lg-2 col-sm-12">
+<% if(typeof usr!=="undefined") {%> 
+
+<%= usr%> 
+
+<%}else{%>
+<div class="label label-warning">
+not logged in
+</div>
+<%} %>
+</div>
+
+<div class="well col-lg-8 col-sm-12">
+<h1 class="text-center">
+<%= title %>
+<%if (typeof err!=="undefined"){%>
+err:
+<%= err %>
+<%}  %>
+
+</h1>
+<br>
+
+<% if(typeof arr!=="undefined") {%>
+len:<%= arr.length%>
+<% for(var i=0;i<arr.length;i++){%>
+<% if(i%2==1){ %>
+
+<div class="well col-lg-6 col-sm-12">
+<table class="table" border="1">
+<tr>
+<td width="50">
+<img src="<%= arr[i].img%>">
+</td>
+<td>
+item:    <%= arr[i].item%><br>
+sku:<%= arr[i].sku%><br>
+pri:    <%= arr[i].pri%><br>
+
+</td>
+</tr>
+</table>
+<form action="/cart" method="post">
+units:
+<input name="uni" type="text" value="0" size="1">
+<br><br>
+<input name="sku" type="hidden" value="
+<%= arr[i].sku%>"
+<br>
+<input type="submit" value="add to cart">
+</form>
+
+</div>
+<br>
+<%}else{ %><!-- if -->
+
+<div class="well col-lg-6 col-sm-12">
+<table class="table" border="1">
+<tr><td width="50">
+<img src="<%= arr[i].img%>">
+</td>
+<td >
+item:<%= arr[i].item%><br>
+sku:<%= arr[i].sku%>
+<br>
+pri:<%= arr[i].pri%></td>
+
+</tr>
+
+</table>
+<form action="/cart" method="post">
+units:
+<input name="uni" type="text" value="0" size="1">
+<br><br>
+<input name="sku" type="hidden" value="
+<%= arr[i].sku%>"
+<br>
+<input type="submit" value="add to cart">
+</form>
+
+</div>
+<%} %><!-- if -->
+<%} %>
+<%} %>
+
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+<% include par/2side %>
+</div>
+</div>
+
+</body>
+
+

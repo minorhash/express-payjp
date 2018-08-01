@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<% include par/head%>
+<body>
+<!-- menu -->
+
+<% include par/nav%>
+<!-- menu -->
+
+<div class="container-fluid">
+<div class="row">
+
+<% include par/2side%>
+<div class="col-sm-8" style="background-color:white">
+<div align="left" style="color:black">
+
+<%if(sku && song){%>
+<img src="../../img/cd/<%=sku%>.png"><br>
+sku:<%=sku%><br>
+
+song numbers:<%=song%>
+<form action="/mer/song_fin" method="post" >
+
+<input type="hidden" name="sku" value="<%=sku%>" ><br>
+<%for(var i=0;i<song_a.length;i++){%>
+<input type="text" name='<%=song_a[i]%>' ><br>
+
+<%}%>
+<input type="submit" value="submit">
+</form>
+<%}%>
+をついか。
+</div><!-- /center-->
+
+</div><!-- /col8-->
+
+<% include par/2side%>
+</div><!-- /row-->
+
+
+</div>
+</div>
+</div><!-- /container-fluid-->
+
+<div class="footer"><% include par/foot %></div>
+</body>
+</html>
+

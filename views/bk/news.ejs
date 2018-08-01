@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+
+<body>
+
+<% include par/nav %>
+
+<div id="container-fluid">
+<div class="row">
+
+<!-- col1 -->
+<div class="col-lg-1 hidden-xs">
+</div><!-- /col11 -->
+
+
+<!-- col6  -->
+<div class="col-lg-7" style="color:black">
+
+<% if(acc!=="undefined"){%>
+<p><%=acc%></p>
+<%} %>
+<% if(trans!=="undefined"){%>
+<p><%=trans.WELCOME_MSG%></p>
+<%} %>
+
+<div align="left">
+<% include par/news%>
+</div><!-- /left -->
+</div><!-- /col6 -->
+
+<!-- col1 -->
+
+<!-- col3 -->
+<div class="col-lg-3" style="background-color:white">
+<div align="left"></div><!-- /left-->
+
+<div align="right">
+<a class="twitter-timeline" data-width="450" data-height="600" href="https://twitter.com/axell_official?ref_src=twsrc%5Etfw">Tweets by axell_official</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</div><!-- /right-->
+</div><!-- /col3-->
+
+<!-- col1 -->
+<div class="col-lg-1 visible-lg">
+</div><!-- /col1-->
+
+</div> <!-- /row -->
+</div><!-- /container -->
+
+
+<div class="col-lg-12" style="background-color:black">
+
+<!--FOOT-->
+    <% include par/foot %>
+<!--FOOT-->
+
+</div><!-- /col12-->
+
+</body>
+

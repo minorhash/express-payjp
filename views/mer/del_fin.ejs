@@ -1,0 +1,38 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(typeof usr!=="undefined") {%> 
+<div class="label label-info">welcome:<%= usr%></div>
+<br><br>
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- side left ------->
+
+<div class="well col-md-8 col-sm-12" style="color:black">
+<h3 class="text-center">
+<% if (title) {%><%= title %><% } else { %>
+no title
+<% } %></h3>
+
+<br>
+<%=sku%>がさくじょされました。
+
+</div>
+<% include par/2side %>
+
+</div>
+
+
+</div>
+
+</body>
+

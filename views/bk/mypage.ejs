@@ -1,0 +1,53 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<div class="well col-lg-2 col-sm-12">
+<% if(usr!=="no usr" && typeof usr!=="undefined") {%> 
+<div class="label label-info">
+welcome: 
+<%= usr%>
+</div>
+<%}else{ %>
+<div class="label label-warning">
+not logged in
+</div>
+<%} %>
+
+</div>
+
+<div class="well col-lg-8 col-sm-12">
+
+<div class="label label-info ">
+<span class="text-center">
+<%= title %></span>
+</div>
+<br><br>
+<p>
+
+<% if (typeof usr!=="undefined") {%>
+<%= usr%>
+<%} else {%>
+no usr
+<%} %>
+<br>
+
+<% if (typeof pss!=="undefined") {%>
+<%= pss%>
+<%} else{ %>
+no pss
+<%} %>
+</p>
+
+</div>
+<% include par/2side %>
+
+</div>
+
+
+</div>
+
+</body>
+

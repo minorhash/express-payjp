@@ -1,0 +1,89 @@
+<% include par/head %>
+<% include par/nav %>
+<body>
+<div class="container-fluid">
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
+<div class="label label-info"><%= usr%></div>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- main ------->
+
+<div class="well col-sm-8" style="color:black">
+
+<%if(mailusr){%>
+<div class="box90">マイページ</div>
+<br>
+
+<div class="panel panel-default">
+<div class="box120"> <h4> お名前:&nbsp;&nbsp; <%=mailusr.name%> 様</h4>
+</div></div>
+
+
+<div class="panel panel-default">
+<div class="box120">
+   <h4> email:&nbsp;&nbsp; <%=mailusr.email%> </h4> 
+</div></div>
+<div class="panel panel-default">
+<div class="box120">
+<h4><%if(mailadr){%>電話番号:<%=mailadr.phn%><br>
+</h4></div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+  <h4> 住所:&nbsp;&nbsp; <%=mailadr.city%> </h4>
+</div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+<h4> sta:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
+</div></div>
+
+
+<div class="panel panel-default">
+<div class="box120">
+   <h4> ln1:&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
+</div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+   <h4> ln2:&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
+</div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+   <h4> zip:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
+</div></div>
+
+<%}else{%>
+住所が登録されていません。<br><br>
+<a href="adr">登録する</a>
+<%}%>
+<%}else{%>
+ログインしてください。
+
+<%}%>
+<br>
+</div>
+
+
+
+</div>
+
+
+
+<div class="col-md-2 col-sm-12" style="color:black">
+</div></div>
+</div>
+<br><br>
+<div class="footer"><% include par/foot %></div>
+
+

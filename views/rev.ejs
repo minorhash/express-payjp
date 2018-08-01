@@ -1,0 +1,83 @@
+<% include par/head %>
+<body>
+<% include par/shop/nav %>
+
+<div class="title5" style="color:black"><img src="img/ban/logo.png" width="32" height="32" alt=""/>&nbsp;CART</div>
+<div class="container-fluid">
+<div class="row">
+
+<!--- ------------------------------------- side left ------->
+<div class="well col-lg-2 col-sm-12" style="color:black">
+<% if(typeof usr!=="undefined") {%> 
+<div class="label label-info">welcome:<%= usr%></div>
+<br><br>
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- ------------------------------------- main ------->
+
+<div class="well col-lg-8" style="color:black"  >
+<div class="well col-lg-6" style="color:black"  >
+
+<%if(seltmp && mer.length!==0){%>
+
+<%for(var i=0;i<seltmp.length;i++){%>
+<%if(seltmp[i].uni!==0){%>
+<table ><tr><td >
+<img src=<%=mer[i].img%>>
+</td><td valign="top" style="padding:15px">
+<%=disc.SKU%>:<%=seltmp[i].sku%><br>
+<%=mer[i].pri.toLocaleString()%><%=disc.PRI%><br>
+uni:
+<form method="post" action="/cart">
+<input id="number" type="number" name="uni" value=<%=seltmp[i].uni%>>
+<input type="hidden" name="sku" value=<%=seltmp[i].sku%>>
+<input type="hidden" name="email" value=<%=seltmp[i].email%>>
+<button type="submit" >change</button>
+</form>
+
+</td></tr></table>
+
+<br>
+<%}%>
+<%}%>
+</div>
+
+<div class="well col-lg-6" style="color:black"  >
+
+<%if(typeof sum!=="undefined"){%>
+sum:<%=sum.toLocaleString()%>
+<%}%>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://localhost:3023/aid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send();
+</script>
+<br>
+
+
+<form action="/dre" method="post">
+<button type="submit" >
+reserve?
+</button>
+</form>
+
+<%}else{%>
+cart is empty.
+<%}%>
+</div>
+</div>
+
+<!-- col1 -->
+<div class="col-lg-2 hidden-xs"></div><!-- /col1-->
+
+</div> <!-- /row -->
+</div><!-- /container -->
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="footer"><% include par/foot %></div>
+

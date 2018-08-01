@@ -1,0 +1,104 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<div class="well col-lg-2 col-sm-12">
+<% if(typeof usr!=="undefined") {%> 
+
+<div class="label label-info">
+welcome: 
+<%= usr%>
+</div>
+<%}else{%>
+<div class="label label-warning">
+not logged in
+</div>
+<%} %>
+
+</div>
+<div style="background-color:khaki" class="well col-lg-8 col-md-12">
+<div class="container-fluid">
+<div class="row">
+
+<div class="well col-lg-12 col-sm-12">
+len:<%= tmp.length %>
+<% if (typeof sku!=="undefined" && typeof uni!="undefined"){%>
+<%= sku %>
+<%= uni %>
+<%} %>
+</div>
+
+<% for(var i=0;i<tmp.length;i++){ %>
+<% if(i%2==0){ %>
+<div class="well col-lg-6 col-sm-12">
+<table class="table" border="1">
+<tr><td width="5">
+<% if(typeof mer[i][0]!=="undefined" ) {%>
+<img src="<%= mer[i][0].img%>">
+</td><td>
+name:<%= mer[i][0].item%><br>
+price:<%= mer[i][0].pri%><br>
+sku:<%= tmp[i].sku%><br>
+uni:<%= tmp[i].uni%><br>
+<%}else  { %>
+<img src="<%= mer[i].img%>">
+</td><td>
+name:<%= mer[i].item%><br>
+price:<%= mer[i].pri%><br>
+sku:<%= tmp[i].sku%><br>
+uni:<%= tmp[i].uni%><br>
+
+<%} %>
+</td></tr>
+</table>
+</div>
+<%}else{ %>
+<div class="well col-lg-6 col-sm-12">
+<table class="table" border="1">
+<tr><td width="5">
+
+<% if(typeof mer[i][0]!=="undefined" ) {%>
+<img src="<%= mer[i][0].img%>">
+</td><td>
+name:<%= mer[i][0].item%><br>
+price:<%= mer[i][0].pri%><br>
+sku:<%= tmp[i].sku%><br>
+uni:<%= tmp[i].uni%><br>
+<%}else  { %>
+<img src="<%= mer[i].img%>">
+</td><td>
+name:<%= mer[i].item%><br>
+price:<%= mer[i].pri%><br>
+sku:<%= tmp[i].sku%><br>
+uni:<%= tmp[i].uni%><br>
+
+<%} %>
+</td></tr>
+</table>
+</div>
+<%} %>
+<%} %>
+<br>
+
+<div class="well col-md-12" style="background-color:cornsilk"><h2>sum:<%= sum.toLocaleString() %></h2></div>
+
+</div><!-- col -->
+
+<form action="/pay" method="post">
+<input type="submit" value="pay">
+</form>
+
+</div><!-- row -->
+
+</div><!-- cont -->
+
+<% include par/2side %>
+
+</div><!-- row -->
+</div><!-- cont -->
+
+
+</body>
+

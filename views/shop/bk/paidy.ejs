@@ -1,0 +1,79 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+<div class="container-fluid">
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
+<div class="label label-info">welcome:<%= usr%></div>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- main ------->
+
+<div class="col-sm-8" style="color:black">
+<%if(sum){%>
+sum:<%=sum.toLocaleString()%>
+<%}%>
+<br>
+<div class="well col-md-8" style="color:black"  >
+<%=seltmp.length%>
+<%for(var i=0;i<seltmp.length;i++){%>
+<%if(seltmp[i].uni!==0){%>
+<div class="well col-md-4">
+<img src="../<%=mer[i].img%>" width="150" height="150" >
+</div>
+<div class="well col-md-8">
+商品名：&nbsp;  <%=mer[i].name%><br>
+商品番号: &nbsp;  <%=seltmp[i].sku%><br>
+単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+数量:
+<%=seltmp[i].uni%>
+
+</div>
+<br>
+<%}%>
+<%}%>
+</div>
+<br>
+
+<button id="paidy-checkout-button" onclick="paidyPay()">Paidy</button>
+<script type="text/javascript" src="https://apps.paidy.com/"></script>
+<script src="../son/<%=email%>.js"></script>
+
+<br><br>
+<div align="right">
+<form method="get" action="/shop/cart">
+<button type="submit">back to cart</button>
+</form>
+</div>
+
+<div align="right">
+<form method="get" action="/shop">
+<button type="submit">back to shop</button>
+</form>
+</div>
+<br>
+
+</div>
+
+
+<div class="col-sm-1"></div>
+
+</div>
+
+
+
+<div class="col-md-2 col-sm-12" style="color:black">
+</div></div>
+</div>
+
+<div class="footer"><% include par/foot %></div>
+
+

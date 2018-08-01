@@ -1,0 +1,15 @@
+/mnt/dat/exp/aid/3bs/routes/shop/pay.js:9
+var trans=mypal.transactions[0];
+                ^
+
+TypeError: Cannot read property 'transactions' of undefined
+    at Object.<anonymous> (/mnt/dat/exp/aid/3bs/routes/shop/pay.js:9:17)
+    at Module._compile (internal/modules/cjs/loader.js:702:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)
+    at Module.load (internal/modules/cjs/loader.js:612:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:543:3)
+    at Module.require (internal/modules/cjs/loader.js:650:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.<anonymous> (/mnt/dat/exp/aid/3bs/app.js:38:11)
+    at Module._compile (internal/modules/cjs/loader.js:702:30)

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<body>
+
+<!--menu-->
+<% include par/nav %>
+<!--menu-->
+
+<div class="container-fluid">
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr!==null) {%> 
+
+<h4><div class="label label-info">welcome:&nbsp; <%= usr%>&nbsp; さん</div></h4>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+
+</div>
+
+<!--- main ------->
+<div id="cd-col" class="well col-md-8 col-xs-12" style="color:black">
+
+<div class="well col-md-3" style="color:black">
+<div align="left"><img src="../img/cd/<%=mer.sku%>.png">
+<h5>商品番号：TMS-<%=mer.sku%><br></h5>
+<h5>リリース：<%=mer.rel%><br></h5>
+<h5>リリース：<%=mer%><br></h5>
+
+</div>
+</div>
+
+
+<div class="well col-md-6" style="color:black">
+<h4><%=mer.name%><br></h4>
+<div class="well" style="color:black">
+<%if(typeof song!="undefined"|| typeof song!==null){%>
+<%for(var i in song){%>
+<%var num=parseInt(i) %>
+<%=num+1%>.&nbsp;<%=song[i]%><br>
+<%}%>
+<%}%>
+</div>
+</div>
+
+
+</div><!-- main-col -->
+
+<% include par/2side%>
+</div><!--row-->
+
+</div><!-- /container -->
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<div class="footer">
+<% include par/foot %>
+</div>
+
+
+</body>
+

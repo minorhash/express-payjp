@@ -1,1 +1,1 @@
-git remote set-url origin https://github.com/minorhash/3bs3bs3bs.git
+git remote add origin git@github.com:minorhash/3bs.git

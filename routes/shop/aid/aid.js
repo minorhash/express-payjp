@@ -135,15 +135,15 @@ var putTai = function(req, res, next) {
 var fsSon = function(req, res, next) {
   console.log('=== fsSon ====================================');
   var fs = require('fs');
-  var pub = 'pk_test_pvve8rdmjtcqbjejq4idolh8l9';
+  var cnf = require('./cnf.json');
   var str = JSON.stringify(taid);
 
   var st2 =
     'var config={"api_key":"' +
-    pub +
+    cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT", "https://3axe.tmsmusic.tokyo/shop/pid", true);' +
+    'xhr.open("PUT", "http://localhost:3023/shop/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
     'var hand=Paidy.configure(config);' +
@@ -169,8 +169,8 @@ var fsSon = function(req, res, next) {
 var chk = function(req, res, next) {
   console.log('=== aid ====================================');
   console.log(email);
-  console.log(mailadr);
-  console.log(taid);
+  //console.log(mailadr);
+  //console.log(taid);
 };
 
 router.put('/shop/aid', [

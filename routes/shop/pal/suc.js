@@ -2,19 +2,27 @@ var express = require('express');
 var router = express.Router();
 const paypal = require('paypal-rest-sdk');
 
+var conf=require("./conf.json")
+
 paypal.configure({
-  mode: 'sandbox', //sandbox or live
-  client_id:
-    'AcRzUqKVc52MjXwttJAq3-6rirhl0jqWE0j5rVmwlf_l1Nf8yoNvAaygL3b8znQcm9f63hFzPTqWtso-',
-  client_secret:
-    'EL805GY8lIoLFzcG26ca149pqSegPzIy0F0vh4gqxq9GdxHe7Zb76FCyIdnwMNdoGKrhWSd_FwoqOPpo',
+  mode: conf.MODE,
+  client_id:conf.ID,
+  client_secret:conf.SEC
 });
+
+//paypal.configure({
+  //mode: 'sandbox', //sandbox or live
+  //client_id:
+    //'AcRzUqKVc52MjXwttJAq3-6rirhl0jqWE0j5rVmwlf_l1Nf8yoNvAaygL3b8znQcm9f63hFzPTqWtso-',
+  //client_secret:
+    //'EL805GY8lIoLFzcG26ca149pqSegPzIy0F0vh4gqxq9GdxHe7Zb76FCyIdnwMNdoGKrhWSd_FwoqOPpo',
+//});
 
 // === db
 var db = require('cardb');
 
 // === get
-router.get('/success', function(req, res, next) {
+router.get('/shop/success', function(req, res, next) {
   var email = req.cookies.cmail;
   if (email) {
     var mailtmp = db.mailTmp(email);
@@ -60,13 +68,13 @@ router.get('/success', function(req, res, next) {
   paypal.payment.execute(pid, execute_payment_json, function(error, payment) {
     if (error) {
       ////console.log(typeof error.response.name);
-      res.redirect('/');
+      res.redirect('/shop');
       //console.log(error.response);
       throw error;
     } else {
       var str = JSON.stringify(payment);
       //console.log(JSON.stringify(payment));
-      res.render('success', {
+      res.render('shop/success', {
         title: 'ご購入ありがとうございました。',
         pid: payerId,
         payid: pid,

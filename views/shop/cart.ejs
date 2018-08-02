@@ -26,7 +26,7 @@
 <br>
 <%if(usr==null){%>
 ログインしてください。<br>
-<%}%>
+<%}else{%>
 
 <%if(seltmp!==null&&mer.length!==0){%>
 <%for(var i=0;i<seltmp.length;i++){%>
@@ -57,9 +57,9 @@
 </div>
 <br>
 
-<%}%>
-<%}%>
 
+<%}%>
+<%}%>
 
 
 
@@ -81,7 +81,6 @@
 </div>
 
 <br>
-
 <div class="col-md-4" style="color:black"  >
 
 <div class="box93">
@@ -97,7 +96,6 @@ xhr.open("PUT", "http://localhost:3023/shop/aid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send();
 </script>
-
 
 
 <div class="box102">
@@ -135,6 +133,7 @@ xhr.send();
 
 <%}else{%>
 カートは空です。
+<%}%>
 <%}%>
 
 </div>

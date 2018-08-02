@@ -1,2 +1,5 @@
-git remote add origin git@github.com:minorhash/3bs.git
-git push -u origin master
+if [ -z $1 ];then
+    echo "usage"
+else
+git add $1
+fi

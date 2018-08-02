@@ -116,6 +116,9 @@ var goPal = function(req, res, next) {
         console.log(error);
         throw error.message;
       } else {
+console.log(payment.id)
+console.log(payment)
+
         for (let i = 0; i < payment.links.length; i++) {
           console.log(payment.links[i]);
           if (payment.links[i].rel === 'approval_url') {

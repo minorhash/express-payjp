@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const paypal = require('paypal-rest-sdk');
+var email,mailtmp
 
 var conf=require("./cnf.json")
+
 
 paypal.configure({
   mode: conf.MODE,
@@ -14,10 +16,10 @@ paypal.configure({
 var db = require('cardb');
 
 // === get
-router.get('/shop/success', function(req, res, next) {
-  var email = req.cookies.cmail;
+router.get('/shop/paypal/success', function(req, res, next) {
+email = req.cookies.cmail;
   if (email) {
-    var mailtmp = db.mailTmp(email);
+mailtmp = db.mailTmp(email);
     // === sum
     var suma = [];
     var mer = [];
@@ -26,7 +28,7 @@ router.get('/shop/success', function(req, res, next) {
         mer.push(db.skuMer(mailtmp[i].sku));
         suma.push(mailtmp[i].uni * mer[i].pri);
       } //for
-    } //if
+    }else{console.log("no mailtmp")} 
 
     function getSum(total, num) {
       return total + num;
@@ -65,8 +67,10 @@ router.get('/shop/success', function(req, res, next) {
       throw error;
     } else {
       var str = JSON.stringify(payment);
+
+adb.insPal(email,payment.pid)
       //console.log(JSON.stringify(payment));
-      res.render('shop/success', {
+      res.render('shop/paypal/success', {
         title: 'ご購入ありがとうございました。',
         pid: payerId,
         payid: pid,

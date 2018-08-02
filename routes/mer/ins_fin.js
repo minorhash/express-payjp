@@ -4,7 +4,7 @@ var router = express.Router();
 var email, usr, tit, sku, pri, img, bool, myerr, mailusr;
 // === db ===
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 
 /* === post === */
 var getEma = function(req, res, next) {

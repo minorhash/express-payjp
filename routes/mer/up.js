@@ -3,7 +3,7 @@ var router = express.Router();
 
 // === db
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 var allmer = db.allMer();
 
 var email, sku, song, allmer, usr, bool, myerr, mailusr;

@@ -4,7 +4,7 @@ var router = express.Router();
 var email, sku, usr, bod, myerr, mailusr;
 // === db ===
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 
 /* === post === */
 

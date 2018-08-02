@@ -4,7 +4,7 @@ var process = require('process');
 
 // === db ===
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 
 // glob
 var email, sku, song, allmer, usr, bool, myerr;

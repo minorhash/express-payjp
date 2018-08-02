@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 var allmer = db.allMer();
 
 var email, allmer, usr, myerr, mailusr;

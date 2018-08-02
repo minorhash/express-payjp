@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 // == db =============================
 var db = require('cardb');
-var adb = require('aidb');
+var adb = require('usrdb');
 
 var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
 // === post =============================

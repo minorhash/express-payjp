@@ -9,11 +9,11 @@ var chk = function(req, res, next) {
 };
 
 var gcb = function(req, res) {
-  res.render('shop/cancel', {
+  res.render('shop/paypal/cancel', {
     title: 'cancelled',
   });
 };
 
-router.get('/shop/cancel', [chk, gcb]);
+router.get('/shop/paypal/cancel', [chk, gcb]);
 
 module.exports = router;

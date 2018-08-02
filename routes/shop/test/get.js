@@ -12,7 +12,6 @@ let arr = [
   'cart',
   'guide',
   'history',
-  '',
   'my',
   'notation',
   'sig',

@@ -20,7 +20,7 @@ describe('GET', function() {
   // agmt
   it('get agmt', function(done) {
     request(app)
-      .get('/shop/agmt')
+      .get('/shop/note/agmt')
       .end(function(err, res) {
         expect(res.statusCode).to.equal(200);
         done();
@@ -28,9 +28,29 @@ describe('GET', function() {
       });
   });
   // agmt
+  it('get notation', function(done) {
+    request(app)
+      .get('/shop/note/notation')
+      .end(function(err, res) {
+        expect(res.statusCode).to.equal(200);
+        done();
+        //console.log(res.req)
+      });
+  });
+  it('get guide', function(done) {
+    request(app)
+      .get('/shop/note/guide')
+      .end(function(err, res) {
+        expect(res.statusCode).to.equal(200);
+        done();
+        //console.log(res.req)
+      });
+  });
+
+  // 
   it('get adr', function(done) {
     request(app)
-      .get('/shop/adr')
+      .get('/shop/usr/adr')
       .end(function(err, res) {
         expect(res.statusCode).to.equal(200);
         done();
@@ -38,27 +58,29 @@ describe('GET', function() {
       });
   });
   //
-  it('get can', function(done) {
+  it('get pal', function(done) {
     request(app)
-      .get('/shop/cancel')
+      .get('/shop/paypal')
       .end(function(err, res) {
         expect(res.statusCode).to.equal(200);
         done();
         //console.log(res.req._header)
       });
   });
+
+  it('get can', function(done) {
+    request(app)
+      .get('/shop/paypal/cancel')
+      .end(function(err, res) {
+        expect(res.statusCode).to.equal(200);
+        done();
+        //console.log(res.req._header)
+      });
+  });
+
   it('get cart', function(done) {
     request(app)
       .get('/shop/cart')
-      .end(function(err, res) {
-        expect(res.statusCode).to.equal(200);
-        done();
-        //console.log(res.req._header)
-      });
-  });
-  it('get guide', function(done) {
-    request(app)
-      .get('/shop/guide')
       .end(function(err, res) {
         expect(res.statusCode).to.equal(200);
         done();
@@ -84,12 +106,5 @@ describe('GET', function() {
       });
   });
 
-  it('get not', function(done) {
-    request(app)
-      .get('/shop/notation')
-      .end(function(err, res) {
-        expect(res.statusCode).to.equal(200);
-        done();
-      });
-  });
+
 }); //describe

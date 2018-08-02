@@ -16,20 +16,27 @@ var sch = require('./routes/sch');
 var vid = require('./routes/vid');
 var med = require('./routes/med');
 var mail = require('./routes/mail');
+var rel = require('./routes/rel');
 
 var disc = require('./routes/disc');
 // shop =================================
 var shop = require('./routes/shop/index');
 var cart = require('./routes/shop/cart');
 var item = require('./routes/shop/item');
-var agmt = require('./routes/shop/agmt');
-var shop_out = require('./routes/shop/out');
-var my = require('./routes/shop/my');
-var adr = require('./routes/shop/adr');
-var adr_reg = require('./routes/shop/adr_reg');
-var gui = require('./routes/shop/gui');
-var not = require('./routes/shop/not');
 var his = require('./routes/shop/his');
+var my = require('./routes/shop/my');
+
+// === usr
+var shop_out = require('./routes/shop/usr/out');
+var sig = require('./routes/shop/usr/sig');
+var sup = require('./routes/shop/usr/sup');
+var adr = require('./routes/shop/usr/adr');
+var adr_reg = require('./routes/shop/usr/adr_reg');
+
+// === not
+var agmt = require('./routes/shop/not/agmt');
+var gui = require('./routes/shop/not/gui');
+var not = require('./routes/shop/not/not');
 // === pal
 var pay = require('./routes/shop/pal/pay');
 var suc = require('./routes/shop/pal/suc');
@@ -58,12 +65,8 @@ var up = require('./routes/mer/up');
 var up2 = require('./routes/mer/up2');
 var up3 = require('./routes/mer/up3');
 
-// login =================================
 
-var sig = require('./routes/shop/sig');
-var sup = require('./routes/shop/sup');
 
-var rel = require('./routes/rel');
 //
 var app = express();
 

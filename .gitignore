@@ -1,7 +1,6 @@
 public/img
-routes/shop/pal/config.js
-routes/shop/aid/pid.js
-routes/shop/aid/cli.js
+routes/shop/pal/cnf.json
+routes/shop/aid/son
 
 ### bk
 routes/bk

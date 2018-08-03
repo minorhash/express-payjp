@@ -6,21 +6,21 @@ var app = require('../app'),
   age = require('superagent'),
   expect = chai.expect;
 
-var arr=[
-"paypal/cancel"
-]
+//var arr=[
+//"paypal/cancel"
+//]
 
-//let arr = [
-  //'adr',
-  //'agmt',
-  //'cart',
-  //'guide',
-  //'history',
-  //'my',
-  //'notation',
-  //'sig',
-  //'up'
-//];
+var arr = [
+  'adr',
+  'agmt',
+  'cart',
+  'guide',
+  'history',
+  'my',
+  'notation',
+  'sig',
+  'up'
+];
 
 describe('GET', function() {
   //

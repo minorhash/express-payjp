@@ -20,16 +20,17 @@
 <!--- main ------->
 
 <div class="well col-lg-8 col-sm-12" style="color:black">
-<%if(allpid){%>
+<%if(!allpid.length==0){%>
 
 <div class="box90">購入履歴</div>
 <br>
 <%for(var i in allpid){%>
 <%=allpid[i].pid%>
 <%}%>
+<%}else{%>
+ログインしてください。
 <%}%>
-
-<%if(oite){%>
+<%if(!oite.length==0){%>
 <h3><div class="label label-warning">購入済商品</div></h3>
 <%for(var i=0;i<oite.length;i++){%>
 

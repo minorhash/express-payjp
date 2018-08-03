@@ -56,5 +56,5 @@ var rcb = function(req, res) {
   });
 };
 
-router.post('/shop/usr/out', [clrEma, getEma, getUsr, chk, rcb]);
+router.post('/shop/usr/out', [clrEma, chk, rcb]);
 module.exports = router;

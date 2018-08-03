@@ -152,7 +152,7 @@ var chk = function(req, res, next) {
 // === aid ===============================
 
 var putAid = function(req, res, next) {
-  router.put('/shop/aid');
+  router.put('/shop/aid/aid');
   next();
 };
 

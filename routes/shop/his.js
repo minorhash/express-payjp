@@ -22,6 +22,10 @@ var getUsr = function(req, res, next) {
 };
 
 var allPid = function(req, res, next) {
+    if(!email){    allpid=[]; oite=[]
+  console.log('=== no all pid ==================');
+    }else{
+
   allpid = adb.allPid(email);
   for (var i = 0; i < allpid.length; i++) {
     ite = allpid[i].ite;
@@ -32,8 +36,8 @@ var allPid = function(req, res, next) {
   //console.log(oite)
   console.log(allpid);
   console.log(allpid.length);
-  next();
-};
+    }
+  next()}
 
 var chk = function(req, res, next) {
   console.log('=== chk =====================');

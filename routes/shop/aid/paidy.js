@@ -66,7 +66,7 @@ var getAdr = function(req, res, next) {
     console.log('no mail');
   }
   if (mailadr == undefined) {
-    res.redirect('adr');
+    res.redirect('usr/adr');
   }
   next();
 };

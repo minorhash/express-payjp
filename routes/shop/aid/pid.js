@@ -105,5 +105,5 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/pid', [getEma, getUsr, putPid, chk]);
+router.put('/shop/aid/pid', [getEma, getUsr, putPid, chk]);
 module.exports = router;

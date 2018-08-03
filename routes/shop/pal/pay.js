@@ -20,36 +20,18 @@ var db = require('cardb');
 var adb = require('usrdb');
 
 // post ======================================
-
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no sess');
-  }
+  var cred = require('./js/cred');
+  email = cred.ema(req);
   next();
 }; //getEma
 
 var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    email = null;
-    console.log('no email');
-  }
-  if (mailusr) {
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    myerr = 'no mailusr';
-  }
+  var cred = require('./js/cred');
+  usr = cred.usr(email);
   next();
 };
+
 
 var putTmp = function(req, res, next) {
   tmp_a = [];
@@ -116,9 +98,6 @@ var goPal = function(req, res, next) {
         console.log(error);
         throw error.message;
       } else {
-console.log(payment.id)
-console.log(payment)
-
         for (let i = 0; i < payment.links.length; i++) {
           console.log(payment.links[i]);
           if (payment.links[i].rel === 'approval_url') {

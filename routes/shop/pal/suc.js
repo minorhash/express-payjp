@@ -104,6 +104,7 @@ console.log("exe fail")
     } else {
       var str = JSON.stringify(pay);
 
+console.log(pay.id)
 adb.insPal(email,pay.pid)
       //console.log(JSON.stringify(payment));
       res.render('shop/paypal/success', {

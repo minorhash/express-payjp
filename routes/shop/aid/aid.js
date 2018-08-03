@@ -143,7 +143,7 @@ var fsSon = function(req, res, next) {
     cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT", "http://localhost:3023/shop/pid", true);' +
+    'xhr.open("PUT", "http://localhost:3023/shop/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
     'var hand=Paidy.configure(config);' +
@@ -173,7 +173,7 @@ var chk = function(req, res, next) {
   //console.log(taid);
 };
 
-router.put('/shop/aid', [
+router.put('/shop/aid/aid', [
   getEma,
   getUsr,
   getAdr,

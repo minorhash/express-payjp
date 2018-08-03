@@ -1,1 +1,1 @@
-chmod -R 777 git
+chmod -R 777 cmd

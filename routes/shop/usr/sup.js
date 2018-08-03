@@ -52,19 +52,12 @@ mailusr = db.mailUsr(email);
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-
 snem.trEma(
-cnf.HOST,
-cnf.USR,
-cnf.PSS,
-email,
-    ema.to,
-    ema.cc,
-    ema.sub,
-    ema.mes
-  );
-  next();
-};
+cnf.HOST,cnf.USR,cnf.PSS,
+ema.from,email,ema.cc,
+ema.sub,ema.mes
+);
+next()};
 
 var rcb = function(req, res) {
   res.render('shop/usr/sup', {

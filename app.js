@@ -32,6 +32,7 @@ var sig = require('./routes/shop/usr/sig');
 var sup = require('./routes/shop/usr/sup');
 var adr = require('./routes/shop/usr/adr');
 var adr_reg = require('./routes/shop/usr/adr_reg');
+var forget = require('./routes/shop/usr/for');
 
 // === not
 var agmt = require('./routes/shop/not/agmt');
@@ -203,6 +204,7 @@ app.use('/', sup);
 //app.use('/', dre);
 app.use('/', adr);
 app.use('/', adr_reg);
+app.use('/', forget);
 app.use('/', my);
 
 // use route =================================

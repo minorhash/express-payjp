@@ -1,3 +1,4 @@
+var adb = require('usrdb');
 var cred = {
   ema: function(req) {
 if (req.session) {
@@ -10,20 +11,22 @@ email = req.session.email;
     }
   },
   usr: function(email) {
-    var adb = require('usrdb');
     if (email) {
-      try {
-        mailusr = adb.mailUsr(email);
-      } catch (err) {
-        console.log(err);
-      }
+      try {        mailusr = adb.mailUsr(email);      } 
+      catch (err) {        console.log(err);      }
       usr = mailusr.name;
       return usr;
-    } else {
-      usr = null;
-      myerr = 'no mailusr';
-    }
+    } else {      usr = null;        console.log("no usr")    }
   },
+  pss: function(email) {
+    if (email) {
+      try {        mailusr = adb.mailUsr(email);      } 
+      catch (err) {        console.log(err);      }
+      pss= mailusr.pss;
+      return usr;
+    } else {      pss= null;        console.log("no pss")    }
+  }
+
 };
 
 module.exports = cred;

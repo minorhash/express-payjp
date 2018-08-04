@@ -98,7 +98,7 @@ var getIte = function(req, res, next) {
 };
 
 var putSku = function(req, res, next) {
-    sku_a=[]
+    sku_a=[]// == VERY IMPORTANT!!!! always init ==
   if (mailtmp.length!==0) {
     for (var i = 0; i < mailtmp.length; i++) {
       sku_a[i] = mailtmp[i].sku;

@@ -8,27 +8,19 @@ var taid = aid.tmpAid();
 
 // === put ===
 
-var email, usr, sku, sum,tsum;
-var mailtmp, mailusr, mailadr;
-var mer = [],
-  suma = [],
-  sku_a = [],
-  adr;
+var email, usr, sku, sum,tsum,adr,sson
+var mailtmp, mailusr, mailadr,mailson;
+var mer = [],  suma = [],  sku_a = []
 
 var getEma = function(req, res, next) {
   email = req.session.email;
-  next();
-};
+  next()};
 
 var getUsr = function(req, res, next) {
-  try {
-    mailusr = adb.mailUsr(email);
-  } catch (err) {
-    console.log(err);
-  }
+  try {    mailusr = adb.mailUsr(email);  } 
+  catch (err) {    console.log(err);  }
   usr = mailusr.name;
-  next();
-};
+  next()};
 
 var getAdr = function(req, res, next) {
   try {
@@ -83,7 +75,7 @@ var redSum = function(req, res, next) {
 };
 
 var getTai = function(req, res, next) {
-  console.log('=== getTai ====================================');
+//  console.log('=== getTai ====================================');
   taid.amount = tsum;
   // buyer
   taid.buyer.email = email;
@@ -106,7 +98,7 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-  console.log('=== putTai ====================================');
+//  console.log('=== putTai ====================================');
 
   //
   for (var i = 0; i < mer.length; i++) {
@@ -129,17 +121,15 @@ var putTai = function(req, res, next) {
   } else {
     console.log('=== mailadr null ===');
   }
-  next();
-};
+  next()};
 
 var fsSon = function(req, res, next) {
-  console.log('=== fsSon ====================================');
+//  console.log('=== fsSon ====================================');
   var fs = require('fs');
   var cnf = require('./cnf.json');
   var str = JSON.stringify(taid);
 
-  var st2 =
-    'var config={"api_key":"' +
+sson=    'var config={"api_key":"' +
     cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
@@ -153,24 +143,31 @@ var fsSon = function(req, res, next) {
     ';' +
     'hand.launch(load);};';
 
-  db.insSon(email, st2);
+  db.insSon(email, sson);
 
-  fs.writeFile('public/son/' + email + '.js', st2, function(err) {
-    if (err) {
-      return console.log(err);
-    } else {
-      console.log('no err');
-    }
+  fs.stat('public/son/' + email + '.js', function(err,stat) {
+console.log(stat)
+if (err) {return console.log(err);    } 
+
+  fs.unlink('public/son/' + email + '.js',function(err) {
+if (err) {return console.log(err);    } 
+else {console.log('no err');    }
     console.log('The file was saved!');
   });
-  next();
-};
+
+  fs.writeFile('public/son/' + email + '.js', sson, function(err) {
+if (err) {return console.log(err);    } 
+else {console.log('no err');    }
+    console.log('The file was saved!');
+  });});
+
+  next()};
 
 var chk = function(req, res, next) {
   console.log('=== aid ====================================');
   console.log(email);
-  //console.log(mailadr);
-  //console.log(taid);
+//console.log(sson);
+console.log(mailson);
 };
 
 router.put('/shop/aid/aid', [

@@ -140,14 +140,13 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/cli', [
+router.put('/shop/aid/cli', [
   getEma,
   getUsr,
   putPid,
   selPid,
   reqPid,
   getIte,
-  senEma,
   chk,
 ]);
 module.exports = router;

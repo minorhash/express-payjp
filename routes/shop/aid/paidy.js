@@ -8,12 +8,8 @@ var taid = idy.tmpAid();
 
 // === post ============================
 var email, usr, sku, uni, sum, tsum;
-var mailtmp, mailusr, mailadr;
-var mer = [],
-  suma = [],
-  skua = [],
-  unia = [],
-  numa = [];
+var mailtmp, mailusr, mailadr,mailson;
+var mer = [],  suma = [],  skua = [],  unia = [],  numa = [];
 var emp, ind;
 
 var getEma = function(req, res, next) {
@@ -48,9 +44,7 @@ var getTmp = function(req, res, next) {
     } catch (err) {
       console.log(err);
     }
-  } else {
-    console.log('no mail');
-  }
+  } else {    console.log('no mail');  }
   db.delUni();
   next();
 };
@@ -120,15 +114,18 @@ var empCar = function(req, res, next) {
   } else {
     console.log('no body');
   }
+  next()};
 
-  next();
-};
+var getSon= function(req, res, next) {
+mailson=db.mailSon(email).son
+next()};
+
 
 var chk = function(req, res, next) {
   console.log('=== paidy ===');
   console.log(mailtmp);
-  //console.log(mailadr)
-  //console.log(mailusr)
+//console.log(mailson)
+//console.log(mailusr)
   next();
 };
 
@@ -141,6 +138,7 @@ var pcb = function(req, res, next) {
     tsum: tsum,
     mer: mer,
     email: email,
+    mailson:mailson,
     usr: usr,
   }); //rend
 };
@@ -153,6 +151,7 @@ router.post('/shop/paidy', [
   putSum,
   redSum,
   putSku,
+  getSon,
   chk,
   pcb,
 ]);

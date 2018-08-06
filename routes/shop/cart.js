@@ -53,7 +53,6 @@ var putMer = function(req, res, next) {
   } else {
     console.log('no mailtmp');
   }
-  console.log('=== putMer ===');
   next();
 };
 
@@ -66,7 +65,6 @@ var putSum = function(req, res, next) {
   } else {
     console.log('no mailtmp');
   }
-  console.log('=== putSum ===');
   next();
 };
 
@@ -100,14 +98,26 @@ var getIte = function(req, res, next) {
 };
 
 var putSku = function(req, res, next) {
-  if (mailtmp) {
+    sku_a=[]// == VERY IMPORTANT!!!! always init ==
+  if (mailtmp.length!==0) {
     for (var i = 0; i < mailtmp.length; i++) {
       sku_a[i] = mailtmp[i].sku;
     } //for
   } else {
+      mailtmp=null
     console.log('no mailtmp');
   }
   next();
+};
+
+var pcb = function(req, res, next) {
+  res.render('shop/cart', {
+    seltmp: mailtmp,
+    sum: sum,
+    mer: mer,
+    usr: usr,
+    email: email,
+  }); //rend
 };
 
 var insUpd = function(req, res, next) {
@@ -117,29 +127,32 @@ var insUpd = function(req, res, next) {
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
+var hea=res.headersSent
+    console.log('=== head ==================');
+    console.log(hea)
       res.redirect('cart');
     } else {
       db.updTmp(uni, email, sku);
+var hea=res.headersSent
+    console.log(hea)
       res.redirect('cart');
     } //ind
-  } else {
+} else {
     console.log('no body.sku');
   }
-
-  next();
-}; //insUpd
+  next();}; //insUpd
 
 // === clr ===============================
 var clrEma = function(req, res, next) {
   if (req.body.clr == 'yes') {
     db.delEma(email);
+//    sku=null
+        mailtmp=null
+    console.log(mailtmp)
     console.log('=== CLR! ==================');
     //res.redirect("cart")
-  } else {
-    console.log('no clr');
-  }
-  next();
-};
+  } else {    console.log('no clr');  }
+  next();};
 
 // === chk ===============================
 var chk = function(req, res, next) {
@@ -167,15 +180,7 @@ var gcb = function(req, res) {
   });
 };
 
-var pcb = function(req, res, next) {
-  res.render('shop/cart', {
-    seltmp: mailtmp,
-    sum: sum,
-    mer: mer,
-    usr: usr,
-    email: email,
-  }); //rend
-};
+
 
 router.get('/shop/cart', [
   getEma,

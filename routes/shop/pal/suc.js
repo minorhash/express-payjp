@@ -104,8 +104,8 @@ console.log("exe fail")
     } else {
       var str = JSON.stringify(pay);
 
-console.log(pay.id)
-adb.insPal(email,pay.pid)
+console.log(pay)
+adb.insPal(email,pay.id)
       //console.log(JSON.stringify(payment));
       res.render('shop/paypal/success', {
         title: 'ご購入ありがとうございました。',

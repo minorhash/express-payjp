@@ -32,7 +32,6 @@ var allPid = function(req, res, next) {
     oite = JSON.parse(ite);
   }
 
-  console.log('=== allpid ==================');
   //console.log(oite)
   console.log(allpid);
   console.log(allpid.length);

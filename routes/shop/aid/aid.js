@@ -124,13 +124,10 @@ var putTai = function(req, res, next) {
   next()};
 
 var fsSon = function(req, res, next) {
-<<<<<<< HEAD
   console.log('=== fsSon ====================================');
 var fs = require('fs');
-=======
 //  console.log('=== fsSon ====================================');
   var fs = require('fs');
->>>>>>> b02810a4826c57948e71ec2fb736f63bb099fef3
   var cnf = require('./cnf.json');
   var str = JSON.stringify(taid);
 
@@ -138,7 +135,7 @@ sson=    'var config={"api_key":"' +
     cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT", "http://localhost:3023/shop/aid/pid", true);' +
+    'xhr.open("PUT", '+cnd.loc+'/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
     'var hand=Paidy.configure(config);' +
@@ -150,15 +147,6 @@ sson=    'var config={"api_key":"' +
 
   db.insSon(email, sson);
 
-<<<<<<< HEAD
-fs.writeFile('public/son/' + email + '.js', st2, function(err) {
-if (err) {return console.log(err);} 
-else {console.log('no err');}
-console.log('The file was saved!');
-});
-next();
-};
-=======
   fs.stat('public/son/' + email + '.js', function(err,stat) {
 console.log(stat)
 if (err) {return console.log(err);    } 

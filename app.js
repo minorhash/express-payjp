@@ -42,6 +42,7 @@ var not = require('./routes/shop/not/not');
 var pay = require('./routes/shop/pal/pay');
 var suc = require('./routes/shop/pal/suc');
 var can = require('./routes/shop/pal/can');
+var pal_his = require('./routes/shop/pal/his');
 // === paidy
 
 var aid = require('./routes/shop/aid/aid');
@@ -181,6 +182,7 @@ app.use('/', agmt);
 app.use('/', pay);
 app.use('/', suc);
 app.use('/', can);
+app.use('/', pal_his);
 
 // === mer ===
 app.use('/', mer);

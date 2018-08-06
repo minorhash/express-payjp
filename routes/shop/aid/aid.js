@@ -134,7 +134,7 @@ var putTai = function(req, res, next) {
 
 var fsSon = function(req, res, next) {
   console.log('=== fsSon ====================================');
-  var fs = require('fs');
+var fs = require('fs');
   var cnf = require('./cnf.json');
   var str = JSON.stringify(taid);
 
@@ -155,15 +155,12 @@ var fsSon = function(req, res, next) {
 
   db.insSon(email, st2);
 
-  fs.writeFile('public/son/' + email + '.js', st2, function(err) {
-    if (err) {
-      return console.log(err);
-    } else {
-      console.log('no err');
-    }
-    console.log('The file was saved!');
-  });
-  next();
+fs.writeFile('public/son/' + email + '.js', st2, function(err) {
+if (err) {return console.log(err);} 
+else {console.log('no err');}
+console.log('The file was saved!');
+});
+next();
 };
 
 var chk = function(req, res, next) {

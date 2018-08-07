@@ -9,16 +9,6 @@ var i18n = require('i18n-express');
 var sess = require('cookie-session');
 // route =================================
 var index = require('./routes/index');
-var news = require('./routes/news');
-var info = require('./routes/info');
-var prof = require('./routes/prof');
-var sch = require('./routes/sch');
-var vid = require('./routes/vid');
-var med = require('./routes/med');
-var mail = require('./routes/mail');
-var rel = require('./routes/rel');
-
-var disc = require('./routes/disc');
 // shop =================================
 var shop = require('./routes/shop/index');
 var cart = require('./routes/shop/cart');
@@ -66,8 +56,6 @@ var song3 = require('./routes/mer/song3');
 var up = require('./routes/mer/up');
 var up2 = require('./routes/mer/up2');
 var up3 = require('./routes/mer/up3');
-
-
 
 //
 var app = express();
@@ -151,15 +139,6 @@ app.use(
 );
 // use route =================================
 app.use('/', index);
-app.use('/', disc);
-//app.use('/', detail);
-app.use('/', news);
-app.use('/', info);
-app.use('/', prof);
-app.use('/', sch);
-app.use('/', vid);
-app.use('/', med);
-app.use('/', mail);
 
 // === shop ===
 app.use('/', shop);

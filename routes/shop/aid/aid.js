@@ -126,26 +126,30 @@ var putTai = function(req, res, next) {
 var fsSon = function(req, res, next) {
   console.log('=== fsSon ====================================');
 var fs = require('fs');
-//  console.log('=== fsSon ====================================');
   var fs = require('fs');
-  var cnf = require('./cnf.json');
+  var cnf = require('../cnf.json');
   var str = JSON.stringify(taid);
 
-sson=    'var config={"api_key":"' +
-    cnf.pub +
-    '",' +
-    '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT", '+cnd.loc+'/aid/pid", true);' +
-    'xhr.setRequestHeader("Content-Type", "application/json");' +
-    'xhr.send(JSON.stringify(cb));}};' +
-    'var hand=Paidy.configure(config);' +
-    'function paidyPay(){' +
-    'var load=' +
-    str +
-    ';' +
-    'hand.launch(load);};';
+  console.log(str)
+  console.log(cnf.loc)
+  console.log(cnf.pub)
 
-  db.insSon(email, sson);
+sson=    
+'var config={"api_key":"' +
+cnf.pub +
+'",' +
+'"closed":function(cb){var xhr = new XMLHttpRequest();' +
+'xhr.open("PUT", '+ cnf.loc +'/aid/pid", true);' 
+'xhr.setRequestHeader("Content-Type", "application/json");' +
+'xhr.send(JSON.stringify(cb));}};' +
+'var hand=Paidy.configure(config);' +
+'function paidyPay(){' +
+'var load=' +
+str +
+';' +
+'hand.launch(load);};';
+
+db.insSon(email, sson);
 
   fs.stat('public/son/' + email + '.js', function(err,stat) {
 console.log(stat)
@@ -169,7 +173,6 @@ var chk = function(req, res, next) {
   console.log('=== aid ====================================');
   console.log(email);
 //console.log(sson);
-console.log(mailson);
 };
 
 router.put('/shop/aid/aid', [

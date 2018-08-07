@@ -5,6 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var rdb = require('req-aid');
 
+var cnf=require("../cnf.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;

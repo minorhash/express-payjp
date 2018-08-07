@@ -5,6 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var rdb = require('req-aid');
 
+var cnf=require("../../cnf.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
@@ -122,11 +123,11 @@ var senEma = function(req, res, next) {
   console.log(arr);
 
   snem.trEma(
-    'smtp.muumuu-mail.com',
-    'info@tmsmusic.tokyo',
-    'hash2010',
+   cnf.HOST, 
+   cnd.USR,
+   cnd.PSS,
     email,
-    'matsuo@tms-e.co.jp',
+   cnd.EMA1,
     sub,
     mes
   );

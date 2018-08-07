@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+//var router=require("../app")
 var db = require('cardb');
 var allmer = db.allMer();
 

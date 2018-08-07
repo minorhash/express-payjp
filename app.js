@@ -1,4 +1,5 @@
 var express = require('express');
+var router = express.Router();
 var path = require('path');
 //var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,6 +10,7 @@ var i18n = require('i18n-express');
 var sess = require('cookie-session');
 // route =================================
 var index = require('./routes/index');
+var mail = require('./routes/mail');
 // shop =================================
 var shop = require('./routes/shop/index');
 var cart = require('./routes/shop/cart');
@@ -139,6 +141,7 @@ app.use(
 );
 // use route =================================
 app.use('/', index);
+app.use('/', mail);
 
 // === shop ===
 app.use('/', shop);

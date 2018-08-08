@@ -33,13 +33,10 @@ var allPid = function(req, res, next) {
     ite = allpid[i].ite;
     oite = JSON.parse(ite);
   }
-<<<<<<< HEAD
-=======
 
   //console.log(oite)
   console.log(allpid);
   console.log(allpid.length);
->>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
     }
   next()}
 

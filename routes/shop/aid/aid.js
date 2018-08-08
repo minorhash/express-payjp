@@ -17,15 +17,12 @@ var getEma = function(req, res, next) {
   next()};
 
 var getUsr = function(req, res, next) {
-<<<<<<< HEAD
   var cred = require('./js/cred');
   usr = cred.usr(email);
-=======
     if(email){
   mailusr = adb.mailUsr(email);   
   usr = mailusr.name;
     }else{console.log("no mail")}
->>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
   next()};
 
 var getAdr = function(req, res, next) {
@@ -130,7 +127,6 @@ var fsSon = function(req, res, next) {
 var fs = require('fs');
   var str = JSON.stringify(taid);
 
-<<<<<<< HEAD
 sson=    'var config={"api_key":"' +
     cnf.pub +
     '",' +
@@ -147,33 +143,6 @@ sson=    'var config={"api_key":"' +
 
   db.insSon(email, sson);
 
-  fs.stat('public/son/' + email + '.js', function(err,stat) {
-console.log(stat.birthtime)
-if (err) {return console.log(err);    } 
-
-  fs.unlink('public/son/' + email + '.js',function(err) {
-=======
-  console.log(str)
-  console.log(aid.loc)
-  console.log(aid.pub)
-
-sson=    
-'var config={"api_key":"' +
-aid.pub +
-'",' +
-'"closed":function(cb){var xhr = new XMLHttpRequest();' +
-'xhr.open("PUT", "'+ aid.loc +'/aid/pid", true);' +
-'xhr.setRequestHeader("Content-Type", "application/json");' +
-'xhr.send(JSON.stringify(cb));}};' +
-'var hand=Paidy.configure(config);' +
-'function paidyPay(){' +
-'var load=' +
-str +
-';' +
-'hand.launch(load);};';
-
-db.insSon(email, sson);
-
 //console.log(__dirname)
 //fs.stat('../../', function(err,stat) {
 //console.log(stat)
@@ -181,7 +150,6 @@ db.insSon(email, sson);
 //});
 
 fs.unlink('../../public/son/' + email + '.js',function(err) {
->>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 if (err) {return console.log(err);    } 
 else {console.log('no err');    }
 console.log('unlink!');
@@ -198,10 +166,7 @@ var chk = function(req, res, next) {
   console.log('=== aid ====================================');
   console.log(taid);
 //console.log(sson);
-<<<<<<< HEAD
 //console.log(mailson);
-=======
->>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 };
 
 router.put('/shop/aid/aid', 

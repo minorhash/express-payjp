@@ -6,8 +6,8 @@ var db = require('cardb');
 var adb = require('usrdb');
 
 var email, usr, myerr;
-var mailusr, selpid, allpid;
-var ite, oite;
+var mailusr, selpid, allpid,allpal;
+var ite, oite,tok,atok;
 // === get ============================
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
@@ -38,11 +38,24 @@ var allPid = function(req, res, next) {
     }
   next()}
 
+var allPal= function(req, res, next) {
+allpal=adb.allPal(email)
+atok=[]
+  for (var i = 0; i < allpal.length; i++) {
+console.log(allpal[i].tok)
+    atok[i]=allpal[i].tok;
+ //   atok.push(allpal[i].tok);
+
+//    otok= JSON.parse(atok);
+  }
+  next()}
 var chk = function(req, res, next) {
   console.log('=== chk =====================');
   console.log(email);
   console.log(usr);
-  console.log(oite);
+//  console.log(oite);
+  console.log(allpal);
+  console.log(atok);
   next();
 }; //chkEma
 
@@ -52,9 +65,10 @@ var gcb = function(req, res) {
     usr: usr,
     selpid: selpid,
     allpid: allpid,
-    oite: oite,
+    allpal: allpal,
+    oite: oite
   });
 };
-router.get('/shop/history', [getEma, getUsr, allPid, chk, gcb]);
+router.get('/shop/history', [getEma, getUsr, allPid, allPal,chk, gcb]);
 
 module.exports = router;

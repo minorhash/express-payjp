@@ -34,11 +34,21 @@ var getUsr = function(req, res, next) {
   usr = cred.usr(email);
   next()};
 
+//var getPal= function(req, res, next) {
+//getpal=adb.getPal(email)
+//tok=getpal.tok
+//next()};
 
-var getPal= function(req, res, next) {
-getpal=adb.getPal(email)
-tok=getpal.tok
-next()};
+var allPal= function(req, res, next) {
+allpal=adb.allPal(email)
+atok=[]
+  for (var i = 0; i < allpal.length; i++) {
+console.log(allpal[i].tok)
+    atok[i]=allpal[i].tok;
+//   atok.push(allpal[i].tok);
+//    otok= JSON.parse(atok);
+  }
+  next()}
 
 var tokPal= function(req, res, next) {
 
@@ -61,7 +71,7 @@ next()};
 
 var rcb = function(req, res, next) {
   res.render('shop/paypal/his', {
-getpal:getpal,
+allpal:allpal,
 tok:tok,
 trans:trans,
 usr: usr,
@@ -72,7 +82,7 @@ email: email
 router.get('/shop/paypal/his', [
   getEma,
   getUsr,
-  getPal,
+  allPal,
   tokPal,
   chk,
   rcb

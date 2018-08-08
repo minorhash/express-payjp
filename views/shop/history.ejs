@@ -24,16 +24,34 @@
 
 <div class="box90">購入履歴</div>
 <br>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 <%}else{%>
 ログインしてください。
 <%}%>
+
+<!--- main ------->
 <%if(!oite.length==0){%>
-<h3><div class="label label-warning">購入済商品</div></h3>
+<h3><div class="label label-warning">paidy 購入済商品</div></h3>
 <%for(var i=0;i<oite.length;i++){%>
 
 <div valign="top"><img src="../img/cd/<%=oite[i].id%>.png"></div>
 sku&nbsp;<div class="label label-default"><%=oite[i].id%></div>
 price&nbsp;<div class="label label-default"><%=oite[i].unit_price%></div><br><br>
+<%}%>
+
+<%}%>
+
+<!--- pal ------->
+<%if(!allpal.length==0){%>
+<h3><div class="label label-warning">paypal 購入済商品</div></h3>
+<%for(var i=0;i<allpal.length;i++){%>
+
+<div valign="top"><img src="../img/cd/<%=allpal[i].id%>.png"></div>
+sku&nbsp;<div class="label label-default"><%=allpal[i].id%></div>
+price&nbsp;<div class="label label-default"><%=allpal[i].unit_price%></div><br><br>
 <%}%>
 
 <%}%>

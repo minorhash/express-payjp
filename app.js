@@ -1,4 +1,5 @@
 var express = require('express');
+var router = express.Router();
 var path = require('path');
 //var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,16 +10,7 @@ var i18n = require('i18n-express');
 var sess = require('cookie-session');
 // route =================================
 var index = require('./routes/index');
-var news = require('./routes/news');
-var info = require('./routes/info');
-var prof = require('./routes/prof');
-var sch = require('./routes/sch');
-var vid = require('./routes/vid');
-var med = require('./routes/med');
 var mail = require('./routes/mail');
-var rel = require('./routes/rel');
-
-var disc = require('./routes/disc');
 // shop =================================
 var shop = require('./routes/shop/index');
 var cart = require('./routes/shop/cart');
@@ -42,6 +34,7 @@ var not = require('./routes/shop/not/not');
 var pay = require('./routes/shop/pal/pay');
 var suc = require('./routes/shop/pal/suc');
 var can = require('./routes/shop/pal/can');
+var pal_his = require('./routes/shop/pal/his');
 // === paidy
 
 var aid = require('./routes/shop/aid/aid');
@@ -66,8 +59,6 @@ var up = require('./routes/mer/up');
 var up2 = require('./routes/mer/up2');
 var up3 = require('./routes/mer/up3');
 
-
-
 //
 var app = express();
 
@@ -87,77 +78,20 @@ app.use(
   sess({
     name: 'sess',
     keys: ['key1'],
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    maxAge: 24 * 60 * 1000, // 1 hour
   })
 );
 
 // i18n ======================================
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'trans',
-  })
+var nat=["","news","prof","disc","sch","vid","mail","shop"]
+
+for(let i=0;i<nat.length;i++){
+app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
+    siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 );
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/news'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'news',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/profile'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'profile',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/disc'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'disc',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/shop'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'shop',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/schedule'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'schedule',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/video'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'video',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/mail'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'mail',
-  })
-);
+}
 // use route =================================
 app.use('/', index);
-app.use('/', disc);
-//app.use('/', detail);
-app.use('/', news);
-app.use('/', info);
-app.use('/', prof);
-app.use('/', sch);
-app.use('/', vid);
-app.use('/', med);
 app.use('/', mail);
 
 // === shop ===
@@ -181,6 +115,7 @@ app.use('/', agmt);
 app.use('/', pay);
 app.use('/', suc);
 app.use('/', can);
+app.use('/', pal_his);
 
 // === mer ===
 app.use('/', mer);

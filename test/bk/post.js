@@ -7,19 +7,29 @@ var app = require('../app'),
   expect = chai.expect;
 
 var arr=[
+<<<<<<< HEAD
 "paypal/pay"
 ]
 
+=======
+"paypal/pay",
+"paypal/success"
+]
+>>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 describe('POST', function() {
   //
   for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]);
     it('post', function(done) {
       request(app)
+<<<<<<< HEAD
 .post('/shop/' + arr[i])
 .expect(function(res){
 res.body.mailusr.isArray
 })
+=======
+        .post('/shop/' + arr[i])
+>>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
         .end(function(err, res) {
           expect(res.statusCode).to.equal(200);
           done();

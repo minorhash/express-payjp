@@ -5,6 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var rdb = require('req-aid');
 
+var cnf=require("../son/aid.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
@@ -12,29 +13,15 @@ var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, itea, oite;
 
 // === fun =============================
-
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no cook');
-  }
+  var cred = require('../js/cred');
+  email = cred.ema(req);
   next();
-};
+}; //getEma
 
 var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    console.log('no usr');
-  }
+  var cred = require('../js/cred');
+  usr = cred.usr(email);
   next();
 };
 
@@ -59,8 +46,7 @@ var selPid = function(req, res, next) {
 var getIte = function(req, res, next) {
   if (selpid) {
     for (var i = 0; i < selpid.length; i++) {
-      console.log(selpid[i].ite);
-
+console.log(selpid[i].ite);
       //        itea.push(selpid[i].ite)
     }
   } else {
@@ -74,27 +60,20 @@ var senEma = function(req, res, next) {
   var sub = 'sub:' + usr;
   var mes = 'mes:' + pid;
 
-  var oite = JSON.parse(ite);
-  for (var i = 0; i < oite.length; i++) {
-    sku = oite[i].id;
-    tit = oite[i].title;
-    img =
-      "<img src='https://3axe.tmsmusic.tokyo/img/cd/" + oite[i].id + ".png'>";
-  }
+  //var oite = JSON.parse(ite);
+  //for (var i = 0; i < oite.length; i++) {
+    //sku = oite[i].id;
+    //tit = oite[i].title;
+    //img =
+      //"<img src='https://3axe.tmsmusic.tokyo/img/cd/" + oite[i].id + ".png'>";
+  //}
 
-  console.log(sku);
-  var mes =
-    'loc pid:' + pid + '<br>sku:' + sku + '<br>title:' + tit + '<br>' + img;
+  //console.log(sku);
+  //var mes =
+    //'loc pid:' + pid + '<br>sku:' + sku + '<br>title:' + tit + '<br>' + img;
 
-  snem.trEma(
-    'smtp.muumuu-mail.com',
-    'info@tmsmusic.tokyo',
-    'hash2010',
-    email,
-    'matsuo@tms-e.co.jp',
-    sub,
-    mes
-  );
+snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+
   next();
 };
 

@@ -3,8 +3,8 @@ var cookie = require('cookie');
 var router = express.Router();
 // == sess =============================
 var db = require('cardb'),
-  adb = require('usrdb'),
-  allmer = db.allMer();
+adb = require('usrdb'),
+allmer = db.allMer();
 
 var email, usr, myerr, coo;
 var allmer, mailusr;
@@ -39,7 +39,7 @@ var rcb = function(req, res) {
     err: myerr,
   });
 };
-router.get('/shop/', [getEma, getUsr, chk, rcb]);
+router.get('/shop', [getEma, getUsr, chk, rcb]);
 
 // == post ==================================
 
@@ -54,8 +54,7 @@ var getCok = function(req, res, next) {
     console.log('no req.body');
   } //req.body
 
-  next();
-}; //getCok
+  next()}; //getCok
 
 var getUsr = function(req, res, next) {
   if (email && pss) {
@@ -83,6 +82,8 @@ var chk = function(req, res, next) {
   console.log(req.session);
   next();
 };
+
+
 
 var rcb = function(req, res) {
   var rob = { usr: usr, mer: allmer, err: myerr };

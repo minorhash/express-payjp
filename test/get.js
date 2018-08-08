@@ -11,15 +11,15 @@ var app = require('../app'),
 //]
 
 var arr = [
-  'adr',
-  'agmt',
+  'usr/adr',
+  'note/agmt',
   'cart',
-  'guide',
+  'note/guide',
   'history',
   'my',
-  'notation',
-  'sig',
-  'up'
+  'note/notation',
+  'usr/sig',
+  'paypal/pay'
 ];
 
 describe('GET', function() {

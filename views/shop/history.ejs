@@ -7,12 +7,12 @@
 
 <!--- side left ------->
 <div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<div class="label label-info"><%= usr%>&nbsp;さん </div>
+<% if(usr) { %> 
+<div class="label label-info">"<%= usr%>"&nbsp;さん </div>
 <br><br>
 
 <% include par/out %>
-<%}else{ %>
+<% }else{ %>
 <% include par/login %>
 <%} %>
 </div>
@@ -24,9 +24,6 @@
 
 <div class="box90">購入履歴</div>
 <br>
-<%for(var i in allpid){%>
-<%=allpid[i].pid%>
-<%}%>
 <%}else{%>
 ログインしてください。
 <%}%>

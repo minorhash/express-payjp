@@ -6,20 +6,25 @@ var app = require('../app'),
   age = require('superagent'),
   expect = chai.expect;
 
+var arr=[
+"paypal/pay"
+]
+
 describe('POST', function() {
-  it('post', function(done) {
-    request(app)
-      .post('/shop')
-      .type('form')
-      .send({
-        method: 'post',
-        email: 'successful.payment@paidy.com',
-        pss: '2112',
-      })
-      .end(function(err, res) {
-        expect(res.statusCode).to.equal(200);
-        expect(res.body).to.be.an('object');
-        done();
-      });
-  });
-});
+  //
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+    it('post', function(done) {
+      request(app)
+.post('/shop/' + arr[i])
+.expect(function(res){
+res.body.mailusr.isArray
+})
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          done();
+          //console.log(res.req)
+        });
+    });
+  }
+}); //describe

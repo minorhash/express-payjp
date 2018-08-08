@@ -45,6 +45,7 @@ var getTmp = function(req, res, next) {
 };
 
 var putMer = function(req, res, next) {
+    mer=[]
   if (mailtmp) {
     for (var i = 0; i < mailtmp.length; i++) {
       console.log(mailtmp[i].sku);

@@ -32,7 +32,6 @@ var getUsr = function(req, res, next) {
   next();
 };
 
-
 var putTmp = function(req, res, next) {
   tmp_a = [];
   if (email) {
@@ -110,8 +109,7 @@ var goPal = function(req, res, next) {
   } catch (err) {
     console.log(err);
   }
-  next();
-};
+  next()};
 
 //var json=JSON.stringify(mypal);
 
@@ -135,7 +133,7 @@ var rcb = function(req, res, next) {
   }); //rend
 };
 
-router.post('/shop/paypal/pay', [
+router.get('/shop/paypal/pay', [
   getEma,
   getUsr,
   putMer,
@@ -143,7 +141,7 @@ router.post('/shop/paypal/pay', [
   putMer,
   getSum,
   goPal,
-  chk,
+  chk
 ]);
 
 module.exports = router;

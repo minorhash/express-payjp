@@ -17,17 +17,14 @@ var getEma = function(req, res, next) {
   next()};
 
 var getUsr = function(req, res, next) {
-  try {    mailusr = adb.mailUsr(email);  } 
-  catch (err) {    console.log(err);  }
-  usr = mailusr.name;
+  var cred = require('./js/cred');
+  usr = cred.usr(email);
   next()};
 
 var getAdr = function(req, res, next) {
-  try {
-    mailadr = adb.mailAdr(email);
-  } catch (err) {
-    console.log(err);
-  }
+if(email){    mailadr = adb.mailAdr(email);}
+else{console.log(err)}
+
   if (mailadr == null) {
     console.log('=== adr null ===');
   }
@@ -146,7 +143,7 @@ sson=    'var config={"api_key":"' +
   db.insSon(email, sson);
 
   fs.stat('public/son/' + email + '.js', function(err,stat) {
-console.log(stat)
+console.log(stat.birthtime)
 if (err) {return console.log(err);    } 
 
   fs.unlink('public/son/' + email + '.js',function(err) {
@@ -167,7 +164,7 @@ var chk = function(req, res, next) {
   console.log('=== aid ====================================');
   console.log(email);
 //console.log(sson);
-console.log(mailson);
+//console.log(mailson);
 };
 
 router.put('/shop/aid/aid', [

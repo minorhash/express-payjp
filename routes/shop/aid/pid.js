@@ -14,13 +14,13 @@ var buy, ite, itea, oite;
 
 // === fun =============================
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
+  var cred = require('../js/cred');
   email = cred.ema(req);
   next();
 }; //getEma
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
+  var cred = require('../js/cred');
   usr = cred.usr(email);
   next();
 };
@@ -46,8 +46,7 @@ var selPid = function(req, res, next) {
 var getIte = function(req, res, next) {
   if (selpid) {
     for (var i = 0; i < selpid.length; i++) {
-      console.log(selpid[i].ite);
-
+console.log(selpid[i].ite);
       //        itea.push(selpid[i].ite)
     }
   } else {

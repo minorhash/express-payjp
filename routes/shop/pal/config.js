@@ -1,5 +1,5 @@
 const paypal = require('paypal-rest-sdk');
-var cnf=require("./cnf.json")
+var cnf=require("../son/pal.json")
 
 paypal.configure({
   mode: cnf.MODE,

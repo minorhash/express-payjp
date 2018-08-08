@@ -143,18 +143,8 @@ var pcb = function(req, res, next) {
   }); //rend
 };
 
-router.post('/shop/paidy', [
-  getEma,
-  getUsr,
-  getTmp,
-  getAdr,
-  putSum,
-  redSum,
-  putSku,
-  getSon,
-  chk,
-  pcb,
-]);
+router.post('/shop/paidy', 
+[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  redSum,  putSku,  getSon,  chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 
 module.exports = router;

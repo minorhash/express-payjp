@@ -11,38 +11,19 @@ var aid=require("../son/aid.json")
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
-var buy,
-  ite,
-  itea,
-  oite,
-  mes,
-  arr = [],
-  str;
+var buy,  ite,  itea,  oite,  mes, str
+var  arr = []
 
 // === fun =============================
-
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no cook');
-  }
+  var cred = require('../js/cred');
+  email = cred.ema(req);
   next();
-};
+}; //getEma
 
 var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    console.log('no usr');
-  }
+  var cred = require('../js/cred');
+  usr = cred.usr(email);
   next();
 };
 
@@ -50,22 +31,23 @@ var putPid = function(req, res, next) {
   if (req.body.id) {
     pid = req.body.id;
     console.log('=== putPid ===');
-    console.log(pid);
-  } else {
+    console.log(req.body);
+} else {
     console.log('=== no body ===');
     pid = 'pay_Wz8zdysAAF0AirLI';
     console.log(pid);
     //pid="pay_Wz8uOSsAAC8Aiq_w"
-  }
+}
   next();
 };
 
 var selPid = function(req, res, next) {
   console.log('=== selPid items ===');
-  selpid = rdb.selPid(pid);
-  var obj = JSON.parse(selpid.obj);
-  oite = obj.order.items;
-  console.log(oite);
+  selpid = adb.selPid(email);
+//  var obj = JSON.parse(selpid.ite);
+  //oite = obj.order.items;
+  //console.log("=== oite");
+  console.log(selpid);
   next();
 };
 
@@ -74,13 +56,9 @@ var reqPid = function(req, res, next) {
   //    console.log(cget.getPid(email,pid,sec))
   if (!selpid) {
     try {
-      rdb.insPid(pid, aid.sec);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log('selpid exists');
-  }
+      adb.insPid(pid, aid.sec);
+    } catch (err) {      console.log(err);    }
+  } else {    console.log('selpid exists');  }
 
   next();
 };
@@ -91,9 +69,7 @@ var getIte = function(req, res, next) {
     for (var i = 0; i < oite.length; i++) {
       console.log(oite[i].id);
     }
-  } else {
-    console.log('no selpid');
-  }
+  } else {    console.log('no oite');  }
   next();
 };
 
@@ -130,5 +106,5 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,  reqPid,  getIte,  senEma,  chk]);
+router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,  reqPid,  getIte,  chk]);
 module.exports = router;

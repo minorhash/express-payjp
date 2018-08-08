@@ -5,7 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
-
+var aid= require('../son/aid.json');
 // === put ===
 
 var email, usr, sku, sum,tsum,adr,sson
@@ -17,9 +17,10 @@ var getEma = function(req, res, next) {
   next()};
 
 var getUsr = function(req, res, next) {
-  try {    mailusr = adb.mailUsr(email);  } 
-  catch (err) {    console.log(err);  }
+    if(email){
+  mailusr = adb.mailUsr(email);   
   usr = mailusr.name;
+    }else{console.log("no mail")}
   next()};
 
 var getAdr = function(req, res, next) {
@@ -44,16 +45,16 @@ var getTmp = function(req, res, next) {
 };
 
 var putMer = function(req, res, next) {
+    mer=[]
   for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuMer(mailtmp[i].sku);
-    suma[i] = mailtmp[i].uni * mer[i].pri;
   }
   next();
 };
 
 var putSum = function(req, res, next) {
+    suma=[]
   for (var i = 0; i < mailtmp.length; i++) {
-    mer[i] = db.skuMer(mailtmp[i].sku);
     suma[i] = mailtmp[i].uni * mer[i].pri;
   }
   next();
@@ -98,7 +99,6 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-//  console.log('=== putTai ====================================');
 
   //
   for (var i = 0; i < mer.length; i++) {
@@ -124,22 +124,19 @@ var putTai = function(req, res, next) {
   next()};
 
 var fsSon = function(req, res, next) {
-  console.log('=== fsSon ====================================');
 var fs = require('fs');
-  var fs = require('fs');
-  var cnf = require('../cnf.json');
   var str = JSON.stringify(taid);
 
   console.log(str)
-  console.log(cnf.loc)
-  console.log(cnf.pub)
+  console.log(aid.loc)
+  console.log(aid.pub)
 
 sson=    
 'var config={"api_key":"' +
-cnf.pub +
+aid.pub +
 '",' +
 '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-'xhr.open("PUT", '+ cnf.loc +'/aid/pid", true);' 
+'xhr.open("PUT", "'+ aid.loc +'/aid/pid", true);' +
 'xhr.setRequestHeader("Content-Type", "application/json");' +
 'xhr.send(JSON.stringify(cb));}};' +
 'var hand=Paidy.configure(config);' +
@@ -151,42 +148,32 @@ str +
 
 db.insSon(email, sson);
 
-  fs.stat('public/son/' + email + '.js', function(err,stat) {
-console.log(stat)
-if (err) {return console.log(err);    } 
+//console.log(__dirname)
+//fs.stat('../../', function(err,stat) {
+//console.log(stat)
+//if (err) {return console.log(err);    } 
+//});
 
-  fs.unlink('public/son/' + email + '.js',function(err) {
+fs.unlink('../../public/son/' + email + '.js',function(err) {
+if (err) {return console.log(err);    } 
+else {console.log('no err');    }
+console.log('unlink!');
+});
+
+fs.writeFile(__dirname+"/../../../public/son/"+ email + '.js', sson, function(err) {
 if (err) {return console.log(err);    } 
 else {console.log('no err');    }
     console.log('The file was saved!');
   });
-
-  fs.writeFile('public/son/' + email + '.js', sson, function(err) {
-if (err) {return console.log(err);    } 
-else {console.log('no err');    }
-    console.log('The file was saved!');
-  });});
-
   next()};
 
 var chk = function(req, res, next) {
   console.log('=== aid ====================================');
-  console.log(email);
+  console.log(taid);
 //console.log(sson);
 };
 
-router.put('/shop/aid/aid', [
-  getEma,
-  getUsr,
-  getAdr,
-  getTmp,
-  putMer,
-  putSum,
-  redSum,
-  getTai,
-  putTai,
-  fsSon,
-  chk
-]); //put
+router.put('/shop/aid/aid', 
+[  getEma,  getUsr,  getAdr,  getTmp,  putMer,  putSum,  redSum,  getTai,  putTai,fsSon,   chk]); //put
 
 module.exports = router;

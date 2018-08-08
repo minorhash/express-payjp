@@ -7,7 +7,7 @@ var adb = require('usrdb');
 var email,mailtmp,mer
 var pid,payerId,exeJson
 
-var conf=require("./cnf.json")
+var conf=require("../son/pal.json")
 
 paypal.configure({
   mode: conf.MODE,

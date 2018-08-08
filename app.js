@@ -78,11 +78,13 @@ app.use(
   sess({
     name: 'sess',
     keys: ['key1'],
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    maxAge: 24 * 60 * 1000, // 1 hour
   })
 );
 
 // i18n ======================================
+var nat=["","news","prof"
+
 app.use(
   i18n({
     translationsPath: path.join(__dirname, 'i18n'),

@@ -1,9 +1,5 @@
 public/img
-routes/shop/pal/cnf.json
-routes/cnf.json
-routes/shop/cnf.json
-routes/shop/aid/son
-routes/shop/aid/cnf.json
+routes/shop/son
 
 ### bk
 routes/bk

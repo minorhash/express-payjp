@@ -7,7 +7,7 @@ var app = require('../../../app'),
   expect = chai.expect;
 
 let arr = [
-  'history'
+  'history',"cart","my"
 ];
 
 describe('GET', function() {

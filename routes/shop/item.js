@@ -12,59 +12,37 @@ var str = crypto
 
 var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
 // === post =============================
-
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    console.log('no cookie');
-  }
+  var cred = require('./js/cred');
+  email = cred.ema(req);
   next();
 }; //getEma
 
-var getSku = function(req, res, next) {
-  sku = req.body.sku;
-  if (sku) {
-    try {
-      skumer = db.skuMer(sku);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log('no sku');
-  }
-  next();
-}; //getSku
-
 var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    myerr = 'no mailusr';
-  }
+  var cred = require('./js/cred');
+  usr = cred.usr(email);
   next();
 };
 
+
+var getSku = function(req, res, next) {
+sku = req.body.sku;
+//sku=3411
+  if (sku) {
+    try {      skumer = db.skuMer(sku);
+    } catch (err) {      console.log(err);    }
+  } else {    console.log('no sku');  }
+  next()}; //getSku
+
 var getSon = function(req, res, next) {
-  try {
-    skuson = db.skuSon(sku);
-  } catch (err) {
-    console.log(err);
-  }
+  try {    skuson = db.skuSon(sku);
+  } catch (err) {    console.log(err);  }
   if (skuson.song) {
     obj = JSON.parse(skuson.song);
     len = Object.keys(obj).length;
-  } else {
-    console.log('no skuson');
+  } else {    console.log('no skuson');
   }
-  next();
-};
+  next()};
 
 var chk = function(req, res, next) {
   console.log(sku);

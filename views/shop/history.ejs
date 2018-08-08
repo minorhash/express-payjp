@@ -8,11 +8,15 @@
 <!--- side left ------->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr) { %> 
+<<<<<<< HEAD
 <div class="label label-info"><%= usr%>&nbsp;さん </div>
+=======
+<div class="label label-info">"<%= usr%>"&nbsp;さん </div>
+>>>>>>> 171ec9f35d6047e6bf1d11e6f217558dad09e070
 <br><br>
 
 <% include par/out %>
-<%}else{ %>
+<% }else{ %>
 <% include par/login %>
 <%} %>
 </div>
@@ -24,7 +28,10 @@
 
 <div class="box90">購入履歴</div>
 <br>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 <%}else{%>
 ログインしてください。
 <%}%>

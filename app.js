@@ -21,9 +21,9 @@ var my = require('./routes/shop/my');
 // === usr
 var shop_out = require('./routes/shop/usr/out');
 var sig = require('./routes/shop/usr/sig');
-var sup = require('./routes/shop/usr/sup');
+var sigp = require('./routes/shop/usr/sigp');
 var adr = require('./routes/shop/usr/adr');
-var adr_reg = require('./routes/shop/usr/adr_reg');
+var adrp = require('./routes/shop/usr/adrp');
 var forget = require('./routes/shop/usr/for');
 
 // === not
@@ -135,10 +135,10 @@ app.use('/', up3);
 //app.use('/', con);
 // === login ===
 app.use('/', sig);
-app.use('/', sup);
+app.use('/', sigp);
 //app.use('/', dre);
 app.use('/', adr);
-app.use('/', adr_reg);
+app.use('/', adrp);
 app.use('/', forget);
 app.use('/', my);
 

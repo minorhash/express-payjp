@@ -5,7 +5,7 @@ var db = require('usrdb');
 // == mail
 var nodemailer = require('nodemailer');
 var snem = require('snd-ema');
-var cnf= require('../son/cnf.json');
+var cnf= require('../son/aid.json');
 var ema= require('../son/ema.json');
 
 var name, pss, email, chk, reg;

@@ -96,7 +96,7 @@ next()};
 
 var exePal= function(req, res, next) {
 
-  paypal.payment.execute(pid, exeJson, function(error, pay) {
+paypal.payment.execute(pid, exeJson, function(error, pay) {
     if (error) {
 //      res.redirect('/shop');
 console.log("exe fail")

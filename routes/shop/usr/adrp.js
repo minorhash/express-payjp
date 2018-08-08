@@ -3,7 +3,7 @@ var router = express.Router();
 // === db
 var db = require('usrdb');
 var ema= require('../son/ema.json');
-var cnf= require('../son/cnf.json');
+var cnf= require('../son/aid.json');
 
 // === glob
 var name, pss, email, reg, mailadr;

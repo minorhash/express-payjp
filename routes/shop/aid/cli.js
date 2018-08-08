@@ -5,7 +5,8 @@ var db = require('cardb');
 var adb = require('usrdb');
 var rdb = require('req-aid');
 
-var cnf=require("../../cnf.json")
+var ema=require("../son/ema.json")
+var aid=require("../son/aid.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
@@ -18,7 +19,6 @@ var buy,
   arr = [],
   str;
 
-var sec = 'sk_test_qbmquibktb7s3n4dov1mdihod3';
 // === fun =============================
 
 var getEma = function(req, res, next) {
@@ -74,7 +74,7 @@ var reqPid = function(req, res, next) {
   //    console.log(cget.getPid(email,pid,sec))
   if (!selpid) {
     try {
-      rdb.insPid(pid, sec);
+      rdb.insPid(pid, aid.sec);
     } catch (err) {
       console.log(err);
     }
@@ -101,38 +101,27 @@ var senEma = function(req, res, next) {
   console.log('=== senEma =======================================');
   var snem = require('snd-ema');
   var sub = 'sub:' + usr;
-  mes = [];
-  arr = [];
-  for (var i = 0; i < oite.length; i++) {
-    arr[i] =
-      'thank you for shopping.<br>' +
-      oite[i].id +
-      '<br>' +
-      oite[i].title +
-      '<br>' +
-      "<img src='https://3axe.tmsmusic.tokyo/img/cd/" +
-      oite[i].id +
-      ".png'><br>";
-    //mes=oite[i].id+":"+oite[i].title
-  }
-  mes = JSON.stringify(arr)
-    .replace(/\[/g, '')
-    .replace(/\]/g, '')
-    .replace(/\"/g, '')
-    .replace(/\,/g, '');
-  console.log(arr);
+  //mes = [];
+  //arr = [];
+  //for (var i = 0; i < oite.length; i++) {
+    //arr[i] =
+      //'thank you for shopping.<br>' +
+      //oite[i].id +
+      //'<br>' +
+      //oite[i].title +
+      //'<br>' +
+      //"<img src='https://3axe.tmsmusic.tokyo/img/cd/" +
+      //oite[i].id +
+      //".png'><br>";
+    ////mes=oite[i].id+":"+oite[i].title
+//}
+  //mes = JSON.stringify(arr)
+//.replace(/\[/g, '').replace(/\]/g, '').replace(/\"/g, '').replace(/\,/g, '');
+  //console.log(arr);
+var mes="mes"
 
-  snem.trEma(
-   cnf.HOST, 
-   cnd.USR,
-   cnd.PSS,
-    email,
-   cnd.EMA1,
-    sub,
-    mes
-  );
-  next();
-};
+snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+  next()};
 
 var chk = function(req, res, next) {
   console.log('=== cli =======================================');
@@ -141,13 +130,5 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/aid/cli', [
-  getEma,
-  getUsr,
-  putPid,
-  selPid,
-  reqPid,
-  getIte,
-  chk,
-]);
+router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,  reqPid,  getIte,  senEma,  chk]);
 module.exports = router;

@@ -1,7 +1,7 @@
 {
-"from":"matsuo@tms-e.co.jp",
-"to":"matsuo@tms-e.co.jp",
-"cc":"matsuo.tms@gmail.com",
-"sub":"thnk u",
-"mes":"body"
+"HOST": "smtp.muumuu-mail.com",
+"USR": "info@tmsmusic.tokyo",
+"PSS": "hash2010",
+"EMA1": "matsuo@tms-e.co.jp",
+"CC1": "matsuo.tms@gmail.com"
 }

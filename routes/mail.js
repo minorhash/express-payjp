@@ -6,16 +6,7 @@ var nodemailer = require('nodemailer');
 
 // glob =================================
 var sub, name, email, mes, opt;
-var cnf=require("./cnf.json")
-var transporter = nodemailer.createTransport({
-  host: cnf.HOST,
-  port: 465,
-  tls: true,
-  auth: {
-    user: cnf.USR,
-    pass: cnf.PSS
-  },
-});
+var ema=require("./shop/son/ema.json")
 
 var getReq = function(req, res, next) {
   sub = req.body.sub;
@@ -23,30 +14,18 @@ var getReq = function(req, res, next) {
   email = req.body.mail;
   mes = req.body.message;
   //mes2=mik(mes)
-  mes2 = mes.replace(/。/g, '。<br>');
+//  mes2 = mes.replace(/。/g, '。<br>');
 
   next();
 };
 
-var putOpt = function(req, res, next) {
-  opt = {
-    from: email,
-    to: cnf.EMA1,
-    cc: cnf.CC1,
-    subject: 'タイトル:' + sub,
-    html:
-      '名前:' +
-      name +
-      '<br>' +
-      'email:' +
-      email +
-      '<br>' +
-      'メッセージ:' +
-      '<br>' +
-      mes2,
-  };
-  next();
-};
+var senEma = function(req, res, next) {
+  console.log('=== senEma =======================================');
+  var snem = require('snd-ema');
+  var sub = 'sub:' + usr;
+
+snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+  next()};
 
 var sndEma = function(req, res, next) {
   try {
@@ -54,12 +33,10 @@ var sndEma = function(req, res, next) {
       if (err) return next(err);
       res.redirect('/done');
     });
-  } catch (err) {
-    console.dir(err);
-  }
+  } catch (err) {    console.dir(err);  }
 };
 
-router.post('/mail', [getReq, putOpt, sndEma]); //post
+router.post('/mail', [getReq, senEma]); //post
 
 // get done =================================
 router.get('/done', function(req, res, next) {

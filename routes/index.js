@@ -6,7 +6,7 @@ var allmer = db.allMer();
 
 // === get
 
-var url=["","news","info","profile","disc","schedule","video","mail","notation"]
+var url=["","news","info","profile","disc","schedule","video","notation","mail","done"]
 
 for(let i=0;i<url.length;i++){
 router.get("/"+url[i],function(req,res,next) {
@@ -16,6 +16,6 @@ mer:allmer
 });
 });
 }
-//
+
 
 module.exports = router;

@@ -83,64 +83,13 @@ app.use(
 );
 
 // i18n ======================================
-var nat=["","news","prof"
+var nat=["","news","prof","disc","sch","vid","mail","shop"]
 
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'trans',
-  })
+for(let i=0;i<nat.length;i++){
+app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
+    siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 );
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/news'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'news',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/profile'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'profile',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/disc'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'disc',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/shop'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'shop',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/schedule'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'schedule',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/video'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'video',
-  })
-);
-app.use(
-  i18n({
-    translationsPath: path.join(__dirname, 'i18n/mail'),
-    siteLangs: ['en', 'ja'],
-    textsVarName: 'mail',
-  })
-);
+}
 // use route =================================
 app.use('/', index);
 app.use('/', mail);

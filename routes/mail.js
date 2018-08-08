@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-// post =================================
-var nodemailer = require('nodemailer');
-
 // glob =================================
 var sub, name, email, mes, opt;
 var ema=require("./shop/son/ema.json")
@@ -25,6 +22,7 @@ var senEma = function(req, res, next) {
   var sub = 'sub:' + usr;
 
 snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+      res.redirect('/done');
   next()};
 
 var sndEma = function(req, res, next) {
@@ -40,7 +38,7 @@ router.post('/mail', [getReq, senEma]); //post
 
 // get done =================================
 router.get('/done', function(req, res, next) {
-  res.render('done', {
+  res.render('/done', {
     title:
       'お問い合わせを受け付けました。後ほど担当の者よりご連絡させて頂きます。',
   });

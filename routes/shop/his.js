@@ -9,7 +9,7 @@ const paypal = require('paypal-rest-sdk');
 
 var email, usr, myerr;
 var mailusr, selpid, allpid,allpal;
-var ite, oite,tok,atok,item,aite;
+var ite, oite,tok,atok,item,aite=[];
 // === get ============================
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
@@ -35,7 +35,7 @@ var allPid = function(req, res, next) {
   }
 
   //console.log(oite)
-  console.log(allpid);
+        //  console.log(allpid);
   console.log(allpid.length);
     }
   next()}
@@ -60,13 +60,17 @@ paypal.payment.get(atok[i], function (err, pay) {
     } else {
         //        console.log("=== Get Payment Response");
 aite=[]
+        palid=pay.id
+        console.log(palid)
 item=pay.transactions[0].item_list.items[0]
-        console.log(item)
+site=JSON.stringify(item)
+        console.log(site)
+        aite.push(site)
 }
-})
-}
-
+})//get
+}//for
 next()}
+
 var chk = function(req, res, next) {
   console.log('=== chk =====================');
   console.log(email);

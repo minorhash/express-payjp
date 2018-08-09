@@ -54,7 +54,6 @@ var putMer = function(req, res, next) {
   } else {
     console.log('no mailtmp');
   }
-  console.log('=== putMer ===');
   next();
 };
 
@@ -67,7 +66,6 @@ var putSum = function(req, res, next) {
   } else {
     console.log('no mailtmp');
   }
-  console.log('=== putSum ===');
   next()};
 
 var redSum = function(req, res, next) {
@@ -78,7 +76,7 @@ var redSum = function(req, res, next) {
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
     tsum=sum+650
-    console.log('tsum:' + tsum);
+//    console.log('tsum:' + tsum);
   } else {
     console.log('no sum');
   }
@@ -97,16 +95,15 @@ next()};
 var exePal= function(req, res, next) {
 
 paypal.payment.execute(pid, exeJson, function(error, pay) {
-    if (error) {
-//      res.redirect('/shop');
-console.log("exe fail")
-      throw error;
-    } else {
-      var str = JSON.stringify(pay);
+if (error) {console.log("exe fail");      throw error;    } 
+else {
 
-console.log(pay)
-adb.insPal(email,pay.id)
-      //console.log(JSON.stringify(payment));
+item=pay.transactions[0].item_list.items[0]
+var str = JSON.stringify(pay);
+var sitem= JSON.stringify(item);
+
+console.log(sitem)
+adb.insPal(email,pid,sitem)
       res.render('shop/paypal/success', {
         title: 'ご購入ありがとうございました。',
         pid: payerId,
@@ -116,6 +113,23 @@ adb.insPal(email,pay.id)
     }
   });
 };
+
+var getPay= function(req, res, next) {
+for (var i = 0; i < atok.length; i++) {
+paypal.payment.get(atok[i], function (err, pay) {
+if (err) {        console.log(err);        throw err;} 
+else {
+aite=[]
+palid=pay.id
+console.log(palid)
+item=pay.transactions[0].item_list.items[0]
+site=JSON.stringify(item)
+console.log(site)
+aite.push(site)
+}
+})//get
+}//for
+next()}
 
 var chk= function(req, res, next) {
 console.log(payerId)

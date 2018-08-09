@@ -7,6 +7,7 @@ var adb = require('usrdb');
 var idy = require('aidy');
 var taid = idy.tmpAid();
 
+
 var str = crypto
   .createHash('md5')
   .update(Math.random().toString())
@@ -48,7 +49,7 @@ var putMer = function(req, res, next) {
     mer=[]
   if (mailtmp) {
     for (var i = 0; i < mailtmp.length; i++) {
-      console.log(mailtmp[i].sku);
+//      console.log(mailtmp[i].sku);
       mer[i] = db.skuMer(mailtmp[i].sku);
     }
   } else {
@@ -149,7 +150,7 @@ var clrEma = function(req, res, next) {
     db.delEma(email);
 //    sku=null
         mailtmp=null
-    console.log(mailtmp)
+    //console.log(mailtmp)
     console.log('=== CLR! ==================');
     //res.redirect("cart")
   } else {    console.log('no clr');  }

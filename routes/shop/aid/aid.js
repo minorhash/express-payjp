@@ -5,7 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
-var aid= require('../son/aid.json');
+var cnf= require('../son/aid.json');
 // === put ===
 
 var email, usr, sku, sum,tsum,adr,sson
@@ -13,11 +13,13 @@ var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  sku_a = []
 
 var getEma = function(req, res, next) {
-  email = req.session.email;
-  next()};
+  var cred = require('../js/cred');
+  email = cred.ema(req);
+  next();
+}; //getEma
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
+  var cred = require('../js/cred');
   usr = cred.usr(email);
     if(email){
   mailusr = adb.mailUsr(email);   
@@ -124,8 +126,7 @@ var putTai = function(req, res, next) {
   next()};
 
 var fsSon = function(req, res, next) {
-var fs = require('fs');
-  var str = JSON.stringify(taid);
+var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
     cnf.pub +
@@ -143,33 +144,34 @@ sson=    'var config={"api_key":"' +
 
   db.insSon(email, sson);
 
-//console.log(__dirname)
-//fs.stat('../../', function(err,stat) {
-//console.log(stat)
-//if (err) {return console.log(err);    } 
-//});
-
-fs.unlink('../../public/son/' + email + '.js',function(err) {
+var fs = require('fs');
+var son=__dirname+"/../../../public/son/"+email+".js"
+fs.stat(son, function(err, stats) {
+    if(err){throw err}
+    console.log(son);
+})
+fs.unlink(son,function(err) {
 if (err) {return console.log(err);    } 
 else {console.log('no err');    }
 console.log('unlink!');
 });
 
-fs.writeFile(__dirname+"/../../../public/son/"+ email + '.js', sson, function(err) {
+fs.writeFile(son, sson, function(err) {
 if (err) {return console.log(err);    } 
 else {console.log('no err');    }
     console.log('The file was saved!');
-  });
+});
+
   next()};
 
 var chk = function(req, res, next) {
   console.log('=== aid ====================================');
-  console.log(taid);
+//  console.log(taid);
 //console.log(sson);
 //console.log(mailson);
 };
 
 router.put('/shop/aid/aid', 
-[  getEma,  getUsr,  getAdr,  getTmp,  putMer,  putSum,  redSum,  getTai,  putTai,fsSon,   chk]); //put
+[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,putTai,fsSon,chk]); //put
 
 module.exports = router;

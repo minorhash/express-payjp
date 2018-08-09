@@ -13,37 +13,21 @@ var mer = [],  suma = [],  skua = [],  unia = [],  numa = [];
 var emp, ind;
 
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no cook');
-  }
+  var cred = require('../js/cred');
+  email = cred.ema(req);
+  next();
+}; //getEma
+
+var getUsr = function(req, res, next) {
+  var cred = require('../js/cred');
+  usr = cred.usr(email);
   next();
 };
 
-var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    console.log('no usr');
-  }
-  next();
-};
 
 var getTmp = function(req, res, next) {
   if (email) {
-    try {
-      mailtmp = db.mailTmp(email);
-    } catch (err) {
-      console.log(err);
-    }
+mailtmp = db.mailTmp(email);
   } else {    console.log('no mail');  }
   db.delUni();
   next();
@@ -51,14 +35,8 @@ var getTmp = function(req, res, next) {
 
 var getAdr = function(req, res, next) {
   if (email) {
-    try {
       mailadr = adb.mailAdr(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log('no mail');
-  }
+  } else {    console.log('no mail');  }
   if (mailadr == undefined) {
     res.redirect('usr/adr');
   }

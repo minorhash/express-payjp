@@ -7,7 +7,6 @@ require(__dirname + '/config');
 var pal = require('mypal');
 var mypal = pal.myPal();
 //var trans=mypal.transactions[0];
-var full=require("./tmp.json")
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [];
 var email, usr, mer, sum, add 

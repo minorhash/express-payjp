@@ -3,7 +3,6 @@ var router = express.Router();
 // === db =============================
 var db = require('cardb');
 var adb = require('usrdb');
-var rdb = require('req-aid');
 
 var cnf=require("../son/aid.json")
 // === glob =============================
@@ -16,29 +15,24 @@ var buy, ite, itea, oite;
 var getEma = function(req, res, next) {
   var cred = require('../js/cred');
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()}; //getEma
 
 var getUsr = function(req, res, next) {
   var cred = require('../js/cred');
   usr = cred.usr(email);
-  next();
-};
+  next()};
 
 var putPid = function(req, res, next) {
   if (req.body) {
     pid = req.body.id;
     console.log('=== putPid ===');
     console.log(pid);
-  } else {
-    console.log("no pid");
-  }
-  next();
-};
+  } else {    console.log("no pid");  }
+  next()};
 
 var selPid = function(req, res, next) {
   console.log('=== selPid ===');
-  selpid = rdb.selPid(pid);
+  selpid = adb.selPid(pid);
   next();
 };
 

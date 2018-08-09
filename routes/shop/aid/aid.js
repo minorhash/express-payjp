@@ -8,9 +8,10 @@ var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
 // === put ===
 
-var email, usr, sku, sum,tsum,adr,sson,dl
+var email, usr, sku, sum,tsum,adr,sson
+var boo,ind
 var mailtmp, mailusr, mailadr,mailson;
-var mer = [],  suma = [],  sku_a = []
+var mer = [],  suma = [],  skua = []
 
 var getEma = function(req, res, next) {
   var cred = require('../js/cred');
@@ -45,10 +46,10 @@ var getTmp = function(req, res, next) {
 
 var putMer = function(req, res, next) {
     mer=[]
+    skua=[]
   for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuMer(mailtmp[i].sku);
-    sku_a=[]
-sku_a.push(mer[i].sku)
+skua.push(mer[i].sku)
   }
   next()};
 
@@ -58,6 +59,24 @@ var putSum = function(req, res, next) {
     suma[i] = mailtmp[i].uni * mer[i].pri;
   }
   next()};
+// === chk dl ===
+var chkDl= function(req, res, next) {
+
+boo=[]
+for(var i=0;i<skua.length;i++){
+
+console.log("=== chk dl ===")
+console.log(skua[i])
+var pat=/^\d{4}$/;
+var test=pat.test(skua[i])
+console.log(test)
+boo.push(test)
+}
+console.log(boo)
+ind=boo.indexOf(false)
+console.log("ind:"+ind)
+
+next()};
 
 var redSum = function(req, res, next) {
 //  for (var i = 0; i < mailtmp.length; i++) {
@@ -67,7 +86,8 @@ var redSum = function(req, res, next) {
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
 
-      tsum=sum+650
+if(ind==1){tsum=sum+650}
+else{tsum=sum}
 
     } else {
       console.log('no sum');
@@ -96,17 +116,11 @@ var getTai = function(req, res, next) {
   taid.buyer_data.last_order_at = d.getDate();
   next()};
 
-var chkDl= function(req, res, next) {
-
-for(var i=0;i<suma.length;i++){
-    var reg=/\d{4}/
-suma[i].sku
-    }
-
-next()};
-
 //=============================================== putTai
 var putTai = function(req, res, next) {
+
+if(ind==1){  taid.order.shipping = 650;}
+else{  taid.order.shipping = 0;}
 
   //
   for (var i = 0; i < mer.length; i++) {
@@ -119,8 +133,6 @@ var putTai = function(req, res, next) {
       //
     };
   } //for
-
-  taid.order.shipping = 650;
 
   if (mailadr) {
     taid.shipping_address.line1 = mailadr.ln1;
@@ -174,12 +186,12 @@ else {console.log('no err');    }
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
-console.log(sku_a);
-//console.log(sson);
+console.log(skua);
+console.log(tsum);
 //console.log(mailson);
 };
 
 router.put('/shop/aid/aid', 
-[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,putTai,fsSon,chk]); //put
+[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,chkDl,putTai,fsSon,chk]); //put
 
 module.exports = router;

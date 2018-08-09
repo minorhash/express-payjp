@@ -7,17 +7,15 @@ var adb = require('usrdb');
 var idy = require('aidy');
 var taid = idy.tmpAid();
 
-
 var str = crypto
   .createHash('md5')
   .update(Math.random().toString())
   .digest('hex');
-// === get ============================
+
+// === glob ============================
 var email, usr, sku, uni, sum,tsum, num, myerr;
 var mailtmp, mailusr;
-var mer = [],
-  suma = [],
-  sku_a = [];
+var mer = [],  suma = [],  skua = [];
 
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
@@ -70,6 +68,25 @@ var putSum = function(req, res, next) {
   next();
 };
 
+// === chk dl ===
+var chkDl= function(req, res, next) {
+
+boo=[]
+for(var i=0;i<skua.length;i++){
+
+console.log("=== chk dl ===")
+console.log(skua[i])
+var pat=/^\d{4}$/;
+var test=pat.test(skua[i])
+console.log(test)
+boo.push(test)
+}
+console.log(boo)
+ind=boo.indexOf(false)
+console.log("ind:"+ind)
+
+next()};
+
 var redSum = function(req, res, next) {
   sum = '',tsum="";
   function getSum(total, num) {
@@ -100,10 +117,10 @@ var getIte = function(req, res, next) {
 };
 
 var putSku = function(req, res, next) {
-    sku_a=[]// == VERY IMPORTANT!!!! always init ==
+    skua=[]// == VERY IMPORTANT!!!! always init ==
   if (mailtmp.length!==0) {
     for (var i = 0; i < mailtmp.length; i++) {
-      sku_a[i] = mailtmp[i].sku;
+      skua[i] = mailtmp[i].sku;
     } //for
   } else {
       mailtmp=null
@@ -125,7 +142,7 @@ var pcb = function(req, res, next) {
 var insUpd = function(req, res, next) {
   if (req.body.sku) {
     num = parseInt(sku);
-    var ind = sku_a.indexOf(num);
+    var ind = skua.indexOf(num);
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
@@ -161,7 +178,7 @@ var chk = function(req, res, next) {
   console.log('=== cart ===================');
   console.log(email);
   console.log(mailtmp);
-  ////console.log(sku_a)
+  ////console.log(skua)
   next();
 };
 // === aid ===============================
@@ -182,28 +199,9 @@ var gcb = function(req, res) {
   });
 };
 
-
-
 router.get('/shop/cart', [
-  getEma,
-  getUsr,
-  getTmp,
-  putMer,
-  putSum,
-  redSum,
-  chk,
-  gcb,
-]);
+  getEma,  getUsr,  getTmp,  putMer,  putSum,  redSum,  chk,  gcb]);
 router.post('/shop/cart', [
-  getEma,
-  getUsr,
-  getTmp,
-  getIte,
-  putSku,
-  insUpd,
-  clrEma,
-  chk,
-  pcb,
-]);
+  getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,  chk,  pcb,]);
 
 module.exports = router;

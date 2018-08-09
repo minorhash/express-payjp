@@ -7,7 +7,7 @@ var idy = require('aidy');
 var taid = idy.tmpAid();
 
 // === post ============================
-var email, usr, sku, uni, sum, tsum;
+var email, usr, sku, uni, sum, tsum, boo
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = [],  unia = [],  numa = [];
 var emp, ind;
@@ -65,8 +65,19 @@ var redSum = function(req, res, next) {
 
 var chkDl= function(req, res, next) {
 
-for(var i=0;i<suma.length;i++){
-    }
+boo=[]
+for(var i=0;i<skua.length;i++){
+
+console.log("=== chk dl ===")
+console.log(skua[i])
+var pat=/^\d{4}$/;
+var test=pat.test(skua[i])
+console.log(test)
+boo.push(test)
+}
+console.log(boo)
+ind=boo.indexOf(false)
+console.log("ind:"+ind)
 
 next()};
 
@@ -93,7 +104,7 @@ next()};
 var chk = function(req, res, next) {
   console.log('=== paidy ===');
   console.log(mailtmp);
-//console.log(mailson)
+console.log(skua)
 //console.log(mailusr)
   next()};
 

@@ -25,6 +25,8 @@ var getUsr = function(req, res, next) {
 var putPid = function(req, res, next) {
   if (req.body) {
     pid = req.body.id;
+
+  inspid = adb.insPid(email,pid);
     console.log('=== putPid ===');
     console.log(pid);
   } else {    console.log("no pid");  }
@@ -33,9 +35,7 @@ var putPid = function(req, res, next) {
 var selPid = function(req, res, next) {
   console.log('=== selPid ===');
   selpid = adb.selPid(pid);
-  next();
-};
-
+  next()};
 
 var getIte = function(req, res, next) {
   if (selpid) {
@@ -46,8 +46,7 @@ console.log(selpid[i].ite);
   } else {
     console.log('no selpid');
   }
-  next();
-};
+  next()};
 
 var senEma = function(req, res, next) {
   var snem = require('snd-ema');

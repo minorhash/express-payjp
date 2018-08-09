@@ -8,15 +8,14 @@ var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
 // === put ===
 
-var email, usr, sku, sum,tsum,adr,sson
+var email, usr, sku, sum,tsum,adr,sson,dl
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  sku_a = []
 
 var getEma = function(req, res, next) {
   var cred = require('../js/cred');
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()}; //getEma
 
 var getUsr = function(req, res, next) {
   var cred = require('../js/cred');
@@ -34,8 +33,7 @@ else{console.log(err)}
   if (mailadr == null) {
     console.log('=== adr null ===');
   }
-  next();
-};
+  next()};
 
 var getTmp = function(req, res, next) {
   try {
@@ -43,24 +41,23 @@ var getTmp = function(req, res, next) {
   } catch (err) {
     console.log(err);
   }
-  next();
-};
+  next()};
 
 var putMer = function(req, res, next) {
     mer=[]
   for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuMer(mailtmp[i].sku);
+    sku_a=[]
+sku_a.push(mer[i].sku)
   }
-  next();
-};
+  next()};
 
 var putSum = function(req, res, next) {
     suma=[]
   for (var i = 0; i < mailtmp.length; i++) {
     suma[i] = mailtmp[i].uni * mer[i].pri;
   }
-  next();
-};
+  next()};
 
 var redSum = function(req, res, next) {
 //  for (var i = 0; i < mailtmp.length; i++) {
@@ -69,13 +66,14 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
+
       tsum=sum+650
+
     } else {
       console.log('no sum');
     }
 //  }
-  next();
-};
+  next()};
 
 var getTai = function(req, res, next) {
 //  console.log('=== getTai ====================================');
@@ -96,8 +94,16 @@ var getTai = function(req, res, next) {
   taid.buyer_data.ltv = tsum;
   taid.buyer_data.last_order_amount = tsum;
   taid.buyer_data.last_order_at = d.getDate();
-  next();
-};
+  next()};
+
+var chkDl= function(req, res, next) {
+
+for(var i=0;i<suma.length;i++){
+    var reg=/\d{4}/
+suma[i].sku
+    }
+
+next()};
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
@@ -113,7 +119,9 @@ var putTai = function(req, res, next) {
       //
     };
   } //for
+
   taid.order.shipping = 650;
+
   if (mailadr) {
     taid.shipping_address.line1 = mailadr.ln1;
     taid.shipping_address.line2 = mailadr.ln2;
@@ -165,8 +173,8 @@ else {console.log('no err');    }
   next()};
 
 var chk = function(req, res, next) {
-  console.log('=== aid ====================================');
-//  console.log(taid);
+console.log('=== aid ====================================');
+console.log(sku_a);
 //console.log(sson);
 //console.log(mailson);
 };

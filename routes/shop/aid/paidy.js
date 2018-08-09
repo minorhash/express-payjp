@@ -15,23 +15,19 @@ var emp, ind;
 var getEma = function(req, res, next) {
   var cred = require('../js/cred');
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()}; //getEma
 
 var getUsr = function(req, res, next) {
   var cred = require('../js/cred');
   usr = cred.usr(email);
-  next();
-};
-
+  next()};
 
 var getTmp = function(req, res, next) {
   if (email) {
 mailtmp = db.mailTmp(email);
   } else {    console.log('no mail');  }
   db.delUni();
-  next();
-};
+  next()};
 
 var getAdr = function(req, res, next) {
   if (email) {
@@ -40,8 +36,7 @@ var getAdr = function(req, res, next) {
   if (mailadr == undefined) {
     res.redirect('usr/adr');
   }
-  next();
-};
+  next()};
 
 // === sum
 var putSum = function(req, res, next) {
@@ -54,8 +49,7 @@ var putSum = function(req, res, next) {
     console.log('no mailtmp');
   }
   console.log('=== putSum ===');
-  next();
-};
+  next()};
 
 var redSum = function(req, res, next) {
   function getSum(total, num) {
@@ -67,8 +61,14 @@ var redSum = function(req, res, next) {
   } else {
     console.log('no sum');
   }
-  next();
-};
+  next()};
+
+var chkDl= function(req, res, next) {
+
+for(var i=0;i<suma.length;i++){
+    }
+
+next()};
 
 // === add item ===
 var putSku = function(req, res, next) {
@@ -83,15 +83,6 @@ var putSku = function(req, res, next) {
     console.log('no mailtmp');
   }
 
-  next();
-};
-
-var empCar = function(req, res, next) {
-  if (req.body) {
-    emp = req.body.emp;
-  } else {
-    console.log('no body');
-  }
   next()};
 
 var getSon= function(req, res, next) {
@@ -104,8 +95,7 @@ var chk = function(req, res, next) {
   console.log(mailtmp);
 //console.log(mailson)
 //console.log(mailusr)
-  next();
-};
+  next()};
 
 // === rend
 

@@ -30,10 +30,10 @@ sqlite db for usr, paidy and paypal
 aid.json;
 ```js
 {
-    "pub":"pk_test_pvve8rdmjtcqbjejq4idolh8l9",
-    "sec":"sk_test_qbmquibktb7s3n4dov1mdihod3",
+    "pub":"pk_test_***,
+    "sec":"sk_test_***,
     "loc":"http://localhost:3000",
-    "axe":"https://3axe.tmsmusic.tokyo"
+    "axe":"https://mysite.com"
 }
 ```
 - public/img/cd

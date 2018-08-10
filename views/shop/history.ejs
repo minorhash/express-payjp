@@ -1,0 +1,57 @@
+<% include par/head %>
+<% include par/nav %>
+
+<body>
+<div class="container-fluid">
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr) { %> 
+<div class="label label-info">"<%= usr%>"&nbsp;さん </div>
+<br><br>
+
+<% include par/out %>
+<% }else{ %>
+<% include par/login %>
+<%} %>
+</div>
+
+<!--- main ------->
+
+<div class="well col-lg-8 col-sm-12" style="color:black">
+<%if(!allpid.length==0){%>
+
+<div class="box90">購入履歴</div>
+<br>
+
+<%}else{%>
+ログインしてください。
+<%}%>
+
+<!--- main ------->
+<%if(!oite.length==0){%>
+<h3><div class="label label-warning">paidy 購入済商品</div></h3>
+<%for(var i=0;i<oite.length;i++){%>
+
+<div valign="top"><img src="../img/cd/<%=oite[i].id%>.png"></div>
+sku&nbsp;<div class="label label-default"><%=oite[i].id%></div>
+price&nbsp;<div class="label label-default"><%=oite[i].unit_price%></div><br><br>
+<%}%>
+
+<%}%>
+
+<!--- pal ------->
+<%if(aite){%>
+<h3><div class="label label-warning">paypal 購入済商品</div></h3>
+<%=aite.name%><br>
+<%}%>
+
+</div>
+
+<% include par/2side %>
+</div>
+
+<div class="footer"><% include par/foot %></div>
+
+

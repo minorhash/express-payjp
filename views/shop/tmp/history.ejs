@@ -1,0 +1,50 @@
+<% include par/head %>
+<% include par/nav %>
+
+<body>
+<div class="container-fluid">
+<div class="row">
+
+<!--- side left ------->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
+<div class="label label-info"><%= usr%>&nbsp;さん </div>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+
+<!--- main ------->
+
+<div class="well col-lg-8 col-sm-12" style="color:black">
+<%if(allpid){%>
+
+<div class="box90">購入履歴</div>
+<br>
+<%for(var i in allpid){%>
+
+<%}%>
+<%}%>
+
+<%if(allpid){%>
+<h3><div class="label label-warning">購入済商品</div></h3>
+<%for(var i=0;i<allpid.length;i++){%>
+
+
+注文id:&nbsp;<div class="label label-default"><%=allpid[i].pid%></div><br>
+<%}%>
+
+<%}else{%>
+no allpid
+<%}%>
+</div>
+
+<% include par/2side %>
+</div>
+
+<div class="footer"><% include par/foot %></div>
+
+

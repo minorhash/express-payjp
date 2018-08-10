@@ -1,3 +1,3 @@
 cmd/add.sh
 cmd/com.sh
-cmd/pus.sh
+cmd/push.sh

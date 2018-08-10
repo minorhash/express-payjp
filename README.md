@@ -35,6 +35,6 @@ aid.json;
     "loc":"http://localhost:3000",
     "axe":"https://3axe.tmsmusic.tokyo"
 }
-    ```
+```
 - public/img/cd
 merch images. you need to prepare your own.

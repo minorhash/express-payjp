@@ -26,7 +26,7 @@ sqlite db for usr, paidy and paypal
 
 ### ignored files
 - routes/shop/son
-#### credential files
+#### credential json files
 aid.json
 ```js
 {
@@ -58,4 +58,8 @@ pal.json:paypal client_ID,client_SECRET
 ```
 
 - public/img/cd
-merch images. you need to prepare your own.
+merch images. 
+```
+you need to prepare your own.
+```
+

@@ -27,14 +27,26 @@ sqlite db for usr, paidy and paypal
 ### ignored files
 - routes/shop/son
 #### credential files
-aid.json;
+aid.json
 ```js
 {
-    "pub":"pk_test_***,
-    "sec":"sk_test_***,
+    "pub":"pk_test_***",
+    "sec":"sk_test_***",
     "loc":"http://localhost:3000",
     "axe":"https://mysite.com"
 }
 ```
+
+ema.json: email credentials
+```js
+{
+"HOST": "smtp.mysite.com",
+"USR": "info@mysite.com",
+"PSS": "bighead",
+"EMA1": "nelson@mysite.com",
+"CC1": "bighetti@mysite.com"
+}
+```
+
 - public/img/cd
 merch images. you need to prepare your own.

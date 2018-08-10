@@ -22,7 +22,7 @@ sqlite db for usr, paidy and paypal
 - mypal
 
 import paypal payment json template
-```
+```js
 {
 "intent": "sale",
 "payer": {

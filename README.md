@@ -11,10 +11,6 @@
 - better-sqlite3
 - nodemailer
 - paypal-rest-sdk
-- mypal
-```
-import paypal payment json template
-```
 - usrdb
 ```
 sqlite db for merch and cart
@@ -22,6 +18,62 @@ sqlite db for merch and cart
 - cardb
 ```
 sqlite db for usr, paidy and paypal
+```
+- mypal
+
+import paypal payment json template
+```
+{
+"intent": "sale",
+"payer": {
+"payment_method": "paypal"
+},
+"redirect_urls": {
+"return_url": "http://localhost:3002/success",
+"cancel_url": "http://localhost:3002/cancel"
+},
+"transactions": [{
+"item_list": {"items": []},
+"amount": {
+"currency": "JPY",
+"total": "3000"
+},
+"description": "This is the payment description."
+}]
+}
+```
+- aidy
+
+import paidy payment template json
+```js
+{
+"amount":100,
+"currency":"JPY",
+"store_name":"tmStore",
+"buyer":{
+    "email":"",
+    "name1":"",
+    "phone":""
+    },
+"buyer_data":{
+"age":0,
+"order_account":0,
+"ltv":0,
+"last_order_amount":0,
+"last_order_at":0
+},
+"order":{
+"items":[],
+"shipping":""
+},
+"shipping_address":{
+"line1":"",
+"line2":"",
+"city":"",
+"state":"",
+"zip":""
+}
+}
 ```
 
 ### ignored files

@@ -1,6 +1,6 @@
 # low-cart
-##low-carb non nonsense cart
-## using express, sqlite, bootstrap3
+## low-carb non nonsense cart
+### using express, sqlite, bootstrap3
 
 
 

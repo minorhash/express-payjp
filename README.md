@@ -28,7 +28,7 @@ sqlite db for usr, paidy and paypal
 - routes/shop/son
 #### credential files
 aid.json;
-```json
+```js
 {
     "pub":"pk_test_pvve8rdmjtcqbjejq4idolh8l9",
     "sec":"sk_test_qbmquibktb7s3n4dov1mdihod3",

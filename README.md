@@ -24,3 +24,8 @@ sqlite db for merch and cart
 sqlite db for usr, paidy and paypal
 ```
 
+### ignored files
+- routes/shop/son
+credential files
+- public/img/cd
+merch images. you need to prepare your own.

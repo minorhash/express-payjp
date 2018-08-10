@@ -1,4 +1,5 @@
 var express = require('express');
+var cookie = require('cookie');
 var router = express.Router();
 // == sess =============================
 var db = require('cardb'),
@@ -13,19 +14,22 @@ var allmer, mailusr;
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
   email = cred.ema(req);
-  next()}; //getEma
+  next();
+}; //getEma
 
 var getUsr = function(req, res, next) {
   var cred = require('./js/cred');
   usr = cred.usr(email);
-  next()};
+  next();
+};
 
 var chk = function(req, res, next) {
   console.log('=== get shop ===');
   console.log(email);
   console.log(usr);
   console.log(req.session);
-  next()}; //chkEma
+  next();
+}; //chkEma
 
 var rcb = function(req, res) {
   res.render('shop', {
@@ -39,19 +43,27 @@ router.get('/shop', [getEma, getUsr, chk, rcb]);
 
 // == post ==================================
 
+var usr, email, pss, allmer, myerr;
 var getCok = function(req, res, next) {
   if (req.body) {
     req.session.email = req.body.email;
     req.session.pss = req.body.pss;
     email = req.session.email;
     pss = req.session.pss;
-  } else {    console.log('no req.body');  } //req.body
+  } else {
+    console.log('no req.body');
+  } //req.body
 
   next()}; //getCok
 
 var getUsr = function(req, res, next) {
   if (email && pss) {
-mailusr = adb.mailUsr(email);
+    try {
+      var mailusr = adb.mailUsr(email);
+    } catch (err) {
+      myerr = err;
+      console.log(err);
+    }
     if (mailusr) {
       usr = mailusr.name;
     } else {
@@ -60,14 +72,16 @@ mailusr = adb.mailUsr(email);
   } else {
     console.log('no email');
   }
-  next()}; //getUsr
+  next();
+}; //getUsr
 
 var chk = function(req, res, next) {
   console.log('=== post shop ===');
   console.log(email);
   console.log(req.body);
   console.log(req.session);
-  next()};
+  next();
+};
 
 
 

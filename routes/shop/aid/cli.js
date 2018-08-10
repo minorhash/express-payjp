@@ -105,5 +105,5 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,   getIte,  chk]);
+router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,  reqPid,  getIte,  chk]);
 module.exports = router;

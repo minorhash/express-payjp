@@ -19,10 +19,7 @@ var arr = [
   'my',
   'note/notation',
   'usr/sig',
-<<<<<<< HEAD
   'paypal/pay'
-=======
->>>>>>> 6a98d2122084016e1c899e6bdddc186701dda640
 ];
 
 describe('GET', function() {

@@ -2,7 +2,6 @@ var adb = require('usrdb');
 var cred = {
   ema: function(req) {
 if (req.session) {
-    //email = req.session.email;
 //email = req.session.email;
 email="successful.payment@paidy.com"
       return email;

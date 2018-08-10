@@ -48,5 +48,14 @@ ema.json: email credentials
 }
 ```
 
+pal.json:paypal client_ID,client_SECRET
+```js
+{
+"MODE": "sandbox", 
+"ID":"AcR***",
+"SEC":"EL8***"
+}
+```
+
 - public/img/cd
 merch images. you need to prepare your own.

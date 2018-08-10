@@ -1,0 +1,53 @@
+.title1 {
+	font-size: 18px;
+	color: black;
+/*	font-family: 'Averia Serif Libre', cursive; */
+	padding-left: 10px;
+/*	background-color: rgba(255,255,255,0.2); */
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+/*プロフィール*/
+
+.content1 {line-height:100%}
+
+.example img {
+width:150;
+}
+
+.box1{
+ display:inline-block;
+ text-align:center;
+}
+
+
+
+h2{
+position: relative;
+display: inline-block;
+padding: 0 2.5em;
+text-align: center;
+font-size: 20px;
+
+}
+
+h2:before, h2:after{
+content: '';
+position: absolute;
+top: 50%;
+display: inline-block;
+width: 15%;
+height: 1px;
+background-color: #000000;
+}
+
+h2:before {left:0;}
+h2:after {right: 0;}
+
+

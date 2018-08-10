@@ -26,6 +26,16 @@ sqlite db for usr, paidy and paypal
 
 ### ignored files
 - routes/shop/son
-credential files
+```
+#credential files
+aid.json;
+{
+    "pub":"pk_test_pvve8rdmjtcqbjejq4idolh8l9",
+    "sec":"sk_test_qbmquibktb7s3n4dov1mdihod3",
+    "loc":"http://localhost:3000",
+    "axe":"https://3axe.tmsmusic.tokyo"
+}
+
+    ```
 - public/img/cd
 merch images. you need to prepare your own.

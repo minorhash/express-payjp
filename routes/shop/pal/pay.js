@@ -115,7 +115,11 @@ var chk = function(req, res, next) {
   console.log(add);
 //  console.log(full.transactions[0].amount.details.shipping);
 //  console.log(mypal.transactions[0].amount.details)
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> b4e42674530a2cec2c6936aca8a2c2ca55056558
 
 var rcb = function(req, res, next) {
   res.render('shop/paypal/pay', {
@@ -128,7 +132,18 @@ var rcb = function(req, res, next) {
 };
 
 router.get('/shop/paypal/pay', [
+<<<<<<< HEAD
 getEma,  getUsr,  putMer,  putTmp,  putMer,  getSum,goPal,chk
+=======
+  getEma,
+  getUsr,
+  putMer,
+  putTmp,
+  putMer,
+  getSum,
+  goPal,
+  chk
+>>>>>>> b4e42674530a2cec2c6936aca8a2c2ca55056558
 ]);
 
 module.exports = router;

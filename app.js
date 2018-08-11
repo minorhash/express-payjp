@@ -7,6 +7,19 @@ var sess = require('cookie-session');
 
 // === route
 var indexRouter = require('./routes/index');
+var express = require('express');
+var router = express.Router();
+var path = require('path');
+//var favicon = require('serve-favicon');
+var logger = require('morgan');
+//var cookie = require('cookie');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var i18n = require('i18n-express');
+var sess = require('cookie-session');
+// route =================================
+var index = require('./routes/index');
+var mail = require('./routes/mail');
 // shop =================================
 var shop = require('./routes/shop/index');
 var cart = require('./routes/shop/cart');
@@ -21,6 +34,7 @@ var sigp = require('./routes/shop/usr/sigp');
 var adr = require('./routes/shop/usr/adr');
 var adrp = require('./routes/shop/usr/adrp');
 var forget = require('./routes/shop/usr/for');
+
 // === not
 var agmt = require('./routes/shop/not/agmt');
 var gui = require('./routes/shop/not/gui');
@@ -54,6 +68,7 @@ var up = require('./routes/mer/up');
 var up2 = require('./routes/mer/up2');
 var up3 = require('./routes/mer/up3');
 
+//
 var app = express();
 
 // view engine setup
@@ -66,6 +81,14 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // === sess ===
+// use =================================
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(
   sess({
     name: 'sess',
@@ -76,6 +99,18 @@ app.use(
 
 app.use('/', indexRouter);
 app.use('/', shop);
+// i18n ======================================
+var nat=["","news","prof","disc","sch","vid","mail","shop"]
+
+for(let i=0;i<nat.length;i++){
+app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
+    siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
+);
+}
+// use route =================================
+app.use('/', index);
+app.use('/', mail);
+
 // === shop ===
 app.use('/', shop);
 app.use('/', shop_out);
@@ -131,6 +166,19 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+// use route =================================
+
+//app.use(function(req, res, next) {
+//var err = new Error('Not Found');
+//err.status = 404;
+//next(err);
+//});
+
+app.use(function(req, res, next) {
+  res.status(404).render('404', { title: 'Sorry, page not found' });
+});
+
+//error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -140,5 +188,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//var ses,usr,title,sku,nam,pri,uni,sum,myerr;
 
 module.exports = app;

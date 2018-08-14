@@ -14,9 +14,7 @@ var ite, oite,tok,atok,sid,palid,sit,sitem
 var hea
 var item=[],aite=[];
 // === get ============================
-var getEma = function(req, res, next) {
-var cred = require('./js/cred');
-email = cred.ema(req);
+var getEma = function(req, res, next) { var cred = require('./js/cred'); email = cred.ema(req);
 next();
 }; //getEma
 
@@ -50,13 +48,16 @@ console.log(atok[i])
 }
 next()}
 
-var getPal= function(req, res, next) {
+var itePal= function(req, res, next) {
 for(var i=0;i<atok.length;i++){
 paypal.payment.get(atok[i],function(err,pay){
-console.log(pay.transactions[0].amount)
-item.push(pay.transactions[0].amount)
-    })
-    }
+//console.log(pay.transactions[0].amount)
+
+aite=JSON.stringify(pay.transactions[0].item_list.items)
+//item.push(aite)
+//adb.itePal(item[i],atok[i])
+})
+}
 next()}
 
 var chk = function(req, res, next) {
@@ -65,23 +66,16 @@ var chk = function(req, res, next) {
   console.log(email);
   console.log(usr);
   console.log(atok);
-  console.log(item);
   next();
 }; //chkEma
 
 var gcb = function(req, res) {
 res.render('shop/history', {
-title: 'history',
-usr: usr,
-selpid: selpid,
-allpid: allpid,
-allpal: allpal,
-oite: oite,
-aite:aite,
-    atok:atok
+title: 'history', usr: usr, selpid: selpid, allpid: allpid, allpal: allpal, oite: oite, aite:aite, atok:atok
 
 });
 };
-router.get('/shop/history', [getEma, getUsr, allPid, allPal,getPal,chk, gcb]);
+
+router.get('/shop/history', [getEma, getUsr, allPid, allPal,itePal,chk, gcb]);
 
 module.exports = router;

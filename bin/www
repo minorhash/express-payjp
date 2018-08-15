@@ -5,22 +5,15 @@
  */
 
 var app = require('../app');
-<<<<<<< HEAD
 var debug = require('debug')('low-cart:server');
-=======
 var debug = require('debug')('3bs:server');
->>>>>>> b4e42674530a2cec2c6936aca8a2c2ca55056558
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-<<<<<<< HEAD
 var port = normalizePort(process.env.PORT || '3000');
-=======
-var port = normalizePort(process.env.PORT || '3023');
->>>>>>> b4e42674530a2cec2c6936aca8a2c2ca55056558
 app.set('port', port);
 
 /**

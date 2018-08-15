@@ -33,6 +33,7 @@ console.log('=== no all pid ==================');
 allpid = adb.allPid(email);
 for (var i = 0; i < allpid.length; i++) {
 ite = allpid[i].ite;
+console.log(ite)
 oite = JSON.parse(ite);
 }
 }
@@ -71,11 +72,11 @@ var chk = function(req, res, next) {
 
 var gcb = function(req, res) {
 res.render('shop/history', {
-title: 'history', usr: usr, selpid: selpid, allpid: allpid, allpal: allpal, oite: oite, aite:aite, atok:atok
+title: 'history', usr: usr, selpid: selpid, allpid: allpid, allpal: allpal, oite: oite
 
 });
 };
 
-router.get('/shop/history', [getEma, getUsr, allPid, allPal,itePal,chk, gcb]);
+router.get('/shop/history', [getEma, getUsr, allPid, allPal,chk, gcb]);
 
 module.exports = router;

@@ -1,0 +1,4 @@
+.headers on
+.mode csv
+.output csv/node.csv
+select * from node;

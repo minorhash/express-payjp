@@ -1,0 +1,70 @@
+ <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+  "@type": "MusicGroup",
+"name":"AXELL",
+ "url": "http://ameblo.jp/dansou-axell",
+"sameAs":[
+"https://ja.wikipedia.org/wiki/AXELL",
+"http://www.kdashstage.jp/profile/archives/60"
+],
+"genre": "Idol",
+"image":[
+"http://tmsmusic.tokyo/images/axell/axelltop.jpg",
+"http://tmsmusic.tokyo/images/axell/axelllink.png"
+],
+
+"album": {
+"@type": "MusicAlbum",
+"name": "ラッキーホリデー",
+"alternateName": "lucky holiday",
+"@id": "https://www.amazon.co.jp/ラッキーホリデー-通常盤-AXELL-ばなにゃ/dp/B01GZI4SLM/ref=sr_1_3?s=music&ie=UTF8&qid=1491527293&sr=1-3&keywords=ラッキーホリデー",
+"datePublished": "2016"
+},
+
+"member": [
+  {
+"@type": "OrganizationRole",
+"member": {
+  "@type": "Person",
+  "name": "cecil"
+},
+"startDate": "1997",
+"roleName": "lead vocals"
+  },
+
+  {
+"@type": "OrganizationRole",
+"member": {
+  "@type": "Person",
+  "name": "lee"
+},
+"startDate": "1998",
+"roleName": "dancer"
+  },
+
+  {
+"@type": "OrganizationRole",
+"member": {
+  "@type": "Person",
+  "name": "shion"
+},
+"startDate": "1998",
+"roleName": "dancer"
+  },
+
+
+],
+
+"memberOf":[{
+"@type":"Organization",
+"legalName":"tms music",
+"email":"info@tmsm.tokyo",
+"logo":"http://tmsmusic.tokyo/images/axell/axelllink.png"
+
+},{
+"@type":"Organization",
+"legalName":"K dash",
+"logo":"http://www.kdash.jp/theme/skelton/img/_shared/header/hdr_logo_kdashgroup_pc.jpg"
+}]
+}

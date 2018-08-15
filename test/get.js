@@ -33,3 +33,13 @@ return done()
 });
 
 })
+<<<<<<< HEAD
+=======
+done();
+          //console.log(res.req)
+});//end
+});//it
+}//for
+});//des
+
+>>>>>>> cb3010d2fc20a996213c1119dc87ae1af29f9973

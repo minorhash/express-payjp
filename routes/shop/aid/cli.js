@@ -3,6 +3,10 @@ var router = express.Router();
 // === db =============================
 var db = require('cardb');
 var adb = require('usrdb');
+<<<<<<< HEAD
+=======
+var rdb = require('req-aid');
+>>>>>>> b4e42674530a2cec2c6936aca8a2c2ca55056558
 
 var ema=require("../son/ema.json")
 var aid=require("../son/aid.json")

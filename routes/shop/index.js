@@ -1,13 +1,15 @@
 var express = require('express');
 var cookie = require('cookie');
 var router = express.Router();
+var age=require("superagent");
 // == sess =============================
 var db = require('cardb'),
 adb = require('usrdb'),
 allmer = db.allMer();
 
 var email, usr, myerr, coo;
-var allmer, mailusr;
+var mailusr,sku,pic;
+var skua=[],arrs;
 
 // === get ============================
 
@@ -20,16 +22,24 @@ var getEma = function(req, res, next) {
 var getUsr = function(req, res, next) {
   var cred = require('./js/cred');
   usr = cred.usr(email);
-  next();
-};
+  next();};
+
+var getSku= function(req, res, next) {
+
+for(var i=0;i<allmer.length;i++){
+    //console.log(allmer[i].sku)
+skua.push(allmer[i].sku)
+}
+
+  next();};
 
 var chk = function(req, res, next) {
-  console.log('=== get shop ===');
+  console.log('=== chk ===');
   console.log(email);
   console.log(usr);
-  console.log(req.session);
-  next();
-}; //chkEma
+  console.log(pic);
+
+  next();}; //chkEma
 
 var rcb = function(req, res) {
   res.render('shop', {
@@ -37,9 +47,11 @@ var rcb = function(req, res) {
     mer: allmer,
     usr: usr,
     err: myerr,
+    pic:pic,
+    skua:skua
   });
 };
-router.get('/shop', [getEma, getUsr, chk, rcb]);
+router.get('/shop', [getEma, getUsr,getSku, chk, rcb]);
 
 // == post ==================================
 

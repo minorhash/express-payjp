@@ -75,11 +75,10 @@ var getSum = function(req, res, next) {
     add = sum_a.reduce(function(tot, cur) {
       return tot + cur;
     });
-var num=parseInt(add)
-var sum=num+650
+//var sum=num+650
 var sub=sum.toString()
 
-mypal.transactions[0].amount.details.subtotal = add;
+//mypal.transactions[0].amount.details.subtotal = add;
 mypal.transactions[0].amount.total = sub
 }
 next()};

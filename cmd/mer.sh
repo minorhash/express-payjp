@@ -1,5 +1,5 @@
 dir=$(pwd)
-str=${dir:17}
+str=${dir: -8}
 echo $str
 
 git merge git@github.com:minorhash/$str.git/master

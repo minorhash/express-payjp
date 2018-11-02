@@ -1,5 +1,5 @@
 dir=$(pwd)
-str=${dir: -8}
+str=${dir: -6}
 echo $str
 
 git pull git@github.com:minorhash/$str.git

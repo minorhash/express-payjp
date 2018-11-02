@@ -1,16 +1,17 @@
-# low-cart
+# locart
 ## low-carb, fat free, and no nonsense shopping cart for express
 ### using express, sqlite, bootstrap3
 
 - no database server required(file based db)
-- ultra lite and fast using sqlite3 db
-- using boostrap3
-
+- ultra lite and fast sqlite3 db
+- simple boostrap3 ui
 
 ### required modules
 - better-sqlite3
 - nodemailer
 - paypal-rest-sdk
+
+### required other modules
 - usrdb
 ```
 sqlite db for merch and cart

@@ -11,6 +11,7 @@ var str = crypto
 //console.log(str)
 
 var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
+var pic="";
 // === post =============================
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
@@ -32,12 +33,31 @@ sku = req.body.sku;
     try {      skumer = db.skuMer(sku);
     } catch (err) {      console.log(err);    }
   } else {    console.log('no sku');  }
+console.log(skumer);
+//console.log(__dirname+"/public/img/cd/"+sku+".png");
   next()}; //getSku
+
+var chkImg= function(req, res, next) {
+
+var fs=require("fs");
+var path="public/img/cd/"+sku+".png";
+fs.exists(path, function(exists){
+if(exists){
+pic=sku+".png"
+console.log(pic)
+}else{
+
+pic="no.png";
+console.log(pic)
+}
+});
+
+  next()}; //chkImg
 
 var getSon = function(req, res, next) {
   try {    skuson = db.skuSon(sku);
   } catch (err) {    console.log(err);  }
-  if (skuson.song) {
+  if (skuson) {
     obj = JSON.parse(skuson.song);
     len = Object.keys(obj).length;
   } else {    console.log('no skuson');
@@ -53,9 +73,9 @@ var chk = function(req, res, next) {
 };
 // === rend
 var rcb = function(req, res) {
-  rob = { title: 'items', usr: usr, mer: skumer, song: obj, err: myerr };
+  rob = { title: 'items', usr: usr, mer: skumer, song: obj, pic:pic,err: myerr };
   res.render('shop/item', rob);
 }; //rcb
 
-router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);
+router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chkImg,chk, rcb]);
 module.exports = router;

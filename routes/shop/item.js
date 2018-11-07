@@ -10,54 +10,38 @@ var str = crypto
   .digest('hex');
 //console.log(str)
 
-var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
-var pic="";
+var email, usr, sku
+    var skumer, mailusr, mailtmp, skuson
+    var obj, len;
 // === post =============================
+var cred = require('./js/cred');
+
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
-  next();
-}; //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+  next()}
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
-  usr = cred.usr(email);
-  next();
-};
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 
 var getSku = function(req, res, next) {
 sku = req.body.sku;
-//sku=3411
-  if (sku) {
-    try {      skumer = db.skuMer(sku);
-    } catch (err) {      console.log(err);    }
-  } else {    console.log('no sku');  }
-console.log(skumer);
-//console.log(__dirname+"/public/img/cd/"+sku+".png");
-  next()}; //getSku
-
-var chkImg= function(req, res, next) {
-
-var fs=require("fs");
-var path="public/img/cd/"+sku+".png";
-fs.exists(path, function(exists){
-if(exists){
-pic=sku+".png"
-console.log(pic)
-}else{
-
-pic="no.png";
-console.log(pic)
-}
-});
-
-  next()}; //chkImg
+console.log(sku)
+if (sku) {
+try {skumer = db.skuMer(sku);
+} catch (err) {      console.log(err);    }
+} else {    console.log('no sku');  }
+next()}; //getSku
 
 var getSon = function(req, res, next) {
   try {    skuson = db.skuSon(sku);
+console.log(skuson)
+
   } catch (err) {    console.log(err);  }
-  if (skuson) {
+  if (skuson.song) {
     obj = JSON.parse(skuson.song);
     len = Object.keys(obj).length;
   } else {    console.log('no skuson');
@@ -73,9 +57,10 @@ var chk = function(req, res, next) {
 };
 // === rend
 var rcb = function(req, res) {
-  rob = { title: 'items', usr: usr, mer: skumer, song: obj, pic:pic,err: myerr };
-  res.render('shop/item', rob);
+rob = { title: 'item', usr: usr, mer: skumer, song: obj};
+res.render('shop/item', rob);
 }; //rcb
 
-router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chkImg,chk, rcb]);
+router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);
+
 module.exports = router;

@@ -1,6 +1,9 @@
 dir=$(pwd)
-str=${dir: -8}
+str=${dir: -3}
 echo $str
-
-git merge git@github.com:minorhash/$str.git/master
+if [ -z $1 ];then
+    echo "usage"
+else
+git merge $1
+fi
 

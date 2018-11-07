@@ -1,60 +1,64 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var crypto = require('crypto');
+var crypto = require("crypto");
 // == db =============================
-var db = require('cardb');
-var adb = require('usrdb');
-var idy = require('aidy');
+var db = require("cardb");
+var adb = require("usrdb");
+var idy = require("aidy");
 var taid = idy.tmpAid();
-
-var str = crypto
-  .createHash('md5')
-  .update(Math.random().toString())
-  .digest('hex');
-
 // === glob ============================
-var email, usr, sku, uni, sum,tsum, num, myerr;
+var email, usr, sku, uni, sum, tsum,stax
+var num,boo
 var mailtmp, mailusr;
-var mer = [],  suma = [],  skua = [];
+var mer = [],  suma = [],  skua = [],boa=[];
+var mailtmp, mailusr,mailadr
+var cla;
+var cnf= require('./son/cnf.json');
+
+var cred = require("./js/cred");
+// === get ============================
+
 
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
-  next();
-}; //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+console.log(email)
+next()}
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
-  usr = cred.usr(email);
-  next();
-};
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()}
+
+var getAdr= function(req, res, next) {
+mailadr=adb.mailAdr(email)
+next()};
 
 var getTmp = function(req, res, next) {
   mailtmp = [];
+      db.delUni()
   if (email) {
-    try {
-      mailtmp = db.mailTmp(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log('no mail');
-  }
-  next();
-};
+  mailtmp = db.mailTmp(email);
+  } else {    console.log("no mail");  }
+  next()};
+
+var getSku= function(req, res, next) {
+    skua=[]
+if (mailtmp) {
+for(var i=0;i<mailtmp.length;i++){
+skua.push(mailtmp[i].sku)
+}
+  } else {    console.log("mailtmp");  }
+  next()};
 
 var putMer = function(req, res, next) {
-    mer=[]
-  if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
-//      console.log(mailtmp[i].sku);
-      mer[i] = db.skuMer(mailtmp[i].sku);
-    }
-  } else {
-    console.log('no mailtmp');
-  }
-  next();
-};
+mer = [];
+if (mailtmp) {
+for (var i = 0; i < mailtmp.length; i++) {
+mer[i] = db.skuMer(mailtmp[i].sku);
+}
+}else {    console.log("no mailtmp");  }
+next()};
 
 var putSum = function(req, res, next) {
   suma = [];
@@ -62,46 +66,66 @@ var putSum = function(req, res, next) {
     for (var i = 0; i < mailtmp.length; i++) {
       suma[i] = mailtmp[i].uni * mer[i].pri;
     }
-  } else {
-    console.log('no mailtmp');
-  }
-  next();
-};
+  } else {    console.log("no mailtmp");  }
+  next()};
 
 // === chk dl ===
-var chkDl= function(req, res, next) {
+// check for dl mer. if sku is 4 digit, then its dl.
+var chkSh = function(req, res, next) {
+    boa=[]
+  for (var i = 0; i < skua.length; i++) {
+    var pat = /^\d{3}$/;
+    boa.push(pat.test(skua[i]));
+    }
 
-boo=[]
-for(var i=0;i<skua.length;i++){
-
-console.log("=== chk dl ===")
-console.log(skua[i])
-var pat=/^\d{4}$/;
-var test=pat.test(skua[i])
-console.log(test)
-boo.push(test)
-}
-console.log(boo)
-ind=boo.indexOf(false)
-console.log("ind:"+ind)
+console.log(boa.indexOf(true))
+if(boa.indexOf(true)==-1){
+boo=1
+}else{boo=0}
 
 next()};
 
 var redSum = function(req, res, next) {
-  sum = '',tsum="";
-  function getSum(total, num) {
-    return total + num;
-  }
+  sum = null, tsum = null
+  function getSum(total, num) {    return total + num;  }
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
-    tsum=sum+650
-    console.log('tsum:' + tsum);
-  } else {
-    console.log('no sum');
-  }
-  next();
+
+if(boo==0){
+    console.log(boo)
+    tsum = sum + 650;
+}else{tsum=sum;}
+
+} else {    console.log("no sum");  }
+next()};
+
+var getHea= function(req, res, next) {
+cla=req.header("accept-language");
+    console.log(cla);
+
+next()};
+
+// === chk ===============================
+var chk = function(req, res, next) {
+  console.log("=== cart ===================");
+  console.log(email);
+  console.log("=== mailtmp ===");
+  console.log(mailtmp);
+  console.log(cla);
+    next()};
+
+// === rend
+var gcb = function(req, res) {
+res.render("shop/cart", {
+seltmp: mailtmp,mailadr:mailadr,
+mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
+});
 };
 
+router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
+//router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
+chk,  gcb
+]);
 // ====== post ===============================
 
 // === add item ===
@@ -111,33 +135,9 @@ var getIte = function(req, res, next) {
     uni = req.body.uni;
     sku = req.body.sku;
   } else {
-    console.log('no bod');
+    console.log("no bod");
   }
-  next();
-};
-
-var putSku = function(req, res, next) {
-    skua=[]// == VERY IMPORTANT!!!! always init ==
-  if (mailtmp.length!==0) {
-    for (var i = 0; i < mailtmp.length; i++) {
-      skua[i] = mailtmp[i].sku;
-    } //for
-  } else {
-      mailtmp=null
-    console.log('no mailtmp');
-  }
-  next();
-};
-
-var pcb = function(req, res, next) {
-  res.render('shop/cart', {
-    seltmp: mailtmp,
-    sum: sum,
-    mer: mer,
-    usr: usr,
-    email: email,
-  }); //rend
-};
+  next()};
 
 var insUpd = function(req, res, next) {
   if (req.body.sku) {
@@ -146,63 +146,54 @@ var insUpd = function(req, res, next) {
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
-var hea=res.headersSent
-    console.log('=== head ==================');
-    console.log(hea)
-      res.redirect('cart');
+      var hea = res.headersSent;
+      console.log("=== head ==================");
+      console.log(hea);
+      res.redirect("cart");
     } else {
+mailtmp=[]
+        skua=[],boa=[]
       db.updTmp(uni, email, sku);
-var hea=res.headersSent
-    console.log(hea)
-      res.redirect('cart');
+      db.delUni()
+      var hea = res.headersSent;
+      console.log(hea);
+      res.redirect("cart");
     } //ind
-} else {
-    console.log('no body.sku');
+  } else {
+    console.log("no body.sku");
   }
-  next();}; //insUpd
+  next()}; //insUpd
 
 // === clr ===============================
 var clrEma = function(req, res, next) {
-  if (req.body.clr == 'yes') {
+  if (req.body.clr == "yes") {
     db.delEma(email);
-//    sku=null
-        mailtmp=null
+    //    sku=null
+    mailtmp = null;
     //console.log(mailtmp)
-    console.log('=== CLR! ==================');
+    console.log("=== CLR! ==================");
     //res.redirect("cart")
-  } else {    console.log('no clr');  }
-  next();};
+  } else {    console.log("no clr");  }
+  next()};
 
-// === chk ===============================
-var chk = function(req, res, next) {
-  console.log('=== cart ===================');
-  console.log(email);
-  console.log(mailtmp);
-  if(req.session){console.log(req.session)}
-  ////console.log(skua)
-  next();
-};
 // === aid ===============================
 
 var putAid = function(req, res, next) {
-  router.put('/shop/aid/aid');
-  next();
+  router.put("/shop/aid/aid");
+  next()};
+
+
+var pcb = function(req, res, next) {
+  res.render("shop/cart", {
+      seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
+    email: email
+  }); //rend
 };
 
-// === rend
-var gcb = function(req, res) {
-  res.render('shop/cart', {
-    seltmp: mailtmp,
-    mer: mer,
-    sum: sum,
-    usr: usr,
-    email: email,
-  });
-};
 
-router.get('/shop/cart', [
-  getEma,  getUsr,  getTmp,  putMer,  putSum,  redSum,  chk,  gcb]);
-router.post('/shop/cart', [
-  getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,  chk,  pcb,]);
+router.post("/shop/cart", [
+  getEma,  getUsr,  getTmp,  getIte,  getSku, chkSh, insUpd,  clrEma,
+  chk,  pcb
+]);
 
 module.exports = router;

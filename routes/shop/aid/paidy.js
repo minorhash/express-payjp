@@ -7,32 +7,38 @@ var idy = require('aidy');
 var taid = idy.tmpAid();
 
 // === post ============================
-var email, usr, sku, uni, sum, tsum, boo
+var email, usr, sku, uni, sum, tsum
 var mailtmp, mailusr, mailadr,mailson;
-var mer = [],  suma = [],  skua = [],  unia = [],  numa = [];
-var emp, ind;
+var mer = [],  suma = [],  skua = [],  unia = [],  numa = [], boa=[];
+var emp, ind, boo;
 
 var getEma = function(req, res, next) {
-  var cred = require('../js/cred');
-  email = cred.ema(req);
-  next()}; //getEma
+    var cred = require("../js/cred")
+    email = cred.ema(req)
+mailusr=  adb.mailUsr(email)
+    next()
+} //getEma
 
 var getUsr = function(req, res, next) {
-  var cred = require('../js/cred');
-  usr = cred.usr(email);
-  next()};
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
+
 
 var getTmp = function(req, res, next) {
   if (email) {
 mailtmp = db.mailTmp(email);
-  } else {    console.log('no mail');  }
+  } else {    console.log('no mail for tmp');  }
   db.delUni();
   next()};
+
 
 var getAdr = function(req, res, next) {
   if (email) {
       mailadr = adb.mailAdr(email);
-  } else {    console.log('no mail');  }
+  } else {    console.log('no mail for adr');  }
   if (mailadr == undefined) {
     res.redirect('usr/adr');
   }
@@ -45,41 +51,48 @@ var putSum = function(req, res, next) {
       mer[i] = db.skuMer(mailtmp[i].sku);
       suma[i] = mailtmp[i].uni * mer[i].pri;
     }
-  } else {
-    console.log('no mailtmp');
-  }
-  console.log('=== putSum ===');
+  } else {    console.log('no mailtmp');  }
   next()};
 
-var redSum = function(req, res, next) {
-  function getSum(total, num) {
-    return total + num;
-  }
-  if (suma.length !== 0) {
-    sum = suma.reduce(getSum);
-    console.log('sum:' + sum);
-  } else {
-    console.log('no sum');
+var putMer = function(req, res, next) {
+    mer=[]
+    skua=[]
+  for (var i = 0; i < mailtmp.length; i++) {
+    mer[i] = db.skuMer(mailtmp[i].sku);
+skua.push(mer[i].sku)
   }
   next()};
 
-var chkDl= function(req, res, next) {
+var chkSh= function(req, res, next) {
 
-boo=[]
+console.log("=== chk ship  ===")
+boa=[]
 for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
-console.log(skua[i])
-var pat=/^\d{4}$/;
+var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 console.log(test)
-boo.push(test)
+boa.push(test)
 }
+console.log(boa)
+boo=boa.indexOf(true)
+console.log("boo")
 console.log(boo)
-ind=boo.indexOf(false)
-console.log("ind:"+ind)
 
 next()};
+
+var redSum = function(req, res, next) {
+    function getSum(total, num) {
+      return total + num;
+    }
+    if (suma.length !== 0) {
+      sum = suma.reduce(getSum);
+if(boo==0){tsum=sum+650}
+else{tsum=sum}
+    } else {
+      console.log('no sum');
+    }
+  next()};
 
 // === add item ===
 var putSku = function(req, res, next) {
@@ -88,42 +101,34 @@ var putSku = function(req, res, next) {
       skua[i] = mailtmp[i].sku;
       unia[i] = mailtmp[i].uni;
     } //for
-    console.log('=== put sku ===');
-    console.log(unia);
-  } else {
-    console.log('no mailtmp');
-  }
+    //console.log(unia);
+  } else {    console.log('no mailtmp');  }
 
   next()};
+
 
 var getSon= function(req, res, next) {
 mailson=db.mailSon(email).son
 next()};
 
-
 var chk = function(req, res, next) {
-  console.log('=== paidy ===');
-  console.log(mailtmp);
-console.log(skua)
-//console.log(mailusr)
-  next()};
+console.log('=== chk paidy ===');
+console.log(mailtmp);
+console.log(mailson)
+console.log(tsum)
+next()};
 
 // === rend
 
 var pcb = function(req, res, next) {
-  res.render('shop/paidy', {
-    seltmp: mailtmp,
-    sum: sum,
-    tsum: tsum,
-    mer: mer,
-    email: email,
-    mailson:mailson,
-    usr: usr,
-  }); //rend
+res.render('shop/paidy', {
+seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,mailson:mailson,usr: usr
+}); //rend
 };
 
-router.post('/shop/paidy', 
-[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  redSum,  putSku,  getSon,  chk,  pcb,]);
+router.get('/shop/paidy',
+[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,  getSon,
+    chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 
 module.exports = router;

@@ -5,56 +5,174 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
-<div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr) { %> 
+    <!-- lang -->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="history?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="history?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+    <!-- lang -->
+
+<!--- side left ----- -->
+<div class="col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
 <div class="label label-info"><%= usr%>&nbsp;さん </div>
 <br><br>
 
 <% include par/out %>
-<% }else{ %>
+<%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
 
-<!--- main ------->
+<!--- main ----- -->
 
 <div class="well col-lg-8 col-sm-12" style="color:black">
-<%if(!allpid.length==0){%>
+<div class="box90"><%= shop.his %></div><br>
 
-<div class="box90">購入履歴</div>
+<%if(usr){%>
+<!--- paypal----- -->
+
+
+<%if(allpal.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<h4><span class="label label-info">paypal</span></h4>
+<%for(var i=0;i<allpal.length;i++){%>
+
 <br>
 
+<font color="#0000ff">
+    <u><b>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.dat %>:
+<%=allpal[i].date%></b></u><br>
+</font>
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.pid %>:
+<%=allpal[i].tok%></u><br>
+<br>
+
+<%for(var j=0;j<opal[i].length;j++){%>
+
+<div class="col-md-3">
+<div valign="top" align="center">
+
+<img src="../img/cd/<%=opal[i][j].sku%>.png"><br>
+</div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+
+<%= shop.title %>：<%= opal[i][j].name%><br>
+    <%= shop.sku %>：TMS-&nbsp;<%= opal[i][j].sku%><br>
+    <%= shop.pri %>：&nbsp;<%= (parseInt(opal[i][j].price)).toLocaleString()%>
+<%= shop.yen %><br>
+    <%= shop.tax %>：&nbsp;<%= opal[i][j].tax%>
+<%= shop.yen %>
+    <br>
+    <%= shop.unit %>：<%= opal[i][j].quantity%><br>
+
+<% if((opal[i][0].price).length!==3){ %>
+<%= shop.ship %>：650
+<%= shop.yen %><br>
 <%}else{%>
-ログインしてください。
+<%= shop.ship %>：0
+<%= shop.yen %><br>
+<%}%>
+<%= shop.unit %>：<%= ((parseInt(opal[i][j].price)+parseInt(opal[i][j].tax))*parseInt(opal[i][j].quantity)).toLocaleString()%>
+<%= shop.yen %>
+
+<div class="border-bottom"></div>
+</div>
+</div>
+<br><br>
+
+<%}%><!-- for -->
+<%}%> <!-- for -->
+<%}else{%>
+<%= shop.npal %>
 <%}%>
 
-<!--- main ------->
-<%if(!oite.length==0){%>
-<h3><div class="label label-warning">paidy 購入済商品</div></h3>
-<%for(var i=0;i<oite.length;i++){%>
+<br><br><br><br>
 
-<div valign="top"><img src="../img/cd/<%=oite[i].id%>.png"></div>
-sku&nbsp;<div class="label label-default"><%=oite[i].id%></div>
-price&nbsp;<div class="label label-default"><%=oite[i].unit_price%></div><br><br>
+
+<%if(allpid.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h4><span class="label label-danger">paidy</span></h4>
+
+<br>
+<%for(var i=0;i<allpid.length;i++){%>
+<font color="red">
+
+<u><b>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.dat %>:
+<%=allpid[i].date%></u></b><br>
+</font>
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.pid %>:
+<%=allpid[i].pid%></u><br>
+
+<%for(var j=0;j<oite[i].length;j++){%>
+<div class="col-md-3">
+<div valign="top" align="center">
+<img src="../img/cd/<%=oite[i][j].id%>.png"><br>
+</div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+<%= shop.title %>:&nbsp;<%= oite[i][j].title%><br>
+<%= shop.sku %>:TMS-<%=oite[i][j].id%>&nbsp; <br>
+<%= shop.pri %>:&nbsp;<%=oite[i][j].unit_price.toLocaleString() %><%= shop.yen %>&nbsp;(<%= shop.ntax %>)<br>
+<%= shop.tax %>:&nbsp;<%= Math.round(parseInt(oite[i][j].unit_price)*0.08)%><br>
+<%= shop.unit %>:&nbsp;<%= oite[i][j].quantity%><br>
+<% if((oite[i][j].unit_price).toString().length!==3){ %>
+<%= shop.ship %>:650&nbsp;<%= shop.yen %><br>
+<%}else{%>
+<%= shop.ship %>:0&nbsp;<%= shop.yen %><br>
 <%}%>
-
+<%= shop.tot %>
+<%= Math.round(parseInt(oite[i][j].unit_price)*1.08*parseInt(oite[i][j].quantity)).toLocaleString() %>
+<%= shop.yen %>
+<br>
+<div class="border-bottom"></div>
+</div>
+</div>
+<br><br>
+<%}%><!-- for -->
+<%}%><!-- for -->
+<%}else{%>
+<%= shop.naid %>
 <%}%>
-
-<!--- pal ------->
-<%if(allpal){%>
-<h3><div class="label label-warning">paypal 購入済商品</div></h3>
-
-<%=allpal.length%><br>
+<br><br>
 
 <%}else{%>
-no allpal
-
+not logged. 
 <%}%>
+
+
 </div>
 
 <% include par/2side %>
 </div>
+
+
+<br><br>
+
+<div class="col-md-12" style="color:black" align="center" >
+
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit"><%= shop.bck %></button>
+</form>
+
+</div>
+
+
+<br><br><br>
 
 <div class="footer"><% include par/foot %></div>
 

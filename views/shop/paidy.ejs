@@ -4,7 +4,7 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
+<!--- side left ----- -->
 <div class="well col-md-3 col-sm-12" style="color:black">
 <% if(usr) {%> 
 <div class="label label-info">&nbsp; <%= usr%>&nbsp;さん </div>
@@ -12,24 +12,18 @@
 
 <% include par/out %>
 
-<script>
-var xhr = new XMLHttpRequest();
-xhr.open("PUT", "http://localhost:3023/shop/aid/cli", true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send();
-</script>
-
 <%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
 
-<!--- main ------->
+<!--- main ----- -->
 
 <div class="col-sm-6 col-sm-12" style="color:black">
 
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
+
 
 <div class="col-md-12" style="color:black"  >
 <%for(var i=0;i<seltmp.length;i++){%>
@@ -38,7 +32,7 @@ xhr.send();
 
 <div class="col-md-4">
 <div align="center">
-<img src="../<%=mer[i].img%>" width="150" height="150" >
+<img src="../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
 </div></div>
 
 <div class="col-md-8">
@@ -66,6 +60,7 @@ xhr.send();
 <div class="col-md-3 hidden-xs"></div>
 <div class="col-md-3 hidden-xs">
 <div class="pabox">商品合計(税込）：</div>
+
 </div>
 
 <div class="col-md-3 hidden-xs">
@@ -73,7 +68,6 @@ xhr.send();
 <div class="pabox">
 <%if(sum){%>
 <%=sum.toLocaleString()%> 円
-<% var tsum=sum+650 %>
 
 <%}%></div>
 
@@ -89,11 +83,10 @@ xhr.send();
 </div>
 </div>
 
-
-
 <div class=" well col-md-3 col-sm-12" style="color:black">
 
 <div class="row"></div>
+
 
 
 <p class="pa1">
@@ -103,17 +96,14 @@ Paidyのページが表示されますので、
 Paidyのアカウントにてログインし、お手続きください。</p>
 
 <br><br>
-
 <div align="right">
 <button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
-<script src="../../son/<%=email%>.js"></script>
-</div>
-
+<script type="text/javascript" src="../../son/<%=email%>.js"></script>
 
 </div>
 
-
+</div>
 
 <div class="row"></div>
 <br><br>

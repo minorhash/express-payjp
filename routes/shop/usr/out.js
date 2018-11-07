@@ -5,45 +5,42 @@ var router = express.Router();
 var email, usr, mailusr, myerr;
 
 var clrEma = function(req, res, next) {
+    usr=null;
   req.session = null;
   res.clearCookie('session');
   res.clearCookie('sess');
   res.clearCookie('coo');
-  next();
-};
+
+  next()};
 
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    console.log('no sess');
-  }
-  next();
-}; //getEma
+if (req.session) {
+email = req.session.email;
+} else {    console.log('no sess');  }
+  next()}; //getEma
 
-var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    myerr = 'no';
-  }
-  if (mailusr) {
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    myerr = 'no mailusr';
-  }
-  next();
-};
+
+var unSon= function(req, res, next) {
+var fs = require('fs');
+var son=__dirname+"/../../../public/son/"+email+".js"
+
+// fs.stat(son, function(err, stats) {
+// if(err){throw err}
+// console.log(son);
+// })
+
+fs.unlink(son,function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+console.log('unlink!');
+});
+  next()};
 
 var chk = function(req, res, next) {
   console.log('=== log out === ');
   console.log(req.session);
   console.log(req.cookies);
+  console.log(email)
   next();
 };
 
@@ -53,8 +50,19 @@ var rcb = function(req, res) {
     email: email,
     usr: usr,
     err: myerr,
-  });
+});
 };
 
-router.post('/shop/usr/out', [clrEma, chk, rcb]);
+router.post('/shop/usr/out', [getEma,unSon,clrEma, chk, rcb]);
+
+var gcb = function(req, res) {
+  res.render('shop/usr/out', {
+    title: 'logged out',
+    email: email,
+    usr: usr,
+    err: myerr,
+});
+};
+router.get('/shop/usr/out', [getEma,unSon,clrEma, chk, gcb]);
+
 module.exports = router;

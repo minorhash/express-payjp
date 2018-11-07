@@ -1,5 +1,5 @@
-dir=$(pwd)
-str=${dir: -8}
-#echo $str
+br=$(git rev-parse --abbrev-ref HEAD)
+echo $br
 
-git push -u origin master
+git push -u origin $br
+

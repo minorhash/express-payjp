@@ -1,140 +1,141 @@
-var express = require('express');
-var router = express.Router();
-const paypal = require('paypal-rest-sdk');
+var express = require("express")
+var router = express.Router()
+var paypal = require("paypal-rest-sdk")
 // === db
-var adb = require('usrdb');
+var adb = require("usrdb")
+var db = require("cardb")
 
-var email,mailtmp,mer
-var pid,payerId,exeJson
+var usr,email,mailtmp,mer
+var pid,payerId,exeJson,getpal
+var sum,suma,item=[]
+var mes
 
-var conf=require("../son/pal.json")
+var cnf=require("../son/pal.json")
 
 paypal.configure({
-  mode: conf.MODE,
-  client_id:conf.ID,
-  client_secret:conf.SEC
-});
+mode: cnf.sand,
+//mode: cnf.live,
+client_id:cnf.tid,
+//client_id:cnf.lid,
+client_secret:cnf.tsc
+//client_secret:cnf.lsc
+})
 
 // === db
-var db = require('cardb');
 
+var cred = require('../js/cred');
 // === get
-
 var getEma = function(req, res, next) {
-  var cred = require('../js/cred');
-  email = cred.ema(req);
-  next();}; //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+next()}
 
 var getUsr = function(req, res, next) {
-  var cred = require('../js/cred');
-  usr = cred.usr(email);
-  next()};
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 var getTmp = function(req, res, next) {
-  mailtmp = [];
-  if (email) {
-    try {
-      mailtmp = db.mailTmp(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log('no mail');
-  }
-  next();
-};
+    mailtmp = []
+    if (email) {
+    mailtmp = db.mailTmp(email)
+    } else {        console.log("no mail")    }
+    next()}
 
 var putMer = function(req, res, next) {
     mer=[]
-  if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
-      console.log(mailtmp[i].sku);
-      mer[i] = db.skuMer(mailtmp[i].sku);
-    }
-  } else {
-    console.log('no mailtmp');
-  }
-  next();
-};
+    if (mailtmp) {
+        for (var i = 0; i < mailtmp.length; i++) {
+            mer[i] = db.skuMer(mailtmp[i].sku)
+        }
+    } else {console.log("no mailtmp")    }
+    next()}
 
 var putSum = function(req, res, next) {
-  suma = [];
-  if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
-      suma[i] = mailtmp[i].uni * mer[i].pri;
-    }
-  } else {
-    console.log('no mailtmp');
-  }
-  next()};
+    suma = []
+    if (mailtmp) {
+        for (var i = 0; i < mailtmp.length; i++) {
+            suma[i] = mailtmp[i].uni * mer[i].pri
+        }
+    } else {        console.log("no mailtmp")    }
+    next()}
 
 var redSum = function(req, res, next) {
-  sum = '',tsum="";
-  function getSum(total, num) {
-    return total + num;
-  }
-  if (suma.length !== 0) {
-    sum = suma.reduce(getSum);
-    tsum=sum+650
-//    console.log('tsum:' + tsum);
-  } else {
-    console.log('no sum');
-  }
-  next()};
+    sum = ""
+    function getSum(total, num) {        return total + num    }
+    if (suma.length !== 0) {
+        sum = suma.reduce(getSum)
+    } else {console.log("no sum")    }
+    next()}
 
 var getPid= function(req, res, next) {
-pid = req.query.paymentId;
-payerId = req.query.PayerID;
-
-exeJson = {
-payer_id: payerId,
-transactions: [{amount: {currency: 'JPY',total: sum}}],
-};
-next()};
-
-var exePal= function(req, res, next) {
-
-paypal.payment.execute(pid, exeJson, function(error, pay) {
-if (error) {console.log("exe fail");      throw error;    } 
-else {
-
-item=pay.transactions[0].item_list.items[0]
-var str = JSON.stringify(pay);
-var sitem= JSON.stringify(item);
-
-console.log(sitem)
-adb.insPal(email,pid,sitem)
-      res.render('shop/paypal/success', {
-        title: 'ご購入ありがとうございました。',
-        pid: payerId,
-        payid: pid,
-        pay:pay
-      });
+    pid = req.query.paymentId
+console.log(pid)
+    payerId = req.query.PayerID
+    exeJson = {
+        payer_id: payerId,
+        transactions: [{amount: {currency: "JPY",total: sum}}],
     }
-  });
-};
-
-var getPay= function(req, res, next) {
-for (var i = 0; i < atok.length; i++) {
-paypal.payment.get(atok[i], function (err, pay) {
-if (err) {        console.log(err);        throw err;} 
-else {
-aite=[]
-palid=pay.id
-console.log(palid)
-item=pay.transactions[0].item_list.items[0]
-site=JSON.stringify(item)
-console.log(site)
-aite.push(site)
-}
-})//get
-}//for
-next()}
+    next()}
 
 var chk= function(req, res, next) {
-console.log(payerId)
+    console.log("=== suc ===")
+    console.log(email)
+    console.log(usr)
+    next()}
 
-next()};
-router.get('/shop/paypal/success', [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,exePal,chk])
+var exePal= function(req, res) {
+var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
+var reg="ご購入ありがとうございました。"
+var snde = require('snd-ema');
 
-module.exports = router;
+paypal.payment.execute(pid, exeJson, function(error, pay) {
+if (error) {console.log("exe fail");
+res.redirect("/shop/cart")
+}
+else {
+item=pay.transactions[0].item_list.items
+var ite=JSON.stringify(pay.transactions[0].item_list.items)
+console.log(item)
+
+adb.insPal(email,pay.id,ite,utc)
+
+var i18=require("../../../i18n/shop/ja.json")
+
+for(var i=0;i<item.length;i++){
+mes=usr+"様<br>"
++i18.cau1+i18.cau2+i18.cau3
+    +i18.lin1
++i18.cont+i18.pid+":"+pid+"<br>"
++i18.title+":"+item[i].name+"<br>"
++i18.sku+": TMS-"+item[i].sku+"<br>"
++i18.price+":"+parseInt(item[i].price).toLocaleString()+"円<br>"
++i18.unit+":"+item[i].quantity+"<br>"
+   +i18.pay +i18.pal+"<br>"
+    +i18.lin1
++i18.ship1+i18.ship2+i18.ship3
++i18.ship4+i18.ship5
++i18.misc+i18.lin1+i18.auto1+i18.auto2
+        +i18.lin1
++i18.shop+i18.adr1+i18.adr2+i18.adr3
+}
+
+console.log('=== senEma =======================================');
+}//else
+snde.trEma(email,reg,mes);
+
+res.render("shop/paypal/success", {
+usr:usr,
+title:reg,
+pid: pid,
+payid:payerId,
+pay:pay,
+item:item
+})
+})
+}
+
+router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,
+exePal,chk])
+
+module.exports = router

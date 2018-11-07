@@ -1,9 +1,0 @@
-# pal
-
-usr,pss,tmp + rowid
-
-# tmp
-
-uid(pal.rowid),oid,sku,item,pri,uni
-
-

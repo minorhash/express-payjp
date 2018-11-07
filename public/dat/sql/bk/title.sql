@@ -1,1 +1,0 @@
-select title from node;

@@ -1,6 +1,6 @@
-# loc3 - locart with bootstrap3
+# 4loc - locart with bootstrap4
 ## low-carb, fat free, and no nonsense shopping cart for express
-### express, sqlite, bootstrap3
+### express, sqlite, bootstrap4
 
 - no database server required(file based db)
 - ultra lite and fast sqlite3 db
@@ -116,3 +116,7 @@ merch images.
 you need to prepare your own.
 ```
 
+=======
+# 4loc
+locart with bootstrap4
+>>>>>>> 19dd829c82cf12b9c93e6431c526f4a5d17c82ee

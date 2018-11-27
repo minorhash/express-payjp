@@ -10,39 +10,40 @@
 <div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
 <br><br>
 
-<% include ../par/out %>
+<% include par/out %>
 <%}else{ %>
-<% include ../par/login %>
+<% include par/login %>
 <%} %>
 </div>
 <!--- main ----- -->
 
 <div class="well col-lg-8 col-sm-12" style="color:black">
 
-<h1 class="text-center">
-<%= shop.buy %>
-</h1>
+<h1 class="text-center"><%= shop.buy %></h1>
 <br>
-<%if(pid){%>
-<%for(var i=0;i<item.length;i++){%>
-<img src="../../img/cd/<%=item[i].sku%>.png">
-<br><%= shop.pid %>
-:<%= pid %>
-<br><%= shop.title%>
-:<%=item[i].name%>
-<br><%= shop.sku %>
-:TMS-<%=item[i].sku%>
-<br><%= shop.pri %>
-:<%=item[i].price.toLocaleString()%>
-<br><%= shop.unit %>
-:<%=item[i].quantity%><br>
-<%}%>   
-<%}else{ %>   
-on pid
-<%}%>   
-<br>
-<a href="/shop">back to shop </a>
+<div class="well col-lg-6 col-sm-12">
 
+    <br>注文id: <%= pid %><br>
+<%if(pid){%>
+<% for(var i=0;i<item.length;i++) {%>
+<img src="../../img/cd/<%=item[i].sku%>.png">
+<br>タイトル: <%=item[i].name%>
+<br>品番: <%=item[i].sku%>
+<br>価格: <%= (item[i].price).toLocaleString() %><%= shop.yen %>
+<br>数量: <%=item[i].quantity%><br>
+
+<%} %>   
+<%}else{ %>   
+no pid
+<%} %>   
+<br>
+<a href="/shop"><%= shop.bkshop %></a>
+
+</div>
+
+<div class="col-lg-6 col-sm-12">
+
+</div>
 
 </div>
 <% include par/2side %>

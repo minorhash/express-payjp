@@ -121,11 +121,9 @@ seltmp: mailtmp,mailadr:mailadr,
 mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
 });
 };
-
-router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
-//router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
-chk,  gcb
-]);
+var arr=[  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
+chk,  gcb]
+router.get("/shop/cart",arr );
 // ====== post ===============================
 
 // === add item ===
@@ -149,7 +147,6 @@ var insUpd = function(req, res, next) {
       var hea = res.headersSent;
       console.log("=== head ==================");
       console.log(hea);
-      res.redirect("cart");
     } else {
 mailtmp=[]
         skua=[],boa=[]
@@ -189,6 +186,7 @@ var pcb = function(req, res, next) {
     email: email
   }); //rend
 };
+
 
 
 router.post("/shop/cart", [

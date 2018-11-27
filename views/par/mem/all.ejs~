@@ -1,0 +1,23 @@
+<!-- col2 -->
+<div class="well col-sm-2 hidden-xs"></div><!-- /col2 -->
+
+<!-- col5 -->
+<div class="well col-sm-5" style="color:black">
+<img class="img-responsive" src="img/ban/photo.png"  width="650" height="366" style="" alt=""/>
+<font size="2px"><center><%=profile.PRO_CAP_ALL%></center></font>
+</div><!-- /col5 -->
+
+<!-- col3 -->
+<div class="well col-sm-3" style="color:black" align="center">
+
+<h2><b><%=profile.TIT1%></b></h2>
+<div  class="title1">
+<font size="3px"><div style="line-height:140%"><%=profile.PRO1%></div>
+</div>
+</div><!-- /col3 -->
+
+<!-- col2 -->
+<div class="well col-sm-2 hidden-xs"></div><!-- /col2 -->
+
+
+

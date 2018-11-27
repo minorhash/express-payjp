@@ -1,4 +1,4 @@
-# locart
+# loc3 - locart with bootstrap3
 ## low-carb, fat free, and no nonsense shopping cart for express
 ### express, sqlite, bootstrap3
 

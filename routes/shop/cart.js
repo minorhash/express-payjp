@@ -36,7 +36,7 @@ next()};
 
 var getTmp = function(req, res, next) {
   mailtmp = [];
-      db.delUni()
+//      db.delUni()
   if (email) {
   mailtmp = db.mailTmp(email);
   } else {    console.log("no mail");  }

@@ -10,7 +10,7 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
+<!--- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr!==null) {%> 
 <div class="label label-info">welcome:<%= usr%></div>
@@ -20,7 +20,7 @@
 <% include par/login %>
 <%} %>
 </div>
-<!--- side left ------->
+<!--- side left ----- -->
 
 <div class="col-sm-8" style="background-color:white">
 <div align="left" style="color:black">
@@ -32,7 +32,7 @@ skumer <%=skumer.name%>
 pri:<%=skumer.pri%>
 <form action="/mer/up3" method="post" >
 
-<%for(var i in skumer){%>
+    <%for(var i in skumer) {%>
 <%=i%>
 <input type="text" name='<%=i%>' value="<%=skumer[i]%>" style="color:black" ><br>
 
@@ -40,7 +40,7 @@ pri:<%=skumer.pri%>
 <input type="submit" value="submit">
 </form>
 <%}%>
-をへんこう。
+をへんこうしますか？
 </div><!-- /center-->
 
 </div><!-- /col8-->

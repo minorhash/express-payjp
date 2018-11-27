@@ -9,24 +9,38 @@
 
 <div class="container-fluid">
 <div class="row">
+<!--- side left ----- -->
+<div class="well col-md-2 col-sm-12" style="color:black">
+<% if(usr!==null) {%> 
+<div class="label label-info">welcome:<%= usr%></div>
+<br><br>
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- side left ----- -->
 
-<% include par/2side%>
 <div class="col-sm-8" style="background-color:white">
 <div align="left" style="color:black">
 
-<%=title%><br>
-品番:<%=sku%><br>
+<%=title %><br>
+<%= bod.name %><br>
+品番:<%= sku %><br>
 
-<%if(skumer){%>
-<img src="../../img/cd/<%=sku%>.png"><br>
+<%if(bod){%>
+<img src="../../img/cd/<%= bod.sku%>.png"><br>
 
 <div class="well">
-<%for(var i in skumer){%>
 
-<%=skumer[i]%><br>
+<%for(var i in bod){%>
+<%= i %>:
+<%= bod[i] %><br>
+<%}%>
 
+<%= bod.name %>
 <%}%>
-<%}%>
+
 </div>
 をついか。
 </div><!-- /center-->

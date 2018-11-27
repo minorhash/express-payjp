@@ -11,11 +11,12 @@ var snde = require('snd-ema');
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr,mailadr;
 var inspid, getpid, selpid, strbuy, strite;
-var buy, ite, oite,gpid
-var mes,sub
-var cnf=require("../son/cnf.json")
-//var sec=cnf.sec
-var sec=cnf.skl
+var buy, ite, oite,gpid;
+var mes,sub;
+var sndboo=false;
+var cnf=require("../son/cnf.json");
+//var sec=cnf.sec;
+var sec=cnf.skl;
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -63,8 +64,11 @@ console.log(oite)
 
 try{
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
-}catch(err){console.log(err)}
+sndboo=true;
+}catch(err){sndboo=false;
+console.log(err);}
 
+if(oite){
 var i18=require("../../../i18n/shop/ja.json")
 for(var i=0;i<oite.length;i++){
 
@@ -87,7 +91,7 @@ mes=i18.lin1
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
-
+}
 }
 
 
@@ -99,8 +103,10 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 //email="jinjasaisen@gmail.com"
+    if(sndboo=true){
 sub=i18.buy
 snde.trEma(email,sub,mes);
+    }else{console.log("cant send email");}
 next()};
 
 var chk = function(req, res, next) {

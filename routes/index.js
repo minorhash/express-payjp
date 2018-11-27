@@ -1,21 +1,31 @@
 var express = require('express');
 var router = express.Router();
-//var router=require("../app")
-var db = require('cardb');
-var allmer = db.allMer();
+// glob
+var par
 
-// === get
+var getPar=function(req, res, next) {
 
-var url=["","news","info","profile","disc","schedule","video","notation","mail","done"]
+par=req.params.id
+next()}
 
-for(let i=0;i<url.length;i++){
-router.get("/"+url[i],function(req,res,next) {
-res.render(url[i], {
-title:url[i],
-mer:allmer
-});
+
+var chk=function(req, res, next) {
+
+console.log(par)
+next()}
+
+// get
+var gcb= function(req, res, next) {
+
+res.render("index", {
+title: par,
+par:par,
+
 });
 }
+
+router.get('/', [getPar,chk,gcb])
+// post
 
 
 module.exports = router;

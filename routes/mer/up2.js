@@ -69,7 +69,7 @@ var chk = function(req, res, next) {
 };
 
 var cb = function(req, res, next) {
-  var robj = {
+var robj = {
     title: 'upate admin',
     usr: usr,
     sku: sku,

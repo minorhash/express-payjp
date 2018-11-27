@@ -99,8 +99,8 @@ var posUsr = function(req, res, next) {
 }; // getUsr
 
 var rcb = function(req, res) {
-  var rob = { usr: usr, mer: allmer };
-  res.render("shop", rob);
+var rob = { usr: usr, mer: allmer };
+res.render("shop", rob);
 };
 
 router.post("/shop", [getCok, posUsr, chk, rcb]);

@@ -1,6 +1,6 @@
 # locart
 ## low-carb, fat free, and no nonsense shopping cart for express
-### using express, sqlite, bootstrap3
+### express, sqlite, bootstrap3
 
 - no database server required(file based db)
 - ultra lite and fast sqlite3 db

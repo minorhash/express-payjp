@@ -6,23 +6,20 @@
 
 <div class="col-md-2 col-sm-12" style="color:black"></div>
 
-<div class="well col-md-8  col-sm-12" style="color:black">
+<div class="col-md-8  col-sm-12" style="color:black">
 
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 
+<br><br>
+
 <div style="text-align:center">
-    <%= ins %>
-<%if(ins==true){ %>
-<%= gis.reg0 %>
-<br>
-<%= gis.cnf %>
+<%if(reg){%>
+<%=reg%>
 <%}else{%>
-<%= gis.err %>
+あやまりがあります。
 <br>
-<a href="/shop/usr/sig">
-<%= gis.bck %>
-</a>
+<a href="/shop/usr/sig">もどる</a>
 <%}%>
 
 </div>

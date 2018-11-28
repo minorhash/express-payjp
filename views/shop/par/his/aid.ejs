@@ -1,0 +1,53 @@
+<h4><span class="label label-danger">paidy</span></h4>
+<%if(allpid && allpid.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div class="row">
+<div class="col-md-12">
+<%for(var i=0;i<allpid.length;i++){%>
+<font color="red">
+<b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpid[i].date%></u></b><br>
+</font>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<%=allpid[i].pid%></u><br>
+<br>
+</div></div>
+
+
+<%if(oite && oite.length!==0){%>
+<%for (var j=0;j<oite[i].length;j++){%>
+
+<div class="row">
+<div class="col-md-3">
+<div valign="top" align="center">
+<img src="../img/cd/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
+</div>
+</div>
+
+<div class="well col-md-9">
+<div class="note">
+商品タイトル：<%=oite[i][j].title%><br>
+品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
+商品単価：&nbsp;<%=oite[i][j].unit_price%>円&nbsp; (税抜）<br>
+数量：<%=oite[i][0].quantity%><br>
+<%if(allpid[i].ship==0){%>
+送料：<%=allpid[i].ship%>円<br>
+<%}else{%>
+送料：650円<br>
+<%}%>
+合計金額：<%=allpid[i].mnt.toLocaleString()%>円
+<div class="border-bottom"></div>
+</div>
+</div>
+</div>
+<%}%>
+<%}%>
+
+
+<%}%>
+
+<%} %>else<% { %><%}%>
+
+
+

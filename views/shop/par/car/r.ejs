@@ -1,59 +1,26 @@
-<% include par/head %>
-<body>
-<% include par/nav %>
+<div class="well col-md-9" style="color:black">
 
-<div class="container-fluid">
-<div class="row">
-
-<div align="right">
-<a class="<%=(lang=="ja"?"active":"")%>" href="cart?clang=ja">
-<span class="flag-icon flag-icon-jp my-big"></span>
-</a>
-
-<a class="<%=(lang=="en"?"active":"")%>" href="cart?clang=en">
-<span class="flag-icon flag-icon-gb my-big"></span>
-</a>
-</div>
-
-<!--- ------------------------------------- side left ----- -->
-<div class="col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<h5><div class="label label-info"> &nbsp;<%= usr%>&nbsp; さん </div></h5>
-<br><br>
-<% include par/out %>
-<%}else{ %>
-<% include par/login %>
-<%} %>
-</div>
-<!--- ------------------------------------- main ----- -->
-
-<div class="col-md-9" style="color:black">
 <p class="box90"><%=shop.cart%></p>
 
-
-<div class="col-md-8" style="color:black"  >
-<br>
-<%if(usr==null){%>
+<%if(!usr){%>
 ログインしてください。<br>
 <%}else{%>
 
+<div class="col-md-8">
 <%if(seltmp && mer.length!==0){%>
 <%for(var i=0;i<seltmp.length;i++){%>
 <%if(seltmp[i].uni!==0){%>
+
 <div class="col-md-4">
 <div align="center">
 <img src="../<%=mer[i].img%>" width="150" height="150" >
-
 </div>
 </div>
 
-
-<div class="col-md-8">
 
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
 単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-
 
 数量:<form method="post" action="/shop/cart">
 <input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
@@ -63,12 +30,10 @@
 
 <hr>
 
+<%}%>
+<%}%>
+
 </div>
-<br>
-
-
-<%}%>
-<%}%>
 
 <div class="col-md-12" style="color:black" align="center" >
 <form method="post" action="/shop/cart">
@@ -93,8 +58,12 @@
 
 <%if(boo){%>
 <h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
-<%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4><%}%>
-<%}else{%>no sum<%}%>
+<%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
+
+<%}%>
+<%}else{%>
+no sum
+<%}%>
 <hr>
 
 <div class="box102">
@@ -106,9 +75,13 @@
 no sum
 <%}%>
 
+
 </h4><br>
+
+
 </div>
 
+<br>
 
 <h4>【決済手段】</h4>
 
@@ -145,8 +118,8 @@ no sum
 <style="color:black">
 <form method="get" action="/shop">
 <button type="submit">ショップに戻る</button>
-</form></div>
-
+</form>
+</div>
 
 </div>
 
@@ -156,15 +129,8 @@ no sum
 
 <hr>
 
-<% include par/cart %>
-
 
 <br><br><br><br><br>
 </div>
-</div>
-</div><!--container-fluid-->
-</div><!-- row -->
-
-<div class="footer"><% include par/foot %></div>
 
 

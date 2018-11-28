@@ -3,5 +3,5 @@
 br=$(cmd/br.sh)
 echo $br
 
-git push -u origin $br
+#git push -u origin $br
 

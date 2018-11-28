@@ -15,46 +15,41 @@
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpid[i].pid%></u><br>
 </div>
-
-
 </div>
 
 <div class="row">
-<div class="col-md-3">
 
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" hight="150mm"></div>
+<%if(oite && oite.length!==0){%>
+<%for (var j=0;j<oite[i].length;j++){%>
+
+<div class="col-md-3">
+<div valign="top" align="center">
+<img src="../img/cd/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
+</div>
 </div>
 
-<div class="col-md-9">
+<div class="well col-md-9">
 <div class="note">
-
-商品タイトル：<%=oite[i][0].title%><br>
-品番：TMS-&nbsp;<%=oite[i][0].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
+商品タイトル：<%=oite[i][j].title%><br>
+品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
+商品単価：&nbsp;<%= (oite[i][j].unit_price).toLocaleString() %>円&nbsp; (税抜）<br>
+税込価格：&nbsp;<%= Math.ceil(oite[i][j].unit_price*1.08).toLocaleString() %>円&nbsp;<br>
 数量：<%=oite[i][0].quantity%><br>
-<%if(allpid[i].ship==0){%>
-送料：<%=allpid[i].ship%>円<br>
-<%}else{%>
-送料：650円<br>
-<%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
-<br>
-
 <div class="border-bottom"></div>
 
-</div></div>
-
-<div align="right" class="col-md-8">
 </div>
+</div>
+<%}%>
+
+<div align="right" class="col-md-8"></div>
 <div align="right" class="well col-md-3">
 送料：650円<br>
 小計：&nbsp;<%= (allpid[i].mnt-650).toLocaleString() %>円<br>
 合計金額：<%=allpid[i].mnt.toLocaleString()%>円<br>
 </div>
 
-<div align="right" class="col-md-1">
-</div>
-
+<div align="right" class="col-md-1"></div>
+<%}%>
 
 <%}%>
 </div>

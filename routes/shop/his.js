@@ -116,7 +116,7 @@ console.log("cancel")
 
     var max=adb.getPid(res.body.id)
     console.log(max)
-adb.delPid(res.body.id)
+//adb.delPid(res.body.id)
 }
 
 }else{console.log("not closed")}

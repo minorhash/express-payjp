@@ -102,7 +102,7 @@ var config={
 "logo_url":"http://www.paidy.com/images/logo.png",
 "closed":function(cb){
 
-var loc= "http://localhost:3023";
+var loc= "http://localhost:3000";
 
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/pid", true);
@@ -134,8 +134,8 @@ var payload={
 "order":{
 
 "items":[
-    <% for(var i=0;i<ite.length;i++){ %>
-            {
+<% for(var i=0;i<ite.length;i++){ %>
+{
 "id":"<%= ite[i].id %>",
 "quantity":"<%= ite[i].quantity %>",
 "title":"<%= ite[i].title %>",

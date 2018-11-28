@@ -4,23 +4,16 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ----- -->
-<div class="col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<div class="label label-info"><%= usr%></div>
-<br><br>
+<% include par/lang %>
 
-<% include par/out %>
-<%}else{ %>
-<% include par/login %>
-<%} %>
+<div class="col-md-2" style="color:black">
+<% include par/left %>
 </div>
-<!--- main ---- -->
 
-<div class="col-sm-8" style="color:black">
+<div class="col-md-8" style="color:black">
 
-<%if(mailusr){%>
 <div class="box90">マイページ</div>
+<%if(mailusr){%>
 <br>
 
 <div class="panel panel-default">
@@ -90,10 +83,7 @@
 </div>
 
 
-
-
-<div class="col-md-2 col-sm-12" style="color:black">
-</div></div>
+<div class="col-md-2 col-sm-12" style="color:black"></div></div>
 </div>
 <br><br>
 <div class="footer"><% include par/foot %></div>

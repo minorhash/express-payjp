@@ -36,7 +36,7 @@ app.use(
 
 //app.use('/', shop);
 // i18n ======================================
-var nat=["","mail","shop","gis"]
+var nat=["","mail","shop","gis","usr"]
 
 for(let i=0;i<nat.length;i++){
 app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),

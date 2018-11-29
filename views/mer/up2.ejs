@@ -32,15 +32,15 @@ skumer <%=skumer.name%>
 pri:<%=skumer.pri%>
 <form action="/mer/up3" method="post" >
 
-    <%for(var i in skumer) {%>
+<%for(var i in skumer) {%>
 <%=i%>
 <input type="text" name='<%=i%>' value="<%=skumer[i]%>" style="color:black" ><br>
 
 <%}%>
+を変更しますか？<br>
 <input type="submit" value="submit">
 </form>
 <%}%>
-をへんこうしますか？
 </div><!-- /center-->
 
 </div><!-- /col8-->

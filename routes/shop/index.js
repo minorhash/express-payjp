@@ -3,9 +3,7 @@ var express = require("express");
 var router = express.Router();
 // == sess =============================
 var db = require("cardb");
-
 var adb = require("usrdb");
-
 var allmer = db.allMer();
 
 var email, pss, usr;
@@ -54,47 +52,31 @@ router.get("/shop", [getEma, getUsr, chk, gcb]);
 var getCok = function(req, res, next) {
   if (req.body) {
     email = req.body.email;
-    console.log(email);
     pss = req.body.pss;
-    console.log(pss);
     if (email) {
       mailusr = adb.mailUsr(email);
-    } else {
-      console.log("no email");
-    }
+    } else {      console.log("no email");    }
 
-    if (mailusr) {
-      if (mailusr.email === req.body.email && mailusr.pss === req.body.pss) {
-        req.session.email = req.body.email;
-        req.session.pss = req.body.pss;
-      } else {
-        console.log("wrong");
-      }
-    } else {
-      console.log("no mailusr");
-    }
-  } else {
-    console.log("no req.body");
-  }
+if (mailusr.email === req.body.email && mailusr.pss === req.body.pss) {
+req.session.email = req.body.email;
+req.session.pss = req.body.pss;
+} else {console.log("wrong");}
+} else {console.log("no req.body");}
 
-  next();
+next();
 }; // getCok
 
 var posUsr = function(req, res, next) {
-  if (req.session) {
-    if (mailusr) {
-      if (mailusr.email === req.body.email && mailusr.pss === req.body.pss) {
-        usr = mailusr.name;
-      } else {
-        console.log("wrong cred");
-      }
-    } else {
-      console.log("no mailusr");
-    }
-  } else {
+if (req.session) {
+if (mailusr) {
+if (mailusr.email === req.body.email && mailusr.pss === req.body.pss) {
+usr = mailusr.name;
+} else {        console.log("wrong cred");      }
+} else {      console.log("no mailusr");    }
+} else {
     usr = null;
     console.log("no usr");
-  }
+}
   next();
 }; // getUsr
 
@@ -103,6 +85,7 @@ var rob = { usr: usr, mer: allmer };
 res.render("shop", rob);
 };
 
-router.post("/shop", [getCok, posUsr, chk, rcb]);
+var arr=[getCok, posUsr, chk, rcb];
 
+router.post("/shop",arr);
 module.exports = router;

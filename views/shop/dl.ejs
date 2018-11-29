@@ -2,20 +2,22 @@
 <html>
 <% include par/head %>
 <body>
+
 <% include par/nav %>
 
 <div class="container-fluid">
-<% include par/lang %>
 <div class="row">
 
-<div class="col-md-2" style="color:black">
+<% include par/lang %>
+
+<div class="col-md-2">
 <% include par/left %>
 </div>
 
-<div class="col-md-10" style="color:black">
-
-<div class="box90">購入履歴詳細</div><br>
-<% include par/his/main %>
+<div class="col-md-10">
+    <a href="img/cd/341.png"><%= fil %></a>
+    <br>
+    <a href="<%= path %>"><%= fil %></a>
 </div>
 
 </div><!--row-->

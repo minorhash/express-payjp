@@ -1,24 +1,26 @@
-const express = require("express");
-const router = express.Router();
+var express = require("express");
+// var cookie = require('cookie');
+var router = express.Router();
 // == sess =============================
-const db = require("cardb");
-const adb = require("usrdb");
-let allmer = db.allMer();
-let email="", pss="", usr="";
-let mailusr="";
+var db = require("cardb");
+var adb = require("usrdb");
+var allmer = db.allMer();
+
+var email, pss, usr;
+var mailusr;
 
 // === login ============================
-const cred = require("./js/cred");
+var cred = require("./js/cred");
 
 // === get ============================
 
-const getEma = (req, res, next)=> {
+var getEma = function(req, res, next) {
   email = cred.ema(req);
   mailusr = adb.mailUsr(email);
   next();
 };
 
-const getUsr = function(req, res, next) {
+var getUsr = function(req, res, next) {
   if (mailusr) {
     usr = mailusr.name;
   } else {
@@ -28,7 +30,7 @@ const getUsr = function(req, res, next) {
   next();
 };
 
-const chk = function(req, res, next) {
+var chk = function(req, res, next) {
   console.log("=== get shop ===");
   console.log(email);
   console.log(usr);
@@ -36,7 +38,7 @@ const chk = function(req, res, next) {
   next();
 }; // chkEma
 
-const gcb = function(req, res) {
+var gcb = function(req, res) {
   res.render("shop", {
     title: "shop",
     mer: allmer,
@@ -47,7 +49,7 @@ router.get("/shop", [getEma, getUsr, chk, gcb]);
 
 // == post ==================================
 
-const getCok = function(req, res, next) {
+var getCok = function(req, res, next) {
   if (req.body) {
     email = req.body.email;
     pss = req.body.pss;
@@ -64,20 +66,26 @@ req.session.pss = req.body.pss;
 next();
 }; // getCok
 
-const posUsr = function(req, res, next) {
+var posUsr = function(req, res, next) {
+if (req.session) {
+if (mailusr) {
 if (mailusr.email === req.body.email && mailusr.pss === req.body.pss) {
 usr = mailusr.name;
 } else {        console.log("wrong cred");      }
-
+} else {      console.log("no mailusr");    }
+} else {
+    usr = null;
+    console.log("no usr");
+}
   next();
 }; // getUsr
 
-const rcb = function(req, res) {
-const obj = { usr: usr, mer: allmer };
+var rcb = function(req, res) {
+var obj = { usr: usr, mer: allmer };
 res.render("shop", obj);
 };
 
-const arr=[getCok, posUsr, chk, rcb];
+var arr=[getCok, posUsr, chk, rcb];
 
 router.post("/shop",arr);
 module.exports = router;

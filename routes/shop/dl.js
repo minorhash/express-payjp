@@ -1,24 +1,24 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var email;
+const email="";
 
-var chk = function(req, res, next) {
-    email="jinjasaisen@gmailcom";
+const chk = function(req, res, next) {
+email="jinjasaisen@gmailcom";
 console.log(email);
 
   next()};
 
-var rcb = function(req, res, next) {
-    var sku="341";
-var fil=sku+".png";
-var path="img/cd/"+fil;
+const rcb = function(req, res, next) {
+    const sku="341";
+const fil=sku+".png";
+const path="img/cd/"+fil;
 
-var obj={email: email,fil:fil,path:path}
+const obj={email: email,fil:fil,path:path}
 res.download(path)
 res.render('shop/dl',obj ); //rend
 };
-var arr=[chk, rcb]
+const arr=[chk, rcb]
 router.get('/shop/dl',arr ); //
 
 module.exports = router;

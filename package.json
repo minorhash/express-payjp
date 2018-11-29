@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "babel pulic/src -d public/lib"
+    "build": "babel public/src -d public/lib"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",

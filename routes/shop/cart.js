@@ -1,69 +1,67 @@
-var express = require("express");
-var router = express.Router();
-var crypto = require("crypto");
+const express = require("express");
+const router = express.Router();
+const crypto = require("crypto");
 // == db =============================
-var db = require("cardb");
-var adb = require("usrdb");
-var idy = require("aidy");
-var taid = idy.tmpAid();
+const db = require("cardb");
+const adb = require("usrdb");
+const idy = require("aidy");
+let taid = idy.tmpAid();
 // === glob ============================
-var email, usr, sku, uni, sum, tsum,stax
-var num,boo
-var mailtmp, mailusr;
-var mer = [],  suma = [],  skua = [],boa=[];
-var mailtmp, mailusr,mailadr
-var cla;
-var cnf= require('./son/cnf.json');
+let email="", pss="", usr="";
+let sku="", uni="", sum="", tsum="",stax=""
+let num=""
+let mer = [],  suma = [],  skua = [],boa=[];
+let mailtmp=[], mailusr=[],mailadr=[]
+let cla="";
+const cnf= require('./son/cnf.json');
 
-var cred = require("./js/cred");
+const cred = require("./js/cred");
 // === get ============================
 
-
-var getEma = function(req, res, next) {
+const getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-console.log(email)
 next()}
 
-var getUsr = function(req, res, next) {
+const getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()}
 
-var getAdr= function(req, res, next) {
+const getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)
 next()};
 
-var getTmp = function(req, res, next) {
-  mailtmp = [];
+const getTmp = function(req, res, next) {
+mailtmp = [];
 //      db.delUni()
   if (email) {
   mailtmp = db.mailTmp(email);
   } else {    console.log("no mail");  }
   next()};
 
-var getSku= function(req, res, next) {
+const getSku= function(req, res, next) {
     skua=[]
 if (mailtmp) {
-for(var i=0;i<mailtmp.length;i++){
+for(let i=0;i<mailtmp.length;i++){
 skua.push(mailtmp[i].sku)
 }
-  } else {    console.log("mailtmp");  }
+} else {    console.log("mailtmp");  }
   next()};
 
-var putMer = function(req, res, next) {
+const putMer = function(req, res, next) {
 mer = [];
 if (mailtmp) {
-for (var i = 0; i < mailtmp.length; i++) {
+for (let i = 0; i < mailtmp.length; i++) {
 mer[i] = db.skuMer(mailtmp[i].sku);
 }
 }else {    console.log("no mailtmp");  }
 next()};
 
-var putSum = function(req, res, next) {
+const putSum = function(req, res, next) {
   suma = [];
   if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
+    for (let i = 0; i < mailtmp.length; i++) {
       suma[i] = mailtmp[i].uni * mer[i].pri;
     }
   } else {    console.log("no mailtmp");  }
@@ -71,42 +69,34 @@ var putSum = function(req, res, next) {
 
 // === chk dl ===
 // check for dl mer. if sku is 4 digit, then its dl.
-var chkSh = function(req, res, next) {
+const chkSh = function(req, res, next) {
     boa=[]
-  for (var i = 0; i < skua.length; i++) {
-    var pat = /^\d{3}$/;
+  for (let i = 0; i < skua.length; i++) {
+    const pat = /^\d{3}$/;
     boa.push(pat.test(skua[i]));
     }
 
-console.log(boa.indexOf(true))
-if(boa.indexOf(true)==-1){
-boo=1
-}else{boo=0}
-
 next()};
 
-var redSum = function(req, res, next) {
+const redSum = function(req, res, next) {
   sum = null, tsum = null
   function getSum(total, num) {    return total + num;  }
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
 
-if(boo==0){
-    console.log(boo)
     tsum = sum + 650;
-}else{tsum=sum;}
 
 } else {    console.log("no sum");  }
 next()};
 
-var getHea= function(req, res, next) {
+const getHea= function(req, res, next) {
 cla=req.header("accept-language");
-    console.log(cla);
+console.log(cla);
 
 next()};
 
 // === chk ===============================
-var chk = function(req, res, next) {
+const chk = function(req, res, next) {
   console.log("=== cart ===================");
   console.log(email);
   console.log("=== mailtmp ===");
@@ -115,20 +105,22 @@ var chk = function(req, res, next) {
     next()};
 
 // === rend
-var gcb = function(req, res) {
-res.render("shop/cart", {
+const gcb = function(req, res) {
+let obj={
 seltmp: mailtmp,mailadr:mailadr,
-mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
-});
+mer: mer,    sum: sum,tsum:tsum,
+usr: usr,    email: email
+}
+res.render("shop/cart",obj );
 };
-var arr=[  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
+let arr=[  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
 chk,  gcb]
 router.get("/shop/cart",arr );
 // ====== post ===============================
 
 // === add item ===
 
-var getIte = function(req, res, next) {
+const getIte = function(req, res, next) {
   if (req.body) {
     uni = req.body.uni;
     sku = req.body.sku;
@@ -137,14 +129,14 @@ var getIte = function(req, res, next) {
   }
   next()};
 
-var insUpd = function(req, res, next) {
+const insUpd = function(req, res, next) {
   if (req.body.sku) {
     num = parseInt(sku);
-    var ind = skua.indexOf(num);
+    const ind = skua.indexOf(num);
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
-      var hea = res.headersSent;
+      const hea = res.headersSent;
       console.log("=== head ==================");
       console.log(hea);
     } else {
@@ -152,7 +144,7 @@ mailtmp=[]
         skua=[],boa=[]
       db.updTmp(uni, email, sku);
       db.delUni()
-      var hea = res.headersSent;
+      const hea = res.headersSent;
       console.log(hea);
       res.redirect("cart");
     } //ind
@@ -162,7 +154,7 @@ mailtmp=[]
   next()}; //insUpd
 
 // === clr ===============================
-var clrEma = function(req, res, next) {
+const clrEma = function(req, res, next) {
   if (req.body.clr == "yes") {
     db.delEma(email);
     //    sku=null
@@ -175,23 +167,22 @@ var clrEma = function(req, res, next) {
 
 // === aid ===============================
 
-var putAid = function(req, res, next) {
+const putAid = function(req, res, next) {
   router.put("/shop/aid/aid");
   next()};
 
-
-var pcb = function(req, res, next) {
-  res.render("shop/cart", {
+const pcb = function(req, res, next) {
+  obj={
       seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
     email: email
-  }); //rend
+  }
+  res.render("shop/cart",obj ); //rend
 };
 
-
-
-router.post("/shop/cart", [
+arr=[
   getEma,  getUsr,  getTmp,  getIte,  getSku, chkSh, insUpd,  clrEma,
   chk,  pcb
-]);
+]
+router.post("/shop/cart",arr );
 
 module.exports = router;

@@ -26,9 +26,8 @@ next()};
 
 // === pal
 const allPal= function(req, res, next) {
-    opal=[]
-
-    allpal=adb.allPal(email)
+opal=[]
+allpal=adb.allPal(email)
 
 if(!allpal.length==0){
 for(let i=0;i<allpal.length;i++){
@@ -51,47 +50,10 @@ console.log(cnf.skl)
 oite=[]
 for (let i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
-            console.log(allpid[i].pid)
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-//console.log(res.body.order.shipping)
-})
+console.log(allpid[i].pid)
 }//for
 
 }//else
-next()}
-
-const capAut= function(req, res, next) {
-
-for (const i = 0; i < allpid.length; i++) {
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-if(res.body.status=="authorized"){
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-
- console.log("captured!!!")
-})
-
-}else{
- console.log("no auth")
-}
-
-})
-}
-
 next()}
 
 const chkCap= function(req, res, next) {
@@ -110,10 +72,7 @@ if(res.body.status=="closed"){
 if(res.body.captures.length!==0){
 console.log("cap!!!")
 }else{
-
 console.log(res.body.id)
-
-//adb.delPid(res.body.id)
 }
 
 }else{console.log("not closed")}

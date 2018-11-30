@@ -6,9 +6,9 @@ const db = require('cardb');
 const adb = require('usrdb');
 
 // === glob ===
-const email="", usr="", sku="", sum="";
-const mailtmp=[], mailusr=[], mailadr=[];
-const mer = [],  suma = [],  sku_a = [];
+let email="", usr="", sku="", sum="";
+let mailtmp=[], mailusr=[], mailadr=[];
+let mer = [],  suma = [],  sku_a = [];
 
 // === cred ===
 

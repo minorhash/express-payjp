@@ -2,27 +2,35 @@
 <% include par/nav %>
 <body>
 <div class="container-fluid">
+<div align="right">
+
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/my?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop/my?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+
+</div>
+
 <div class="row">
-
-<!--- side left ----- -->
-
-
-<% include par/lang %>
-
 <div class="col-md-2" style="color:black">
 <% include par/left %>
 </div>
 
+
+<!--- side left ----- -->
+
 <div class="col-md-10" style="color:black">
-<div class="box90">マイページ</div>
+    <div class="box90"><%= shop.mypage %></div>
 <br>
 <% if(usr) {%> 
 <% include par/my/main %> 
 
 <%}else{%>
 <span style="color:black">
-    <br>
-ログインしてください。
+    <%= shop.login %>
 </span>
 <%}%>
 <br>

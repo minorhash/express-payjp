@@ -6,7 +6,19 @@
 <% include par/nav %>
 
 <div class="container-fluid">
-<% include par/lang %>
+<div align="right">
+
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/cart?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop/cart?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+
+</div>
+
+
 <div class="row">
 
 <div class="col-md-2" style="color:black">

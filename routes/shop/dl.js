@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const url = require('url');
 
-const email="";
+let email="";
 
 const chk = function(req, res, next) {
 email="jinjasaisen@gmailcom";
@@ -10,7 +11,7 @@ console.log(email);
   next()};
 
 const rcb = function(req, res, next) {
-    const sku="341";
+const sku="341";
 const fil=sku+".png";
 const path="img/cd/"+fil;
 

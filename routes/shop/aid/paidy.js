@@ -3,60 +3,46 @@ var router = express.Router();
 // == db =============================
 var db = require('cardb');
 var adb = require('usrdb');
-var idy = require('aidy');
-var taid = idy.tmpAid();
+var aid = require('aidy');
+var taid = aid.tmpAid();
+var cnf= require('../son/aid.json');
+//var pub=cnf.pub;
+var pub=cnf.pkl;
 
-// === post ============================
-var email, usr, sku, uni, sum, tsum
+var cred = require('../js/cred');
+// === put ===
+
+var email, usr, sku, sum,tsum,adr
+var son,    sson
+var boa,ind,tax
 var mailtmp, mailusr, mailadr,mailson;
-var mer = [],  suma = [],  skua = [],  unia = [],  numa = [], boa=[];
-var emp, ind, boo;
+var mer = [],  suma = [],  skua = [],ite=[]
 
 var getEma = function(req, res, next) {
-    var cred = require("../js/cred")
-    email = cred.ema(req)
+email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-    next()
-} //getEma
+next()}
 
 var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
-else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
+if(mailusr){usr=mailusr.name}
+else{console.log("no mailusr")}
 next()};
 
+var getAdr = function(req, res, next) {
+if(email){mailadr = adb.mailAdr(email);}
+else{console.log("no email for adr")}
+
+  if (mailadr == null) {
+    console.log('=== adr null ===');
+  }
+next()};
 
 var getTmp = function(req, res, next) {
-  if (email) {
-mailtmp = db.mailTmp(email);
-  } else {    console.log('no mail for tmp');  }
-  db.delUni();
-  next()};
-
-
-var getAdr = function(req, res, next) {
-  if (email) {
-      mailadr = adb.mailAdr(email);
-  } else {    console.log('no mail for adr');  }
-  if (mailadr == undefined) {
-    res.redirect('usr/adr');
-  }
-  next()};
-
-// === sum
-var putSum = function(req, res, next) {
-  if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
-      mer[i] = db.skuMer(mailtmp[i].sku);
-      suma[i] = mailtmp[i].uni * mer[i].pri;
-    }
-  } else {    console.log('no mailtmp');  }
+    mailtmp = db.mailTmp(email);
   next()};
 
 var putMer = function(req, res, next) {
-    mer=[]
-    skua=[]
+    mer=[],    skua=[]
   for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuMer(mailtmp[i].sku);
 skua.push(mer[i].sku)
@@ -65,21 +51,27 @@ skua.push(mer[i].sku)
 
 var chkSh= function(req, res, next) {
 
-console.log("=== chk ship  ===")
 boa=[]
 for(var i=0;i<skua.length;i++){
 
+console.log("=== chk dl ===")
 var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
-console.log(test)
 boa.push(test)
 }
-console.log(boa)
-boo=boa.indexOf(true)
-console.log("boo")
-console.log(boo)
+ind=boa.indexOf(true)
+    console.log("ind")
+    console.log(ind)
 
 next()};
+
+var putSum = function(req, res, next) {
+    suma=[]
+  for (var i = 0; i < mailtmp.length; i++) {
+    suma[i] = mailtmp[i].uni * mer[i].pri;
+  }
+  next()};
+// === chk dl ===
 
 var redSum = function(req, res, next) {
     function getSum(total, num) {
@@ -87,48 +79,100 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(boo==0){tsum=sum+650}
-else{tsum=sum}
+tax=Math.round(sum*0.08)
+if(ind!==-1){tsum=sum+tax+650;
+
+// taid.buyer.email = email;
+// taid.buyer.name1 = mailusr.name;
+taid.amount = tsum;
+}
+else{tsum=Math.round(sum*1.08)
+taid.amount = tsum;
+
+}
     } else {
       console.log('no sum');
     }
   next()};
 
-// === add item ===
-var putSku = function(req, res, next) {
-  if (mailtmp) {
-    for (var i = 0; i < mailtmp.length; i++) {
-      skua[i] = mailtmp[i].sku;
-      unia[i] = mailtmp[i].uni;
-    } //for
-    //console.log(unia);
-  } else {    console.log('no mailtmp');  }
+var getTai = function(req, res, next) {
+  taid.amount = tsum;
+  // // buyer
+  taid.buyer.email = email;
+  taid.buyer.name1 = mailusr.name;
 
+  if (mailadr) {
+    taid.buyer.phone = mailadr.phn;
+  } else {
+    console.log('=== mailadr null ===');
+  }
+
+  // === buyer_data ===
+  var d = new Date();
+  taid.buyer_data.age = d.getDate();
+  taid.buyer_data.ltv = tsum;
+  taid.buyer_data.last_order_amount = tsum;
+  taid.buyer_data.last_order_at = d.getDate();
   next()};
 
+//=============================================== putTai
+var putTai = function(req, res, next) {
+taid.order.tax=Math.round(sum*0.08)
 
-var getSon= function(req, res, next) {
-mailson=db.mailSon(email).son
+if(ind!==-1){  taid.order.shipping = 650;}
+else{  taid.order.shipping = 0;}
+
+for (var i = 0; i < mer.length; i++) {
+    //
+taid.order.items[i] = {
+id: mer[i].sku.toString(),
+quantity: mailtmp[i].uni,
+title: mer[i].name,
+unit_price: mer[i].pri,
+      //
+};
+} //for
+
+ if (mailadr) {
+     taid.shipping_address.line1 = mailadr.ln1;
+     taid.shipping_address.line2 = mailadr.ln2;
+     taid.shipping_address.city = mailadr.city;
+     taid.shipping_address.state = mailadr.sta;
+     taid.shipping_address.zip = mailadr.zip;
+ } else {
+     console.log('=== mailadr null ===');
+ }
+
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== chk paidy ===');
-console.log(mailtmp);
-console.log(mailson)
+console.log('=== PAIDY ====================================');
+//console.log(son)
+console.log(pub)
+console.log(email)
 console.log(tsum)
+console.log(taid.amount)
+//console.log(mer)
+//console.log(mailadr)
+console.log(taid.order.shipping)
+console.log(taid.order.tax)
+console.log(taid.order.items)
+
 next()};
 
-// === rend
+var gcb = function(req, res) {
+res.render("shop/paidy", {
+title: "paidy", email:email,usr: usr,
+seltmp:mailtmp,mer:mer,
+mailadr:mailadr,ite:taid.order.items,
+sum:sum,tsum:tsum,tax:tax,
+pub:pub,ship:taid.order.shipping
 
-var pcb = function(req, res, next) {
-res.render('shop/paidy', {
-seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,mailson:mailson,usr: usr
-}); //rend
-};
+})
+}
+var fun= [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
+    chk,gcb]
+router.get("/shop/paidy",fun); //put
 
-router.get('/shop/paidy',
-[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,  getSon,
-    chk,  pcb,]);
-//router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 
 module.exports = router;

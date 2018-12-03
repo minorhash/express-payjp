@@ -1,0 +1,24 @@
+<div class="container-fluid">
+<div class="row">
+<br>
+<%if(seltmp && mer.length!==0){%>
+<div class="col-md-8">
+<% include ./img %>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+    <div class="card-body bg-light">
+<% include ./sum %>
+</div>
+</div>
+</div>
+
+<% include ./pay %>
+
+<%}else{%>カートは空です。<%}%>
+</div>
+
+</div>
+</div>
+

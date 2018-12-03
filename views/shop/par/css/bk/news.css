@@ -1,0 +1,12 @@
+
+.style1 {
+        font-size:14px;
+	padding-bottom: 5px;
+        font-family:'Ludica Sans Unicode',sans-serif;
+	border-bottom: thin dotted rgba(0,0,0,0.39);
+        width:100%
+	padding-top: 5px;
+        margin-left:10px;
+	box-sizing: border-box;
+        
+}

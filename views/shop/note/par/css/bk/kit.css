@@ -1,0 +1,435 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+body {
+	-webkit-font-smoothing: antialiased;
+	font-size: 13px;
+	line-height: 1.8;
+	font-family: Lato,"Noto sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+/*	color: #000000; */
+	background-color: #FFFFFF;
+	margin: 0px;
+	-webkit-text-size-adjust: 100%;
+/*	background-image: url(../img/bg.png); */
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: 50% 0%;
+}
+a {
+	-webkit-transition: border-color 0.3s linear, color 0.3s linear, background-color 0.3s linear, opacity 0.3s linear;
+	-webkit-transition-delay: 0s, 0s, 0s, 0s;
+	-moz-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	-o-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+}
+a:link,
+a:visited {
+/*	color: #000000; */
+/*	text-decoration: underline; */
+}
+
+a:hover,
+a:active  {
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+#globalnavi {
+/*	color: #000000;*/
+	text-align: center;
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+#globalnavi td a{
+	display: block;
+	color: rgba(0,0,0,0.39);
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all 0.5s linear;
+	height: 70px;
+	vertical-align: middle;
+	line-height: 70px;
+	padding-right: 28px;
+	padding-left: 28px;
+	font-family: 'Averia Serif Libre', cursive;
+	font-size: 17px;
+	font-style: normal;
+	font-weight: lighter;
+	font-variant: normal;
+	text-transform: none;
+	border-right: 1px solid rgba(0,0,0,0.20);
+}
+#globalnavi td:first-child a{
+	border-left: 1px solid rgba(0,0,0,0.20);
+}
+
+#globalnavi td a:hover{
+	background-color: rgba(0,0,0,0.10);
+	color: rgba(0,0,0,1.00);
+}
+#page-top {
+	position: fixed;
+	font-size: 14px;
+	left: 50%;
+	width: 100px;
+	margin-left: 390px;
+	margin-bottom: 0px;
+	box-sizing: border-box;
+}
+#page-top a {
+	background-color: rgba(255,255,255,0.40);
+	font-family: 'Averia Serif Libre', cursive;
+	text-decoration: none;
+	color: rgba(0,0,0,0.39);
+	width: 100px;
+	text-align: center;
+	display: block;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 0;
+	font-size: 14px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.39);
+	box-sizing: border-box;
+}
+#page-top a:hover {
+	text-decoration: none;
+	background-color: rgba(0,0,0,0.39);
+	color: rgba(0,0,0,1.00);
+	border-style: solid;
+	border-color: rgba(0,0,0,1.00);
+	box-sizing: border-box;
+}
+.header {
+	background-color: rgba(100,100,100,0.0);
+}
+img{
+	border:0;
+	vertical-align:middle;
+	}
+	a:hover img{
+    opacity:0.7;
+    -moz-opacity:0.7;
+    filter:alpha(opacity = 70);
+	-webkit-transition: border-color 0.3s linear, color 0.3s linear, background-color 0.3s linear, opacity 0.3s linear;
+	-webkit-transition-delay: 0s, 0s, 0s, 0s;
+	-moz-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	-o-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+}
+a img{
+	-webkit-transition: border-color 0.3s linear, color 0.3s linear, background-color 0.3s linear, opacity 0.3s linear;
+	-webkit-transition-delay: 0s, 0s, 0s, 0s;
+	-moz-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	-o-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+}
+.topbottom_pad {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.logo {
+	padding: 0px;
+}
+.title1 {
+	font-size: 18px;
+	color: black;
+/*	font-family: 'Averia Serif Libre', cursive; */
+	padding-left: 10px;
+/*	background-color: rgba(255,255,255,0.2); */
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.style1 {
+        font-size:14px;
+	padding-bottom: 5px;
+        font-family:'Ludica Sans Unicode',sans-serif;
+	border-bottom: thin dotted rgba(0,0,0,0.39);
+        width:100%
+	padding-top: 5px;
+        margin-left:10px;
+	box-sizing: border-box;
+}
+.title2 {
+	font-size: 20px;
+	color: black;
+	font-variant: normal;
+	font-weight: bold;
+}
+.style2 {
+	padding-bottom: 10px;
+	border: medium solid rgba(0,0,0,0.10);
+        font-size:14px;
+        font-family:'Ludica Sans Unicode',sans-serif;
+        width:100%;
+        padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+.title3 {
+	font-size: 22px;
+	color: #FFF;
+	font-family: 'Averia Serif Libre', cursive;
+	padding-left: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,ff0000+100&0+0,0.22+100 */
+
+background: -moz-linear-gradient(top,  rgba(255,0,0,0) 0%, rgba(255,0,0,0.22) 100%); /* FF3.6-15 */
+
+background: -webkit-linear-gradient(top,  rgba(255,0,0,0) 0%,rgba(255,0,0,0.22) 100%); /* Chrome10-25,Safari5.1-6 */
+
+background: linear-gradient(to bottom,  rgba(255,0,0,0) 0%,rgba(255,0,0,0.22) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ff0000', endColorstr='#38ff0000',GradientType=0 ); /* IE6-9 */
+
+
+	text-align: left;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	width: 980px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+	box-sizing: border-box;
+}
+.style3 {
+	padding: 15px;
+	background-color: rgba(0,0,0,0.2);
+	border: thick solid rgba(255,255,255,0.1);
+	margin-bottom: 15px;
+}
+.foot1 {
+	text-align: right;
+	border-top: thin dotted rgba(0,0,0,0.39);
+	margin-top: 10px;
+}
+.title4 {
+	font-size: 20px;
+	color: #000000;
+	font-weight: bold;
+	border-bottom: thin dotted rgba(0,0,0,0.39);
+	margin-bottom: 10px;
+}
+.title5 {
+	font-size: 18px;
+	color: #000000;
+	font-family: 'Averia Serif Libre', cursive;
+	padding-left: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.15+100 */
+
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#26000000',GradientType=0 ); /* IE6-9 */
+	text-align: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+/*	width: 980px;*/
+	margin-right: auto;
+	margin-left: 0px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	border-bottom-width: medium;
+	border-bottom-style: solid;
+	vertical-align: 110px;
+	margin-top: 10px;
+}
+.title5 img {
+	vertical-align: bottom;
+}
+.title5_l {
+	font-size: 18px;
+	color: #000000;
+	font-family: 'Averia Serif Libre', cursive;
+	padding-left: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.15+100 */
+
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#26000000',GradientType=0 ); /* IE6-9 */
+	text-align: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	width: 640px;
+	margin-right: auto;
+	margin-left: 0px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	border-bottom-width: medium;
+	border-bottom-style: solid;
+	vertical-align: 110px;
+	margin-top: 10px;
+}
+.title5_l img {
+	vertical-align: bottom;
+}
+.title5_r {
+	font-size: 18px;
+	color: #000000;
+	font-family: 'Averia Serif Libre', cursive;
+	padding-left: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.15+100 */
+
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#26000000',GradientType=0 ); /* IE6-9 */
+	text-align: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	width: 320px;
+	margin-right: 0px;
+	margin-left: auto;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	border-bottom-width: medium;
+	border-bottom-style: solid;
+	vertical-align: 110px;
+	margin-top: 10px;
+}
+.title5_r img {
+	vertical-align: bottom;
+}
+.title6 {
+	font-size: 18px;
+	color: #900;
+}
+.footer {
+	font-size: 12px;
+	text-align: left;
+	margin: auto;
+/*	width: 980px;*/
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+.footer1{
+        line-height: 1.5;
+}
+
+
+
+/*アコーディオン*/
+.panel-heading {
+	cursor:pointer;
+}
+
+.accordion-toggle a:after {
+         font-family:'Glyphicons Halflings';
+         content:"\e113";
+         float:right;
+         color:inherit;
+ }
+
+.accordion-toggle a.collapsed:after {
+	font-family:'Glyphicons Halflings';
+	content:"\e114";
+	float:right;
+	color:inherit;
+}
+
+
+
+.title4# {
+	font-size:12px;
+	color:#000000;
+	font-weight:bold;
+	border-bottom:thin dotted rgba(0,0,0,0,39);
+	margin-bottom:10px;
+
+}
+
+.box9 {
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    color: #000000;
+    background: #f7f7f7;
+    border-top: dotted 2px #616363;
+    font-family: 'Ludica Sans Unicode', sans-serif;
+    font-size:15px;
+
+
+}
+.box9 p {
+    margin: 0; 
+    padding: 0;
+}
+
+
+/*プロフィール*/
+
+.content1 {line-height:100%}
+
+.example img {
+width:150;
+}
+
+.box1{
+ display:inline-block;
+ text-align:center;
+}
+
+
+
+h2{
+position: relative;
+display: inline-block;
+padding: 0 2.5em;
+text-align: center;
+font-size: 20px;
+
+}
+
+h2:before, h2:after{
+content: '';
+position: absolute;
+top: 50%;
+display: inline-block;
+width: 15%;
+height: 1px;
+background-color: #000000;
+}
+
+h2:before {left:0;}
+h2:after {right: 0;}
+
+/*VIDEO*/
+
+.title32 {
+	font-size: 15px;
+	color: black;
+	font-variant: normal;
+	font-weight: ;
+        text-align: center;
+        line-height: 150%
+}
+
+.movie-wrap {
+     position: relative;
+     padding-bottom: 56.25%; /*アスペクト比 16:9の場合の縦幅*/
+     height: 0;
+     overflow: hidden;
+}
+ 
+.movie-wrap iframe {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+
+}

@@ -3,13 +3,13 @@
 <% include par/head %>
 <body>
 
-<!--menu-->
 <% include par/nav %>
-<!--menu-->
 
 <div class="container-fluid">
+<% include par/lang %>
 <div class="row">
 
+<<<<<<< HEAD
 <!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% include par/usr %>
@@ -47,17 +47,21 @@ TMS-<%=mer[i].sku%></div>
 <%}%>
 
 
+=======
+<div class="col-sm-2">
+<% include par/left %>
+</div>
+
+<div class="col-sm-10">
+<% include par/ite %>
+</div>
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
 </div><!--row-->
-
-
 </div><!-- /container -->
 
-<br><br><br><br><br><br><br><br><br><br>
 
-<div class="footer">
 <% include par/foot %>
-</div>
 
 
 </body>

@@ -1,5 +1,4 @@
-#if [ -z $1 ];then
-    #echo "usage"
-#else
+dir=$(pwd)
+str=${dir: -4}
+echo $str
 git add .
-#fi

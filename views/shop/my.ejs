@@ -2,6 +2,7 @@
 <% include par/nav %>
 <body>
 <div class="container-fluid">
+<<<<<<< HEAD
 <div class="row">
 
 <!--- side left ----- -->
@@ -16,6 +17,33 @@
 <div class="card-header">
 マイページ
 </div>
+=======
+<div align="right">
+
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/my?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop/my?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+
+</div>
+
+<div class="row">
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div>
+
+
+<!--- side left ----- -->
+
+<div class="col-md-10" style="color:black">
+    <div class="box90"><%= shop.mypage %></div>
+<br>
+<% if(usr) {%> 
+<% include par/my/main %> 
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
 <div class="card-body">
 <%if(mailusr){%>
@@ -29,6 +57,7 @@
    <li class="list-group-item">住所1 :&nbsp;&nbsp; <%=mailadr.ln2%> </li> 
    <li class="list-group-item"> 建物名:&nbsp;&nbsp; <%=mailadr.ln1%> </li> 
 <%}else{%>
+<<<<<<< HEAD
 住所が登録されていません。<br><br>
 <a href="usr/adr">登録する</a>
 <%}%>
@@ -39,12 +68,20 @@
 <%}else{%>
 ログインしてください。
 
+=======
+<span style="color:black">
+    <%= shop.login %>
+</span>
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 <%}%>
 <br>
 </div>
+<!-- row -->
 </div>
+<!-- cont -->
 
 
+<<<<<<< HEAD
 
 
 <div class="col-md-12" style="color:black" align="center" >
@@ -65,5 +102,8 @@
 </div>
 <br><br>
 <div class="footer"><% include par/foot %></div>
+=======
+<% include par/foot %>
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
 

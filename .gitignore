@@ -1,6 +1,6 @@
 public/img
 routes/shop/son
-
+node_modules
 ### bk
 routes/bk
 routes/shop/bk

@@ -1,0 +1,22 @@
+
+<div class="box93">
+<%if(sum){%>
+<h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h3>
+<h4>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
+<%=stax%>
+&nbsp;円 </h4>
+
+<h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
+<%}else{%>no sum<%}%>
+
+<div class="box102">
+<%if(tsum){%> 
+<h4>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
+<br>
+<%=(tsum+stax).toLocaleString()%> &nbsp;円</div>
+<%}else{%>
+no sum
+<%}%>
+
+</h4><br>
+

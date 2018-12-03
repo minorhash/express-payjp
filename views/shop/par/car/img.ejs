@@ -1,0 +1,32 @@
+<!-- <%for(var i=0;i<seltmp.length;i++){%> -->
+<%if(seltmp[i].uni!==0){%>
+
+<div class="row">
+
+<div class="col-md-4">
+<div align="center">
+<img src="../<%=mer[i].img%>" width="150" height="150" >
+</div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+    <div class="card-body bg-light">
+商品名：&nbsp;  <%=mer[i].name%><br>
+商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
+単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+
+数量:<form method="post" action="/shop/cart">
+<input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
+<input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
+<button type="submit" >再計算</button>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+
+<%}%>
+<!-- <%}%> -->
+

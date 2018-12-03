@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<body>
+
+<% include par/nav %>
+
+<div class="container-fluid">
+<div align="right">
+
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+
+</div>
+
+<div class="row">
+
+
+<div class="col-md-2">
+<% include par/left %>
+</div>
+
+<div class="col-md-10">
+    <a href="img/cd/341.png"><%= fil %></a>
+    <br>
+    <a href="<%= path %>"><%= fil %></a>
+</div>
+
+</div><!--row-->
+</div><!-- /container -->
+
+
+<% include par/foot %>
+
+
+</body>
+

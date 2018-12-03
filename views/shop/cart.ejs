@@ -1,8 +1,12 @@
+<!DOCTYPE html>
+<html>
 <% include par/head %>
 <body>
+
 <% include par/nav %>
 
 <div class="container-fluid">
+<<<<<<< HEAD
 <div class="row">
 
 <!--- ------------------------------------- side left ----- -->
@@ -34,21 +38,69 @@
 </form></div>
 
 </div>
+=======
+<div align="right">
 
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/cart?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop/cart?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+
+</div>
+
+
+<div class="row">
+
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div>
+
+<div class="col-md-10" style="color:black">
+<p class="box90"><%=shop.cart%></p>
+<% include par/car/main %>
+<br>
+
+<div class="col-md-12" style="color:black">
+<% include par/car/bk %>
+</div>
+<!-- row -->
+</div>
+
+
+<div class="well row">
+<div class="col-md-2" style="color:black"></div>
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
+
+<div class="col-md-8" style="color:black">
+<% include par/car/not %>
 </div>
 </div>
 
+<<<<<<< HEAD
 <!-- col1 -->
 <div class="col-md-1 hidden-xs"></div><!-- /col1-->
 
 <hr>
 
 <% include par/cart %>
+=======
+<div class="col-md-2" style="color:black"></div>
+</div><!--row-->
+</div><!-- /container -->
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
+<% include par/foot %>
 
+<<<<<<< HEAD
 </div><!-- row -->
 </div><!--container-fluid-->
 
 <div class="footer"><% include par/foot %></div>
+=======
+>>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
+</body>
 

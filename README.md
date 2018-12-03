@@ -116,7 +116,3 @@ merch images.
 you need to prepare your own.
 ```
 
-=======
-# 4loc
-locart with bootstrap4
->>>>>>> 19dd829c82cf12b9c93e6431c526f4a5d17c82ee

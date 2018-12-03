@@ -5,17 +5,16 @@ var router = express.Router();
 // === get ============================
 
 var chk = function(req, res, next) {
-  console.log('===email');
-  console.log(email);
-  console.log(usr);
+  console.log('=== guide');
   next();
 }; //chkEma
 
 var rcb = function(req, res) {
-  res.render('shop/note/guide', {
-    title: 'guide',
-  });
+res.render('shop/note/guide', {
+title: 'guide',
+});
 };
-router.get('/shop/note/guide', [rcb]);
+
+router.get('/shop/note/guide', [chk,rcb]);
 
 module.exports = router;

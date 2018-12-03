@@ -1,33 +1,33 @@
-var express = require('express');
-var router = express.Router();
-var crypto = require('crypto');
+const express = require('express');
+const router = express.Router();
+const crypto = require('crypto');
 // == db =============================
-var db = require('cardb');
-var adb = require('usrdb');
-var str = crypto
+const db = require('cardb');
+const adb = require('usrdb');
+const str = crypto
   .createHash('md5')
   .update(Math.random().toString())
   .digest('hex');
 //console.log(str)
 
-var email, usr, sku
-    var skumer, mailusr, mailtmp, skuson
-    var obj, len;
+const email="", usr="", sku=""
+    const skumer=[], mailusr=[], mailtmp=[], skuson=[]
+    const obj="", len="";
 // === post =============================
-var cred = require('./js/cred');
+const cred = require('./js/cred');
 
-var getEma = function(req, res, next) {
+const getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
   next()}
 
-var getUsr = function(req, res, next) {
+const getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
 
 
-var getSku = function(req, res, next) {
+const getSku = function(req, res, next) {
 sku = req.body.sku;
 console.log(sku)
 if (sku) {
@@ -36,7 +36,7 @@ try {skumer = db.skuMer(sku);
 } else {    console.log('no sku');  }
 next()}; //getSku
 
-var getSon = function(req, res, next) {
+const getSon = function(req, res, next) {
   try {    skuson = db.skuSon(sku);
 console.log(skuson)
 
@@ -48,7 +48,7 @@ console.log(skuson)
   }
   next()};
 
-var chk = function(req, res, next) {
+const chk = function(req, res, next) {
   console.log(sku);
   console.log(skuson);
   console.log(obj);
@@ -56,7 +56,7 @@ var chk = function(req, res, next) {
   next();
 };
 // === rend
-var rcb = function(req, res) {
+const rcb = function(req, res) {
 rob = { title: 'item', usr: usr, mer: skumer, song: obj};
 res.render('shop/item', rob);
 }; //rcb

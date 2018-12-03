@@ -6,13 +6,28 @@
 <% include par/nav %>
 
 <div class="container-fluid">
-<% include par/lang %>
 <div class="row">
 
-<<<<<<< HEAD
+<!-- <div align="right"> -->
+<!-- <a class="<%=(lang=="ja"?"active":"")%>" href="/shop?clang=ja"> -->
+<!-- <span class="flag-icon flag-icon-jp my-big"></span> -->
+<!-- </a> -->
+
+<!-- <a class="<%=(lang=="en"?"active":"")%>" href="/shop?clang=en"> -->
+<!-- <span class="flag-icon flag-icon-gb my-big"></span> -->
+<!-- </a> -->
+<!-- </div> -->
+
 <!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
-<% include par/usr %>
+<% if(usr) {%> 
+<div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
 </div>
 <!--- main ----- -->
 
@@ -27,27 +42,24 @@
 <div id="cd-col" class="col-md-4 col-xs-12" style="height:100%" >
 <div class="box122">
 
-<div align="center">
-<div class="card" style="width: 18rem;">
-<div class="card-body">
 
 <form action="/shop/item<%=mer[i].sku%>" method="post">
 <input type="hidden" name="sku" value=<%=mer[i].sku%>>
+<div align="center">
 <input type="image" src=<%=mer[i].img%> height="240" alt="submit">
+
+</div>
+
 <div class="style27"><%=mer[i].name%><br>
 TMS-<%=mer[i].sku%></div>
 </form>
-
-</div>
-</div>
-</div>
 
 </div></div>
 <%}%>
 <%}%>
 
+</div></div>
 
-=======
 <div class="col-sm-2">
 <% include par/left %>
 </div>
@@ -55,7 +67,6 @@ TMS-<%=mer[i].sku%></div>
 <div class="col-sm-10">
 <% include par/ite %>
 </div>
->>>>>>> e3998c90edb84bd4903e2b54245d2b93f4f37341
 
 </div><!--row-->
 </div><!-- /container -->

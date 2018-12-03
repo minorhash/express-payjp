@@ -1,0 +1,8 @@
+<% if(usr) {%> 
+<div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
+<br><br>
+
+<% include ./out %>
+<%}else{ %>
+<% include ./login %>
+<%} %>

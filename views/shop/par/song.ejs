@@ -1,0 +1,13 @@
+<ul class="list-group">
+<li class="list-group-item active">
+収録曲
+</li>
+<%if(song){%>
+<%for(var i in song){%>
+<li class="list-group-item">
+<%var num=parseInt(i) %>
+<%=num+1%>.&nbsp;<%=song[i]%><br>
+<%}%>
+<%}%>
+</li>
+</ul> 

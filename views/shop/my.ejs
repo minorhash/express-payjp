@@ -6,69 +6,36 @@
 
 <!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<div class="label label-info"><%= usr%></div>
-<br><br>
-
-<% include par/out %>
-<%}else{ %>
-<% include par/login %>
-<%} %>
+    <% include par/usr %>
 </div>
 <!--- main ---- -->
 
 <div class="col-sm-8" style="color:black">
 
+<div class="card">
+<div class="card-header">
+マイページ
+</div>
+
+<div class="card-body">
 <%if(mailusr){%>
-<div class="box90">マイページ</div>
-<br>
-
-<div class="panel panel-default">
-<div class="box120"> <h4>お名前:&nbsp;&nbsp; <%=mailusr.name%> 様</h4>
-</div></div>
-
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4> email:&nbsp;&nbsp; <%=mailusr.email%> </h4> 
-</div></div>
-<div class="panel panel-default">
-<div class="box120">
-<h4><%if(mailadr){%>電話番号:<%=mailadr.phn%><br>
-</h4></div></div>
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4> 郵便番号:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
-</div></div>
-
-<div class="panel panel-default">
-<div class="box120">
-<h4> 都道府県:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
-</div></div>
-
-
-
-<div class="panel panel-default">
-<div class="box120">
-  <h4> 市区町村:&nbsp;&nbsp; <%=mailadr.city%> </h4>
-</div></div>
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4>住所1 :&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
-</div></div>
-
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4> 建物名:&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
-</div></div>
-
+ <ul class="list-group">
+ <li class="list-group-item">お名前:&nbsp;&nbsp; <%=mailusr.name%> 様</li>
+<li class="list-group-item"> email:&nbsp;&nbsp; <%=mailusr.email%> </li> 
+<li class="list-group-item"><%if(mailadr){%>電話番号:<%=mailadr.phn%><br>
+   <li class="list-group-item"> 郵便番号:&nbsp;&nbsp; <%=mailadr.zip%> </li> 
+<li class="list-group-item"> 都道府県:&nbsp;&nbsp; <%=mailadr.sta%> </li>
+  <li class="list-group-item"> 市区町村:&nbsp;&nbsp; <%=mailadr.city%> </li>
+   <li class="list-group-item">住所1 :&nbsp;&nbsp; <%=mailadr.ln2%> </li> 
+   <li class="list-group-item"> 建物名:&nbsp;&nbsp; <%=mailadr.ln1%> </li> 
 <%}else{%>
 住所が登録されていません。<br><br>
 <a href="usr/adr">登録する</a>
 <%}%>
+</ul> 
+
+  </div></div>
+
 <%}else{%>
 ログインしてください。
 
@@ -92,8 +59,9 @@
 
 
 
-<div class="col-md-2 col-sm-12" style="color:black">
-</div></div>
+<div class="col-md-2 col-sm-12" style="color:black"></div>
+
+</div>
 </div>
 <br><br>
 <div class="footer"><% include par/foot %></div>

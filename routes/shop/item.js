@@ -10,9 +10,9 @@ const str = crypto
   .digest('hex');
 //console.log(str)
 
-const email="", usr="", sku=""
-    const skumer=[], mailusr=[], mailtmp=[], skuson=[]
-    const obj="", len="";
+let email="", usr="", sku=""
+,skumer=[], mailusr=[], mailtmp=[], skuson=[]
+,obj="", len="";
 // === post =============================
 const cred = require('./js/cred');
 

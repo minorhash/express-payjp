@@ -6,17 +6,24 @@
 
 <!--- side left ----- -->
 <div class="col-md-2" style="color:black">
+<br>
 <% include par/left %>
 </div>
 
 <!--- main ---- -->
 
-<div class="col-sm-8" style="color:black">
+<div class="col-md-10" style="color:black">
+<br>
+<div class="box97">マイページ</div>
+    <br>
+    <% if(mailadr){ %>
+<% include par/my %>
+<% } %>
 </div>
 
 </div></div>
+<br>
 
-<div class="footer"><% include par/foot %></div>
 <% include par/foot %>
 
 

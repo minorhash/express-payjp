@@ -52,9 +52,11 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
 // route =================================
 var index= require('./routes/index');
 var page= require('./routes/page');
+var mail= require('./routes/mail');
 
 app.use('/', index);
 app.use('/', page);
+app.use('/', mail);
 
 // shop =================================
 

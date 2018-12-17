@@ -1,63 +1,28 @@
 <!DOCTYPE html>
 <html>
 <% include par/head %>
+<% include par/nav %>
 <body>
 
-<!--menu-->
-<% include par/nav %>
-<!--menu-->
 
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
-<div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<div class="label label-info">welcome:<%= usr%>様</div>
-<br><br>
+<!--- main ----- -->
 
-<% include par/out %>
-<%}else{ %>
-<% include par/login %>
-<%} %>
+<div class="col-md-2">
+<% include par/left %>
 </div>
-<!--- main ------->
 
-<div class="well col-md-10 col-xs-12" style="color:black">
-<div class="row">
-
-<%if(typeof mer!=="undefined"){%>
-
-<%for(var i=0;i<mer.length;i++){%>
-
-<div id="cd-col" class="well col-md-4 col-xs-12" style="height:100%" >
-
-<form action="/shop/item<%=mer[i].sku%>" method="post">
-<input type="hidden" name="sku" value=<%=mer[i].sku%>>
-<div align="center">
-<input type="image" src=<%=mer[i].img%> height="240" alt="submit">
+<div class="col-md-10">
+<% include par/ite %>
 </div>
-<div class="style27"><%=mer[i].name%><br>
-TMS-<%=mer[i].sku%></div>
-
-</form>
-</div>
-<%}%>
-<%}%>
-
-</div></div>
-
 
 </div><!--row-->
-
-
 </div><!-- /container -->
 
-<br><br><br><br><br><br><br><br><br><br>
 
-<div class="footer">
 <% include par/foot %>
-</div>
 
 
 </body>

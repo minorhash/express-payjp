@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <% include par/head %>
+<% include par/nav %>
 <body>
 
-<% include par/nav %>
 
-<div class="container-fluid">
+
 <div align="right">
 
 <a class="<%=(lang=="ja"?"active":"")%>" href="/shop/cart?clang=ja">
@@ -19,6 +19,7 @@
 </div>
 
 
+<div class="container-fluid">
 <div class="row">
 
 <div class="col-md-2" style="color:black">
@@ -26,7 +27,9 @@
 </div>
 
 <div class="col-md-10" style="color:black">
-<p class="box90"><%=shop.cart%></p>
+
+    <div class="box97">カート</div><br>
+
 <% include par/car/main %>
 <br>
 
@@ -43,6 +46,12 @@
 <div class="col-md-8" style="color:black">
 <% include par/car/not %>
 </div>
+
+<!-- col1 -->
+<div class="col-md-1 hidden-xs"></div><!-- /col1-->
+</div> <!-- /row -->
+
+<hr>
 
 <div class="col-md-2" style="color:black"></div>
 </div><!--row-->

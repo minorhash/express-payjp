@@ -11,9 +11,8 @@ const str = crypto
 //console.log(str)
 
 let email="", usr="", sku=""
-    let skumer=[], mailusr=[], mailtmp=[], skuson=[]
-    let obj="", len="";
-// === post =============================
+,skumer=[], mailusr=[], mailtmp=[], skuson=[]
+,obj="", len="";
 const cred = require('./js/cred');
 
 const getEma = function(req, res, next) {

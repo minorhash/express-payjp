@@ -2,43 +2,27 @@
 <% include par/nav %>
 <body>
 <div class="container-fluid">
-<div align="right">
-
-<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/my?clang=ja">
-<span class="flag-icon flag-icon-jp my-big"></span>
-</a>
-
-<a class="<%=(lang=="en"?"active":"")%>" href="/shop/my?clang=en">
-<span class="flag-icon flag-icon-gb my-big"></span>
-</a>
-
-</div>
-
 <div class="row">
+
+<!--- side left ----- -->
 <div class="col-md-2" style="color:black">
+<br>
 <% include par/left %>
 </div>
 
-
-<!--- side left ----- -->
+<!--- main ---- -->
 
 <div class="col-md-10" style="color:black">
-    <div class="box90"><%= shop.mypage %></div>
 <br>
-<% if(usr) {%> 
-<% include par/my/main %> 
+<div class="box97">マイページ</div>
+    <br>
+    <% if(mailadr){ %>
+<% include par/my %>
+<% } %>
+</div>
 
-<%}else{%>
-<span style="color:black">
-    <%= shop.login %>
-</span>
-<%}%>
+</div></div>
 <br>
-</div>
-<!-- row -->
-</div>
-<!-- cont -->
-
 
 <% include par/foot %>
 

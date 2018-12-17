@@ -1,0 +1,47 @@
+<div class="card ">
+
+<div class="card-body"> <h6>お名前:&nbsp;&nbsp; <%=mailusr.name%> 様</h6>
+</div>
+
+<div class="card ">
+<div class="card-body">
+<h6> email:&nbsp;&nbsp; <%=mailusr.email%> </h6> 
+</div></div>
+<div class="card ">
+<div class="card-body">
+<h6><%if(mailadr){%>電話番号:<%=mailadr.phn%><br>
+</h6></div></div>
+
+<div class="card ">
+<div class="card-body">
+   <h6> 郵便番号:&nbsp;&nbsp; <%=mailadr.zip%> </h6> 
+</div></div>
+
+<div class="card ">
+<div class="card-body">
+<h6> 都道府県:&nbsp;&nbsp; <%=mailadr.sta%> </h6>
+</div></div>
+
+
+
+<div class="card ">
+<div class="card-body">
+  <h6> 市区町村:&nbsp;&nbsp; <%=mailadr.city%> </h6>
+</div></div>
+
+<div class="card ">
+<div class="card-body">
+   <h6>住所1 :&nbsp;&nbsp; <%=mailadr.ln2%> </h6> 
+</div></div>
+
+
+<div class="card ">
+<div class="card-body">
+   <h6> 建物名:&nbsp;&nbsp; <%=mailadr.ln1%> </h6> 
+</div></div>
+
+<%}else{%>
+住所が登録されていません。<br><br>
+<a href="usr/adr">登録する</a>
+<%}%>
+

@@ -8,6 +8,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var i18n = require('i18n-express');
 var sess = require('cookie-session');
+const formidableMiddleware = require('express-formidable');
+
 //
 var app = express();
 
@@ -25,6 +27,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
+
+app.use(formidableMiddleware());
 
 app.use(
   sess({
@@ -44,6 +48,7 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
 );
 }
 
+
 // route =================================
 var index= require('./routes/index');
 var page= require('./routes/page');
@@ -56,7 +61,7 @@ app.use('/', page);
 var shop = require('./routes/shop/index');
 app.use('/', shop);
 
-var top=["index","cart","item","his","my","dl"]
+var top=["index","cart","item","his","my","dl","up"]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)

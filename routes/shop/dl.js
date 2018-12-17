@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const url = require('url');
+const formidable = require('formidable');
 
 const db = require("cardb");
 const adb = require("usrdb");
@@ -16,8 +17,7 @@ const cred = require("./js/cred");
 const getEma = (req, res, next)=> {
   email = cred.ema(req);
   mailusr = adb.mailUsr(email);
-  next();
-};
+  next()};
 
 const getUsr = function(req, res, next) {
   if (mailusr) {
@@ -26,8 +26,7 @@ const getUsr = function(req, res, next) {
     usr = null;
     console.log("no usr");
   }
-  next();
-};
+  next()};
 
 const chk = function(req, res, next) {
 //email="jinjasaisen@gmailcom";
@@ -35,7 +34,26 @@ console.log(usr);
 console.log(email);
 console.log(mailusr);
 
-  next()};
+next()};
+
+const upForm=function(req,res,next){
+
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        if(err) throw err
+        console.log(files)
+    });
+
+// var form = new formidable.IncomingForm();
+//     form.parse(req);
+//     form.on('fileBegin', function (name, file){
+//         file.path = '/' + file.name;
+//     });
+//     form.on('file', function (name, file){
+//     console.log('Uploaded ' + file.name);
+//     });
+
+next()};
 
 const rcb = function(req, res, next) {
 
@@ -48,7 +66,8 @@ res.download(path)
 res.render('shop/dl',obj ); //rend
 };
 
-const arr=[getEma,getUsr,chk, rcb]
+const arr=[getEma,getUsr,chk,upForm,
+rcb]
 router.get('/shop/dl',arr ); //
 
 module.exports = router;

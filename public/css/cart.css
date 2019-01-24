@@ -52,7 +52,7 @@
    margin:5px 5px 5px 5px;
    text-align:; 
    border: solid 1px #696969;
-   background: ;
+   background-color: ;
     
 }
     
@@ -112,7 +112,10 @@
     margin:30px 20px 10px 10px;
     color:#000;
     background: #AFEEEE;
-       
 
+}
+
+#bkg1{
+background-color:yellow;
 }
 

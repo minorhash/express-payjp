@@ -116,6 +116,13 @@
 }
 
 #bkg1{
-background-color:yellow;
+background-color:cornsilk;
 }
-
+#bkg2{
+background-color:beige;
+border-top-style:solid;
+border-right-style:solid;
+border-left-style:solid;
+border-bottom-style:solid;
+border-width:1px;
+}

@@ -1,36 +1,3 @@
-<% include par/head %>
-<body>
-<% include par/nav %>
-<div class="container-fluid">
-<div class="row">
-
-<!--- side left ----- -->
-<div class="well col-md-3 col-sm-12" style="color:black">
-<% if(usr) {%> 
-<div class="badge badge-info">&nbsp; <%= usr%>&nbsp;さん </div>
-<br><br>
-
-<% include par/out %>
-
-<%}else{ %>
-<% include par/login %>
-<%} %>
-</div><!-- col3-->
-
-<!--- main ----- -->
-
-<div class="col-sm-6 col-sm-12">
-<p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
-<br>
-
-<% include par/aid/left %>
-<% include par/aid/sum %>
-</div><!-- col6-->
-
-
-<div class=" well col-md-3 col-sm-12" style="color:black">
-
-
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
 Paidyのページが表示されますので、
@@ -106,20 +73,5 @@ paidyHandler.launch(payload);
 
 
 </script>
-</div><!-- col3-->
-
-</div>
-
-
-
-
-</div>
-
-
-
-</div>
-</div>
-
-<div class="footer"><% include par/foot %></div>
 
 

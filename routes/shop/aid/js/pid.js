@@ -21,24 +21,3 @@ return url
 };
 
 module.exports=age
-
-var age=require("superagent")
-// age
-// .get(url+pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+sec)
-// .then(res => {
-// if(res.body.status=="closed"){
-// console.log("already closed")
-// console.log(res.body.order.items)
-// }else{
-// console.log("auth")
-// console.log(res.body.id)
-// // closed
-
-// }//else
-
-// })//then
-
-

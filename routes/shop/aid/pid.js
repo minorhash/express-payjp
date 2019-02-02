@@ -123,7 +123,6 @@ if(pid){
 snde.trEma(email,sub,fin);
 }else{console.log("no pid")}
 
-
 })
 
 
@@ -141,4 +140,4 @@ var fun=
 chk]
 router.put('/shop/aid/pid',fun);
 
-    module.exports = router;
+module.exports = router;

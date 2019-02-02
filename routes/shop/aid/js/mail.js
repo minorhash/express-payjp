@@ -1,7 +1,4 @@
-var express = require('express');
-var router = express.Router();
 // === db =============================
-var db = require('cardb');
 var adb = require('usrdb');
 
 var age=require("superagent")
@@ -36,9 +33,8 @@ var buy=res.body.buyer
     var email=buy.email
 var ite=res.body.order.items
 
-    //console.log(res);
-console.log(ite);
-var sub="sub"
+console.log(buy);
+    //var sub=buy.name1+"さま"
 var fin;
 
 for (var i=0;i< ite.length;i++){
@@ -46,50 +42,30 @@ fin+="タイトル:"+ite[i].title+",sku:tms-"+ite[i].id
         +",price:"+ite[i].unit_price.toLocaleString()+" yen"
         +",unit:"+ite[i].quantity+"<br>"
 }
-var sum=fin.replace(/undefined/,"")
-console.log(sum);
+var fin2=fin.replace(/undefined/,"")
+//console.log(fin2);
+
+//var mes=sub+"<br>amount:"+mnt.toLocaleString()+" yen<br>"+fin2
+
+var pre=
+i18.lin1
++i18.cau1
++i18.lin1+"<br>"
++buy.name1+"様<br><br>"
++i18.cau2+"<br><br>"
++i18.cau3
++i18.cau4+"<br>"
+
++i18.cont+"<br>"
++i18.pid+pid+"<br><br>"
+
+var mes=pre+fin2
+console.log(mes)
 
 if(pid){
-snde.trEma(email,sub,mnt+sum);
+snde.trEma(email,sub,mes);
 }else{console.log("no pid")}
 
 })
-
-// var mes=
-// i18.lin1
-// +i18.cau1
-// +i18.lin1+"<br>"
-// +usr+"様<br><br>"
-// +i18.cau2+"<br><br>"
-// +i18.cau3
-// +i18.cau4+"<br>"
-
-// +i18.cont+"<br>"
-// +i18.pid+pid+"<br><br>"
-
-// var loo="";
-// oite=res.body.order.items
-
-// for(var i=0;i<oite.length;i++){
-// loo+=
-// i18.sku+oite[i].id+"<br>"
-// +i18.title+oite[i].title+"<br>"
-// +i18.price+(oite[i].unit_price).toLocaleString()+i18.yen+"<br>"
-// +i18.unit+oite[i].quantity+"<br>"
-// +i18.lin1
-// }
-
-// var msum=i18.sub+(res.body.amount-650).toLocaleString()+i18.yen+"<br>"
-// +i18.cour+650+i18.yen+"<br>"
-// +i18.sum+(res.body.amount).toLocaleString()+"<br>"
-// +i18.pay+"paidy"+"<br><br>"
-// var ship=
-// i18.ship1+i18.ship2+i18.ship3
-// +i18.ship4+i18.ship5
-// +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
-// +i18.adr1+i18.adr2+i18.adr3
-
-// var fin=mes+loo+msum+ship
-
 
 

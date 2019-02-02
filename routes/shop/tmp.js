@@ -10,6 +10,7 @@ let email="", usr="", sku="", sum="";
 let mailtmp=[], mailusr=[], mailadr=[];
 let mer = [],  suma = [],  sku_a = [];
 const gpid=require("./aid/js/pid")
+let pid;
 
 // === cred ===
 
@@ -25,12 +26,15 @@ else{usr=null;console.log("no usr")}
 next()}
 
 const getPid = function(req, res, next) {
-console.log(gpid.getPid())
+pid=gpid.getPid()
+    const mail=require("./aid/js/mail")
+    //router.put("/shop/aid/mail");
 
 next()};
 
 const chk = function(req, res, next) {
 console.log(email);
+console.log(pid);
 
 next()};
 

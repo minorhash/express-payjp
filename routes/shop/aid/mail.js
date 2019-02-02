@@ -111,6 +111,6 @@ var chk = function(req, res, next) {
 var fun=
 [getEma, getUsr,putPid,senEma,
 chk]
-router.put('/shop/aid/pid',fun);
+router.put('/shop/aid/mail',fun);
 
 module.exports = router;

@@ -1,0 +1,24 @@
+@mixin fon1 {
+font-size:14px;
+color:black;
+
+}
+%box-tmp {
+padding:10px;
+@include fon1;
+}
+
+.box1{
+@extend %box-tmp;
+background-color:beige;
+}
+
+.box2{
+@extend %box-tmp;
+background-color:aliceblue;
+}
+
+
+
+
+

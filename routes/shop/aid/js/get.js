@@ -1,5 +1,4 @@
-var age=require("./age")
+var pid=require("./pid")
 
-console.log(age.getPid())
-console.log(age.getUrl())
+console.log(pid.getPid())
 

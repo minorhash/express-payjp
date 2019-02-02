@@ -5,19 +5,17 @@ var sec=cnf.sec
 //var sec=cnf.skl
 //var email="successful.payment@paidy.com"
 var email="minorhash@gmail.com"
-console.log(sec)
+//console.log(sec)
 var allpid=adb.allPid(email)
 var pid=allpid[0].pid
 
-var url="https://api.paidy.com/payments/"
-var agePid={
-
-getp: function(url){
-return url
+var age={
+getp: function(){
+return pid
 }
 };
 
-module.exports=agePid
+module.exports=age
 
 var age=require("superagent")
 // age

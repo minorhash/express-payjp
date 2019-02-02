@@ -1,4 +1,5 @@
-var agePid=require("./age")
+var age=require("./age")
 
-console.log(agePid.getp)
+console.log(age)
+console.log(age.getp())
 

@@ -31,14 +31,26 @@ age
 .set("Authorization", "Bearer"+sec)
 .then(res => {
 
+var mnt=res.body.amount
 var buy=res.body.buyer
-console.log(buy.email);
     var email=buy.email
-    var sub="sub"
-    var fin=pid
+var ite=res.body.order.items
+
+    //console.log(res);
+console.log(ite);
+var sub="sub"
+var fin;
+
+for (var i=0;i< ite.length;i++){
+fin+="タイトル:"+ite[i].title+",sku:tms-"+ite[i].id
+        +",price:"+ite[i].unit_price.toLocaleString()+" yen"
+        +",unit:"+ite[i].quantity+"<br>"
+}
+var sum=fin.replace(/undefined/,"")
+console.log(sum);
 
 if(pid){
-snde.trEma(email,sub,fin);
+snde.trEma(email,sub,mnt+sum);
 }else{console.log("no pid")}
 
 })

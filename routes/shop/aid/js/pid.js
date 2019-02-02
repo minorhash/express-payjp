@@ -14,9 +14,6 @@ var url="https://api.paidy.com/payments/"
 var age={
 getPid: function(){
 return pid
-},
-getUrl: function(){
-return url
 }
 };
 

@@ -6,39 +6,32 @@ var sec=cnf.sec
 //var email="successful.payment@paidy.com"
 var email="minorhash@gmail.com"
 //console.log(sec)
-var allpid=adb.allPid(email)
-var pid=allpid[0].pid
 
 var url="https://api.paidy.com/payments/"
+var gpid=require("./pid")
 
-var age={
-getPid: function(){
-return pid
-},
-getUrl: function(){
-return url
-}
-};
+var pid=gpid.getPid()
 
-module.exports=age
+var sage=require("superagent")
+sage
+.get(url+pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+sec)
+.then(res => {
+if(res.body.status=="closed"){
+console.log("already closed")
+console.log(res.body.order.items)
 
-var age=require("superagent")
-// age
-// .get(url+pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+sec)
-// .then(res => {
-// if(res.body.status=="closed"){
-// console.log("already closed")
-// console.log(res.body.order.items)
-// }else{
-// console.log("auth")
-// console.log(res.body.id)
-// // closed
 
-// }//else
+}else{
+console.log("auth")
+console.log(res.body.id)
+// closed
 
-// })//then
+}//else
+
+})//then
+
 
 

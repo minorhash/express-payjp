@@ -30,7 +30,16 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-console.log(res.body.buyer);
+
+var buy=res.body.buyer
+console.log(buy.email);
+    var email=buy.email
+    var sub="sub"
+    var fin=pid
+
+if(pid){
+snde.trEma(email,sub,fin);
+}else{console.log("no pid")}
 
 })
 
@@ -71,7 +80,4 @@ console.log(res.body.buyer);
 // var fin=mes+loo+msum+ship
 
 
-// if(pid){
-// snde.trEma(email,sub,fin);
-// }else{console.log("no pid")}
-// })
+

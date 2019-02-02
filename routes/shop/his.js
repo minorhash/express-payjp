@@ -34,9 +34,7 @@ for(let i=0;i<allpal.length;i++){
 opal.push(JSON.parse(allpal[i].ite))
 }
 }else{console.log("no allpal")}
-
 next()}
-
 
 //  aid
 const allPid = function(req, res, next) {

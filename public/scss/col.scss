@@ -1,4 +1,5 @@
 $cols: rgb(255,255,255), // white
+yellow,
           rgb(255,0,0),     // red
           rgb(135,206,250), // sky blue
           rgb(0,255,0), // green
@@ -12,5 +13,6 @@ background-color: rgba($col, 0.5);
 background-color: rgba($col, 0.8);
 cursor: pointer;
 }
+
 }
 }

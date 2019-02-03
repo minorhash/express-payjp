@@ -11,10 +11,18 @@ var pid=allpid[0].pid
 
 var url="https://api.paidy.com/payments/"
 
-var age={
-getPid: function(){
-return pid
-}
-};
+// var age={
+// getPid: function(){
+// return pid
+// }
+// };
+//
+// var age=function(){
+// return pid
+// };
 
-module.exports=age
+// module.exports=age
+
+var mail=require("./mail")
+try{mail(pid)}
+catch(err){console.log(err)}

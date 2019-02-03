@@ -6,6 +6,14 @@
   cursor: pointer;
 }
 
+#bk-yellow {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+#bk-yellow:hover {
+  background-color: rgba(255, 255, 0, 0.8);
+  cursor: pointer;
+}
+
 #bk-red {
   background-color: rgba(255, 0, 0, 0.5);
 }

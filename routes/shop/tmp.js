@@ -9,7 +9,6 @@ const adb = require('usrdb');
 let email="", usr="", sku="", sum="";
 let mailtmp=[], mailusr=[], mailadr=[];
 let mer = [],  suma = [],  sku_a = [];
-const gpid=require("./aid/js/pid")
 let pid;
 
 // === cred ===
@@ -25,9 +24,11 @@ if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()}
 
-const getPid = function(req, res, next) {
-pid=gpid.getPid()
-    const mail=require("./aid/js/mail")
+ const getPid = function(req, res, next) {
+// pid=gpid.getPid()
+// const gpid=require("./aid/js/pid")
+const mail=require("./aid/js/mail")
+mail()
     //router.put("/shop/aid/mail");
 
 next()};

@@ -1,4 +1,4 @@
-var pid=require("./pid")
-
-console.log(pid.getPid())
+var age=require("./mail")
+var str=111
+console.log(age())
 

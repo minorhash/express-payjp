@@ -1,0 +1,35 @@
+#bk-ali {
+  font-size: 14px;
+  color: black;
+  background-color: aliceblue;
+  content: color;
+  content: string;
+}
+#bk-ali:hover {
+  background-color: rgba(240, 248, 255, 0.6);
+  cursor: pointer;
+}
+
+#bk-yel {
+  font-size: 14px;
+  color: black;
+  background-color: yellow;
+  content: color;
+  content: string;
+}
+#bk-yel:hover {
+  background-color: rgba(255, 255, 0, 0.6);
+  cursor: pointer;
+}
+
+#bk-lim {
+  font-size: 14px;
+  color: black;
+  background-color: lime;
+  content: color;
+  content: string;
+}
+#bk-lim:hover {
+  background-color: rgba(0, 255, 0, 0.6);
+  cursor: pointer;
+}

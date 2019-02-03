@@ -14,13 +14,14 @@ var cnf=require("../../son/aid.json")
 //var sec=cnf.sec;
 var sec=cnf.skl;
 
-var gpid= require('./pid');
-var pid=gpid.getPid()
-console.log(pid)
+// var gpid= require('./pid');
+// var pid=gpid()
+// console.log(pid)
 
 var i18=require("../../../../i18n/shop/ja.json")
 var sub=i18.buy
 
+var senEma=function(pid){
 age
 .get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
@@ -30,11 +31,11 @@ age
 
 var mnt=res.body.amount
 var buy=res.body.buyer
-    var email=buy.email
+var email=buy.email
 var ite=res.body.order.items
 
 console.log(buy);
-    //var sub=buy.name1+"さま"
+//var sub=buy.name1+"さま"
 var fin;
 
 for (var i=0;i< ite.length;i++){
@@ -66,6 +67,9 @@ if(pid){
 snde.trEma(email,sub,mes);
 }else{console.log("no pid")}
 
-})
+})//res
+}
+
+module.exports=senEma
 
 

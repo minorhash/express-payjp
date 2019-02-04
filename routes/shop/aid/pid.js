@@ -79,7 +79,6 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
-  console.log('=== PID =======================================');
 };
 
 var fun=

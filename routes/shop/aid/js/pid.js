@@ -9,19 +9,7 @@ var email="minorhash@gmail.com"
 var allpid=adb.allPid(email)
 var pid=allpid[0].pid
 
-var url="https://api.paidy.com/payments/"
-
-// var age={
-// getPid: function(){
-// return pid
-// }
-// };
-//
-// var age=function(){
-// return pid
-// };
-
-// module.exports=age
+//var url="https://api.paidy.com/payments/"
 
 var mail=require("./mail")
 try{mail(pid)}

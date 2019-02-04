@@ -70,7 +70,9 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-
+    var mail=require("./js/mail");
+    try{mail(pid)}
+    catch(err){console.log(err)}
 next()};
 
 var chk = function(req, res, next) {

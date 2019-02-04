@@ -99,7 +99,9 @@ var getTai = function(req, res, next) {
   taid.amount = tsum;
   // // buyer
   taid.buyer.email = email;
+if(mailusr){
   taid.buyer.name1 = mailusr.name;
+}else{console.log("no mailusr")}
 
   if (mailadr) {
     taid.buyer.phone = mailadr.phn;
@@ -161,7 +163,7 @@ console.log(taid.order.items)
 next()};
 
 var gcb = function(req, res) {
-res.render("shop/paidy", {
+    res.render("shop/paidy/pay", {
 title: "paidy", email:email,usr: usr,
 seltmp:mailtmp,mer:mer,
 mailadr:mailadr,ite:taid.order.items,
@@ -172,7 +174,7 @@ pub:pub,ship:taid.order.shipping
 }
 var fun= [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
     chk,gcb]
-router.get("/shop/paidy",fun); //put
+router.get("/shop/paidy/pay",fun); //put
 
 
 module.exports = router;

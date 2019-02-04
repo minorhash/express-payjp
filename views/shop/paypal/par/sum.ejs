@@ -1,0 +1,12 @@
+<div class="pabox">商品合計(税込）：</div>
+
+<div class="pabox">
+<%if(sum){%>
+<%= Math.round(sum*1.08).toLocaleString()%> 円
+<%}%></div>
+
+合計(税込）：
+<%if(tsum){%>
+<%=tsum.toLocaleString()%> 円
+<%}%>
+

@@ -12,11 +12,10 @@
 </div><!-- col5-->
 
 <div class="col-md-7" id="bkg1">
-    <%= shop.tit %>：&nbsp;  <%=mer[i].name%><br>
-商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
-単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%> &nbsp;<%= shop.yen %> <br>
-
-数量:<form method="post" action="/shop/cart">
+<%= shop.tit %>：&nbsp;  <%=mer[i].name%><br>
+<%= shop.sku %>: &nbsp; TMS-<%=seltmp[i].sku%><br>
+<%= shop.pri %> &nbsp;（<%= shop.unit %>）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%> &nbsp;<%= shop.yen %> <br>
+<%= shop.unit %>:<form method="post" action="/shop/cart">
 <input class="form-control" id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
 <input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
 <button class="btn btn-info" type="submit"><%= shop.res %></button>

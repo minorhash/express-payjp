@@ -27,6 +27,7 @@
     "express": "~4.16.0",
     "express-formidable": "^1.2.0",
     "express-session": "^1.15.6",
+    "flag-icon-css": "^3.2.1",
     "hoek": "^5.0.3",
     "http-errors": "~1.6.2",
     "i18n-express": "^1.1.3",

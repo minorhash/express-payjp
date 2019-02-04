@@ -8,12 +8,12 @@
 <!-- menu -->
 
 <div class="container-fluid">
-<div class="row">
+<div class="row ">
 
 <!-- side left ----- -->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<div class="col-md-2 col-sm-12 bg-bei" ><br>
 <% if(usr) {%> 
-<div class="label label-info">welcome:<%= usr%></div>
+<div class="badge badge-info">welcome:<%= usr%></div>
 <br><br>
 <% include par/out %>
 <%}else{ %>
@@ -22,13 +22,13 @@
 </div>
 <!-- side left ----- -->
 
-<div class="col-sm-8" style="background-color:white;color:black">
+<div class="col-sm-8" ><br>
 
 <%if(typeof mer!=="undefined"){%>
 
 <%for(var i=0;i<mer.length;i++){%>
 
-<div id="cd-col" class="well col-md-4 col-xs-12" style="height:100%" >
+<div id="cd-col" class=" col-md-4 col-xs-12" style="height:100%" >
 
 <form action="/mer/item<%=mer[i].sku%>" method="post">
 <input type="hidden" name="sku" value="<%=mer[i].sku%>">

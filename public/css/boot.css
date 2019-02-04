@@ -31,6 +31,7 @@
   --bei: beige;
   --cor: cornsilk;
   --lg: lightgreen;
+  --tom: tomato;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -1790,6 +1791,26 @@ pre code {
   background-color: #caf6ca;
 }
 
+.table-tom,
+.table-tom > th,
+.table-tom > td {
+  background-color: #ffd3cb;
+}
+.table-tom th,
+.table-tom td,
+.table-tom thead th,
+.table-tom tbody + tbody {
+  border-color: #ffae9f;
+}
+
+.table-hover .table-tom:hover {
+  background-color: #ffbdb2;
+}
+.table-hover .table-tom:hover > td,
+.table-hover .table-tom:hover > th {
+  background-color: #ffbdb2;
+}
+
 .table-active,
 .table-active > th,
 .table-active > td {
@@ -2701,6 +2722,33 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(127, 208, 129, 0.5);
 }
 
+.btn-tom {
+  color: #fff;
+  background-color: tomato;
+  border-color: tomato;
+}
+.btn-tom:hover {
+  color: #fff;
+  background-color: #ff4321;
+  border-color: #ff3814;
+}
+.btn-tom:focus, .btn-tom.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 122, 99, 0.5);
+}
+.btn-tom.disabled, .btn-tom:disabled {
+  color: #fff;
+  background-color: tomato;
+  border-color: tomato;
+}
+.btn-tom:not(:disabled):not(.disabled):active, .btn-tom:not(:disabled):not(.disabled).active, .show > .btn-tom.dropdown-toggle {
+  color: #fff;
+  background-color: #ff3814;
+  border-color: #ff2d07;
+}
+.btn-tom:not(:disabled):not(.disabled):active:focus, .btn-tom:not(:disabled):not(.disabled).active:focus, .show > .btn-tom.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 122, 99, 0.5);
+}
+
 .btn-outline-primary {
   color: #007bff;
   border-color: #007bff;
@@ -2999,6 +3047,31 @@ fieldset:disabled a.btn {
 }
 .btn-outline-lg:not(:disabled):not(.disabled):active:focus, .btn-outline-lg:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-lg.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.5);
+}
+
+.btn-outline-tom {
+  color: tomato;
+  border-color: tomato;
+}
+.btn-outline-tom:hover {
+  color: #fff;
+  background-color: tomato;
+  border-color: tomato;
+}
+.btn-outline-tom:focus, .btn-outline-tom.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 99, 71, 0.5);
+}
+.btn-outline-tom.disabled, .btn-outline-tom:disabled {
+  color: tomato;
+  background-color: transparent;
+}
+.btn-outline-tom:not(:disabled):not(.disabled):active, .btn-outline-tom:not(:disabled):not(.disabled).active, .show > .btn-outline-tom.dropdown-toggle {
+  color: #fff;
+  background-color: tomato;
+  border-color: tomato;
+}
+.btn-outline-tom:not(:disabled):not(.disabled):active:focus, .btn-outline-tom:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-tom.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 99, 71, 0.5);
 }
 
 .btn-link {
@@ -4874,6 +4947,15 @@ a.badge-lg:hover, a.badge-lg:focus {
   background-color: #64e764;
 }
 
+.badge-tom {
+  color: #fff;
+  background-color: tomato;
+}
+a.badge-tom:hover, a.badge-tom:focus {
+  color: #fff;
+  background-color: #ff3814;
+}
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -5061,6 +5143,18 @@ a.badge-lg:hover, a.badge-lg:focus {
 }
 .alert-lg .alert-link {
   color: #385c38;
+}
+
+.alert-tom {
+  color: #853325;
+  background-color: #ffe0da;
+  border-color: #ffd3cb;
+}
+.alert-tom hr {
+  border-top-color: #ffbdb2;
+}
+.alert-tom .alert-link {
+  color: #5d241a;
 }
 
 @keyframes progress-bar-stripes {
@@ -5351,6 +5445,20 @@ a.badge-lg:hover, a.badge-lg:focus {
   color: #fff;
   background-color: #4b7c4b;
   border-color: #4b7c4b;
+}
+
+.list-group-item-tom {
+  color: #853325;
+  background-color: #ffd3cb;
+}
+.list-group-item-tom.list-group-item-action:hover, .list-group-item-tom.list-group-item-action:focus {
+  color: #853325;
+  background-color: #ffbdb2;
+}
+.list-group-item-tom.list-group-item-action.active {
+  color: #fff;
+  background-color: #853325;
+  border-color: #853325;
 }
 
 .close {
@@ -6207,6 +6315,16 @@ button.bg-lg:focus {
   background-color: #64e764 !important;
 }
 
+.bg-tom {
+  background-color: tomato !important;
+}
+
+a.bg-tom:hover, a.bg-tom:focus,
+button.bg-tom:hover,
+button.bg-tom:focus {
+  background-color: #ff3814 !important;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
@@ -6301,6 +6419,10 @@ button.bg-lg:focus {
 
 .border-lg {
   border-color: lightgreen !important;
+}
+
+.border-tom {
+  border-color: tomato !important;
 }
 
 .border-white {
@@ -9895,6 +10017,14 @@ a.text-cor:hover, a.text-cor:focus {
 
 a.text-lg:hover, a.text-lg:focus {
   color: #4ee44e !important;
+}
+
+.text-tom {
+  color: tomato !important;
+}
+
+a.text-tom:hover, a.text-tom:focus {
+  color: #fa2600 !important;
 }
 
 .text-body {

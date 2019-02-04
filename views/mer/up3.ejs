@@ -10,9 +10,9 @@
 <div class="container-fluid">
 <div class="row">
 <!--- side left ----- -->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<div class=" col-md-2 col-sm-12" style="color:black">
 <% if(usr!==null) {%> 
-<div class="label label-info">welcome:<%= usr%></div>
+<div class="badge badge-info">welcome:<%= usr%></div>
 <br><br>
 <% include par/out %>
 <%}else{ %>
@@ -31,7 +31,7 @@
 <%if(bod){%>
 <img src="../../img/cd/<%= bod.sku%>.png"><br>
 
-<div class="well">
+<div class="">
 
 <%for(var i in bod){%>
 <%= i %>:

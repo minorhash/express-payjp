@@ -5,50 +5,53 @@
 
 <div class="row">
 
-<!--- side left ------->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<!--- side left ------>
+<div class=" col-md-2 col-sm-12" >
 <% if(usr!==null) {%> 
-<div class="label label-info">welcome:<%= usr%></div>
+<div class="badge badge-info">welcome:<%= usr%></div>
 <br><br>
 <% include par/out %>
 <%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
-<!--- side left ------->
+<!--- side left ------>
 
-<div class="well col-md-8 col-sm-12" style="color:black">
+<div class=" col-md-4 col-sm-12 bg-lg " >
 <h3 class="text-center">
 <% if (title) {%><%= title %><% } else { %>
 no title
 <% } %></h3>
+
 <br><br>
 <%if(usr!==null){%>
-
-skuをえらんでください。
-
+アップデートする品番
+をえらんでください。
+<div class="card bg-ali">
 <form action="/mer/up2" method="post">
-品番:&nbsp;<select name="sku" >
+    <label for="sel">
+        品番</label>:&nbsp;<select id="sel" name="sku" >
 <%for(var i=0;i<mer.length;i++){%>
-<option value="<%=mer[i].sku%>"><%=mer[i].sku%></option>
+<option class="form-control" value="<%=mer[i].sku%>"><%=mer[i].sku%></option>
 <%}%>
 </select>
 <br><br>
-&nbsp;<input type="submit" class="btn btn btn-black" value="submit">
+&nbsp;<input type="submit" class="btn btn btn-info" value="submit">
 <br><br>
 </form>
-
+</div><!-- card-->
 
 <%}else{%>
 ログインしてください。
 <%}%>
 
+</div><!-- col8-->
+
+<div class="col-md-4 col-sm-12">
 </div>
 <% include par/2side %>
 
 </div>
-
-
 </div>
 
 </body>

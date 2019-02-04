@@ -6,14 +6,14 @@
 &nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 <br>
 &nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%>
 <%=stax%>
-&nbsp;円 <br>
+&nbsp;<%= shop.yen %> <br>
 
-&nbsp;送料&nbsp;:  650 &nbsp;円 <br>
+&nbsp;送料&nbsp;:  650 &nbsp; <%= shop.yen %><br>
 <%}else{%>no sum<%}%>
 
 <%if(tsum){%> 
 &nbsp;合計金額 &nbsp; (税込)&nbsp; :
-<%=(tsum+stax).toLocaleString()%> &nbsp;円
+<%=(tsum+stax).toLocaleString()%> &nbsp;<%= shop.yen %>
 <%}else{%>
 no sum
 <%}%>

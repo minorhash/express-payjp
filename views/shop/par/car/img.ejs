@@ -17,9 +17,9 @@
 単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
 
 数量:<form method="post" action="/shop/cart">
-<input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
+<input class="form-control" id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
 <input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
-<button type="submit">再計算</button>
+<button class="btn btn-info" type="submit">再計算</button>
 </form>
 </div><!-- col4-->
 </div><!-- row-->

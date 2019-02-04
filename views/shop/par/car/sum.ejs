@@ -1,20 +1,22 @@
 <div class="card">
-<%if(sum){%>
-<h6>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h6>
-<h6>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
-<%=stax%>
-&nbsp;円 </h6>
+<div class="card-header">【合計】</div>
 
-<h6>&nbsp;送料&nbsp;:  650 &nbsp;円 </h6>
+<div class="card-body bg-bei">
+<%if(sum){%>
+&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 <br>
+&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%>
+<%=stax%>
+&nbsp;円 <br>
+
+&nbsp;送料&nbsp;:  650 &nbsp;円 <br>
 <%}else{%>no sum<%}%>
 
 <%if(tsum){%> 
-<h6>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
-<br>
+&nbsp;合計金額 &nbsp; (税込)&nbsp; :
 <%=(tsum+stax).toLocaleString()%> &nbsp;円
 <%}else{%>
 no sum
 <%}%>
 
-</h6>
+</div><!-- body -->
 </div><!-- card-->

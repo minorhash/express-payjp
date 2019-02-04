@@ -32,11 +32,9 @@ else{usr=null;console.log("no usr")}
 next()};
 
 var putPid = function(req, res, next) {
-//res.redirect("pid")
-
 console.log('=== putPid ===');
-
 var utc = new Date().toJSON().slice(0,10);
+
 if (req.body && email) {
 pid = req.body.id;
 
@@ -46,26 +44,13 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-    //console.log(res.body.buyer);
-adb.insPid(email,pid,res.body.amount,
-JSON.stringify(res.body.buyer),
-JSON.stringify(res.body.order.items),
-utc);
-
+ adb.insPid(email,pid,res.body.amount,
+ JSON.stringify(res.body.buyer),
+ JSON.stringify(res.body.order.items),
+ utc);
 })
-
 } else {
-//var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
-next()};
-
-var getPid= function(req, res, next) {
-//gpid=adb.pidPid(pid)
-
-console.log(pid)
-console.log(ite)
-//ite=gpid.ite
-//oite=JSON.parse(ite)
 next()};
 
 var senEma = function(req, res, next) {

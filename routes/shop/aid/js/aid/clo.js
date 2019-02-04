@@ -1,7 +1,7 @@
 var adb = require('usrdb');
 var age=require("superagent")
 // === cnf ===
-var cnf=require("../../son/cnf.json")
+var cnf=require("../../../son/cnf.json")
 //var sec=cnf.sec
 var sec=cnf.skl
 //var email="successful.payment@paidy.com"

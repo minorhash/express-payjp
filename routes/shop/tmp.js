@@ -27,8 +27,9 @@ next()}
  const getPid = function(req, res, next) {
 // pid=gpid.getPid()
 // const gpid=require("./aid/js/pid")
-const mail=require("./aid/js/mail")
-mail()
+const mail=require("./aid/js/pid")
+
+pid=     mail()
     //router.put("/shop/aid/mail");
 
 next()};

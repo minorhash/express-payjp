@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 //var cookie = require('cookie');
 //var cookieParser = require('cookie-parser');
@@ -20,10 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
-
 
 app.use(
   sess({
@@ -42,7 +39,6 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
     siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 );
 }
-
 
 // route =================================
 var index= require('./routes/index');

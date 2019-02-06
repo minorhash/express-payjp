@@ -41,13 +41,13 @@ mailtmp = [];
   next()};
 
 const getSku= function(req, res, next) {
-    skua=[]
+skua=[]
 if (mailtmp) {
 for(let i=0;i<mailtmp.length;i++){
 skua.push(mailtmp[i].sku)
 }
 } else {    console.log("mailtmp");  }
-  next()};
+next()};
 
 const putMer = function(req, res, next) {
 mer = [];
@@ -130,6 +130,7 @@ const getIte = function(req, res, next) {
   next()};
 
 const insUpd = function(req, res, next) {
+    console.log("=== ins upd")
   if (req.body.sku) {
     num = parseInt(sku);
     const ind = skua.indexOf(num);
@@ -172,10 +173,10 @@ const putAid = function(req, res, next) {
   next()};
 
 const pcb = function(req, res, next) {
-  obj={
-      seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
-    email: email
-  }
+obj={
+seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
+email: email
+}
   res.render("shop/cart",obj ); //rend
 };
 

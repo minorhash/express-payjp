@@ -41,12 +41,12 @@ mailtmp = [];
   next()};
 
 const getSku= function(req, res, next) {
-    skua=[]
+skua=[]
 if (mailtmp) {
 for(let i=0;i<mailtmp.length;i++){
 skua.push(mailtmp[i].sku)
 }
-} else {    console.log("mailtmp");  }
+} else {    console.log("no mailtmp");  }
   next()};
 
 const putMer = function(req, res, next) {
@@ -113,7 +113,7 @@ usr: usr,    email: email
 }
 res.render("shop/cart",obj );
 };
-let arr=[  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
+let arr=[  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,  redSum,getHea,
 chk,  gcb]
 router.get("/shop/cart",arr );
 // ====== post ===============================

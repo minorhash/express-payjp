@@ -131,7 +131,6 @@ id: mer[i].sku.toString(),
 quantity: mailtmp[i].uni,
 title: mer[i].name,
 unit_price: mer[i].pri,
-      //
 };
 } //for
 
@@ -173,7 +172,7 @@ pub:pub,ship:taid.order.shipping
 })
 }
 var fun= [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
-    chk,gcb]
+chk,gcb]
 router.get("/shop/paidy/pay",fun); //put
 
 

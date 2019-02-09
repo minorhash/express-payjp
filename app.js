@@ -88,7 +88,7 @@ var mer = require('./routes/mer/index');
 app.use('/', mer);
 
 var amer=["out","item","ins","ins_fin","song","song2","song3","del","del_fin",
-    "up","up2","up3"]
+"up","up2","up3"]
 amer.forEach(function(ite){
 ite=require('./routes/mer/'+ite)
 app.use('/', ite)

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<div class="row">
+<br>
+<%if(seltmp && mer.length!==0){%>
+<div class="col-md-8" >
+<% include ./img %>
+</div>
+
+<div class="col-md-4">
+<% include ./sum %>
+<% include ./pay %>
+
+</div><!-- col-->
+
+<%}else{%><%= shop.emp %><%}%>
+</div>
+
+</div>
+</div>
+

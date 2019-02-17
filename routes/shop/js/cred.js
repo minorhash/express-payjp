@@ -4,10 +4,13 @@ var cred = {
 ema: function(req) {
 if (req.session) {
 email = req.session.email;
-//email="successful.payment@paidy.com"
 return email;
 //mailusr = adb.mailUsr(email)
-} else {      email = null;      console.log('no sess');    }
+} else {
+    email = null;
+    //email="successful.payment@paidy.com"
+    return email
+    console.log('no sess');    }
 }
 };
 

@@ -1,56 +1,37 @@
 <!DOCTYPE html>
 <html>
-<% include par/head %>
-<% include par/nav %>
+<% include ase/head %>
+<% include nav/cart  %>
 <body>
-
-<div align="right">
-
-<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/cart?clang=ja">
-<span class="flag-icon flag-icon-jp my-big"></span>
-</a>
-
-<a class="<%=(lang=="en"?"active":"")%>" href="/shop/cart?clang=en">
-<span class="flag-icon flag-icon-gb my-big"></span>
-</a>
-
-</div>
-
 
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-md-2" style="color:black">
+<div class="col-md-2" ><br>
 <% include par/left %>
 </div>
 
-<div class="col-md-10" style="color:black">
+<div class="col-md-10" ><br>
 
-<div class="box97">カート</div><br>
+    <div class="box97"><%= shop.cart %></div><br>
 
-<% include par/car/main %>
+<% include par/car/cen %>
 <br>
 
-<div class="col-md-12" style="color:black">
+<div class="col-md-12" >
 <% include par/car/bk %>
 </div>
-<!-- row -->
 </div>
 
 <div class="row">
-<div class="col-md-2" style="color:black"></div>
+<div class="col-md-2" ></div>
 
-<div class="col-md-8" style="color:black">
+<div class="col-md-10" >
 <% include par/car/not %>
-</div>
-
-<!-- col1 -->
-<div class="col-md-1 hidden-xs"></div><!-- /col1-->
+</div><!-- col1 -->
 </div> <!-- /row -->
 
-<hr>
 
-<div class="col-md-2" style="color:black"></div>
 </div><!--row-->
 </div><!-- /container -->
 

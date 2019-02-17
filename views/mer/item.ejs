@@ -11,10 +11,10 @@
 <div class="row">
 
 <!--- side left ----- -->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<div class=" col-md-2 col-sm-12" style="color:black">
 <% if(usr!==null) {%> 
 
-<h4><div class="label label-info">welcome:&nbsp; <%= usr%>&nbsp; さん</div></h4>
+<h4><div class="badge badge-info">welcome:&nbsp; <%= usr%>&nbsp; さん</div></h4>
 <br><br>
 
 <% include par/out %>
@@ -25,9 +25,9 @@
 </div>
 
 <!--- main ----- -->
-<div id="cd-col" class="well col-md-8 col-xs-12" style="color:black">
+<div id="cd-col" class=" col-md-8 col-xs-12" style="color:black">
 
-<div class="well col-md-3" style="color:black">
+<div class=" col-md-3" style="color:black">
 <div align="left"><img src="../img/cd/<%=mer.sku%>.png">
 <h5>商品番号：TMS-<%=mer.sku%><br></h5>
 <h5>リリース：<%=mer.rel%><br></h5>
@@ -36,9 +36,9 @@
 </div>
 
 
-<div class="well col-md-6" style="color:black">
+<div class=" col-md-6" style="color:black">
 <h4><%=mer.name%><br></h4>
-<div class="well" style="color:black">
+<div class="" style="color:black">
 <%if(typeof song!="undefined"|| typeof song!==null){%>
 <%for(var i in song){%>
 <%var num=parseInt(i) %>

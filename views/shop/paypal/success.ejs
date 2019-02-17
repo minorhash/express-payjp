@@ -7,7 +7,7 @@
 <!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
-<div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
+<div class="badge badge-info">  &nbsp;<%=usr%>&nbsp;さん</div>
 <br><br>
 
 <% include par/out %>
@@ -23,7 +23,7 @@
 <br>
 <div class="well col-lg-6 col-sm-12">
 
-    <br>注文id: <%= pid %><br>
+<br>注文id: <%= pid %><br>
 <%if(pid){%>
 <% for(var i=0;i<item.length;i++) {%>
 <img src="../../img/cd/<%=item[i].sku%>.png">
@@ -37,7 +37,8 @@
 no pid
 <%} %>   
 <br>
-<a href="/shop"><%= shop.bkshop %></a>
+<a href="/shop"><%= shop.bkc %></a><br>
+<a href="/shop"><%= shop.bks %></a>
 
 </div>
 

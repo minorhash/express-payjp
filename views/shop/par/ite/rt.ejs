@@ -1,0 +1,19 @@
+価格:&nbsp;
+<!-- %=mer.pri.toLocaleString() % -->
+円&nbsp;(+税)<br>
+<div style="line-height:10px">別途送料有</div>
+
+<br>
+<form action="/shop/cart" method="post">
+<input class="form-group" type="hidden" name="sku" value="<%=mer.sku%>">
+数量:
+<input class="form-group" type="number" name="uni" value="1" min="0" step="1"><br><br>
+&nbsp;&nbsp;
+<button class="btn btn-info" type="submit">カートに入れる</button>
+</form>
+
+<br>
+<a href="/mail" target="_blank">
+<i class="far fa-envelope"> &nbsp; 商品に関する問合せ</a></i>
+
+

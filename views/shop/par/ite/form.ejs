@@ -1,0 +1,19 @@
+<% if(typeof mer!==undefined) { %>
+<div class="row">
+
+<div class=" col-md-4">
+<span align="left"><img src="../img/cd/<%=mer.sku%>.png" width=350></span>
+</div>
+
+<div valign="bottom" align="left" class=" col-md-5" id="ali"> 
+<% include ./mid %>
+
+</div><!-- col5-->
+
+<div class=" col-md-3" id="bei">
+<% include ./rt %>
+</div><!-- col3-->
+</div><!-- row-->
+<% } else {  %> no mer <% } %>
+
+

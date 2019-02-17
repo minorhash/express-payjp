@@ -1,0 +1,10 @@
+$max: 60 * 24;
+$step: 15;
+
+@for $i from 1 through ($max/$step) {
+    $value: $step * $i;
+    $width: $i * 25;
+    .time#{$value} {
+        width: $width + 0%
+    }
+}

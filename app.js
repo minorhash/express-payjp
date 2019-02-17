@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 //var cookie = require('cookie');
 //var cookieParser = require('cookie-parser');
@@ -20,10 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
-
 
 app.use(
   sess({
@@ -43,7 +40,6 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
 );
 }
 
-
 // route =================================
 var index= require('./routes/index');
 var page= require('./routes/page');
@@ -58,7 +54,7 @@ app.use('/', mail);
 var shop = require('./routes/shop/index');
 app.use('/', shop);
 
-var top=["index","cart","item","his","my","dl","up"]
+var top=["index","cart","item","his","my","dl","up","tmp"]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)
@@ -75,7 +71,7 @@ app.use('/', anot[i]);
 
 // === paidy ===
 
-var aaid=["paidy","pid"]
+var aaid=["pay","pid"]
 for(var i=0;i<aaid.length;i++){
 aaid[i]=require('./routes/shop/aid/'+aaid[i]);
 app.use('/', aaid[i]);
@@ -92,7 +88,7 @@ var mer = require('./routes/mer/index');
 app.use('/', mer);
 
 var amer=["out","item","ins","ins_fin","song","song2","song3","del","del_fin",
-    "up","up2","up3"]
+"up","up2","up3"]
 amer.forEach(function(ite){
 ite=require('./routes/mer/'+ite)
 app.use('/', ite)

@@ -3,29 +3,25 @@
 <% include par/nav %>
 <div class="container-fluid">
 <div class="row">
-<% include par/2side %>
 
-<div class="well col-lg-8 col-sm-12" style="color:black">
+<div class="col-lg-2 col-sm-12 "></div>
+<div class="col-lg-8 col-sm-12 bg-bei">
 
 <h1 class="text-center"><%= shop.cancel %></h1>
-<div class="well col-lg-6 col-sm-12" style="color:black">
+
+<span class="bg-ali">
 <a href="/shop/cart">back</a>&nbsp;&nbsp;to cart
-<br>
-<% if(typeof tok!=="undefined"){%>
-<%= tok %>
-<%} %>
+</span><br>
 
-</div>
-
-<div class="well col-lg-6 col-sm-12" style="color:black">
+<span class="bg-lg">
 <a href="/shop">back</a>&nbsp;&nbsp;to shop
+</span>
 
-</div>
-</div>
+</div><!-- col-->
 
-<% include par/2side %>
-</div>
-</div>
+    <div class="col-lg-2 col-sm-12 "></div>
+</div><!-- row-->
+</div><!-- cont-->
 
 </body>
 

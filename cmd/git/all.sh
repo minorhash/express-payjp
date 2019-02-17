@@ -1,3 +1,3 @@
-cmd/add.sh
-cmd/com.sh
-cmd/push.sh
+cmd/git/add.sh
+cmd/git/com.sh
+cmd/git/push.sh

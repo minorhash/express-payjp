@@ -1,0 +1,24 @@
+$cols:aliceblue,yellow, lime;
+// "burlywood","cornsilk","darkseagreen",
+// "lightgreen","lightskyblue","linen",
+// "mistyrose",
+// "palegreen","peachpuff",
+// "salmon"
+
+@mixin fon1(){
+font-size:14px;
+color:black;
+}
+
+@each $col in $cols {
+#bk-#{str_slice(#{$col},0,3)} {
+    @include fon1();
+background-color:$col; 
+content:type-of($col);
+content:type-of(str_slice(#{$col},0,3));
+&:hover {
+background-color: rgba($col, 0.6);
+cursor: pointer;
+}
+}
+}

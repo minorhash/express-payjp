@@ -33,7 +33,6 @@ var getUsr = function(req, res, next) {
 var chk = function(req, res, next) {
   console.log(email);
   console.log("=== usr");
-  console.log(allmer);
   next();
 };
 

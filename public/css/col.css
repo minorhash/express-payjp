@@ -1,0 +1,47 @@
+#bk-white {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#bk-white:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+#bk-yellow {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+#bk-yellow:hover {
+  background-color: rgba(255, 255, 0, 0.8);
+  cursor: pointer;
+}
+
+#bk-red {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+#bk-red:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+#bk-lightskyblue {
+  background-color: rgba(135, 206, 250, 0.5);
+}
+#bk-lightskyblue:hover {
+  background-color: rgba(135, 206, 250, 0.8);
+  cursor: pointer;
+}
+
+#bk-lime {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+#bk-lime:hover {
+  background-color: rgba(0, 255, 0, 0.8);
+  cursor: pointer;
+}
+
+#bk-yellow {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+#bk-yellow:hover {
+  background-color: rgba(255, 255, 0, 0.8);
+  cursor: pointer;
+}

@@ -34,9 +34,7 @@ for(let i=0;i<allpal.length;i++){
 opal.push(JSON.parse(allpal[i].ite))
 }
 }else{console.log("no allpal")}
-
 next()}
-
 
 //  aid
 const allPid = function(req, res, next) {
@@ -46,11 +44,9 @@ console.log("=== no all pid ==================")
 }else{
 
 allpid= adb.allPid(email)
-console.log(cnf.skl)
 oite=[]
 for (let i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
-console.log(allpid[i].pid)
 }//for
 
 }//else
@@ -89,10 +85,6 @@ const host = url.format({
     pathname: req.originalUrl,
 });
 console.log("=== chk =====================")
-console.log(opal)
-console.log("=== oite =====")
-console.log(oite)
-console.log(host)
 next()}
 
 const gcb = function(req, res) {

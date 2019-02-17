@@ -127,6 +127,7 @@ i18.lin1
 +i18.cau4+"<br>"
 
 +i18.cont+"<br>"
++i18.pay+"paypal<br>"
 +i18.pid+pid+"<br><br>"
 
 var loo="";
@@ -140,8 +141,7 @@ i18.title+item[i].name+"<br>"
 }
 var msum=i18.lin1+i18.sub+Math.round(sum*1.08).toLocaleString()+i18.yen+"<br>"
 +i18.cour+650+i18.yen+"<br>"
-+i18.sum+(Math.ceil(sum*1.08)+650).toLocaleString()+i18.yen+"<br>"
-+i18.pay+"paypal<br><br>"
++i18.tot+(Math.ceil(sum*1.08)+650).toLocaleString()+i18.yen+"<br>"
 
 var ship=
 i18.ship1+i18.ship2+i18.ship3

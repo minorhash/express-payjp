@@ -1,0 +1,18 @@
+$cols: rgb(255,255,255), // white
+yellow,
+          rgb(255,0,0),     // red
+          rgb(135,206,250), // sky blue
+          rgb(0,255,0), // green
+          rgb(255,255,0);   // yellow
+
+@each $col in $cols {
+#bk-#{""+$col} {
+background-color: rgba($col, 0.5);
+
+&:hover {
+background-color: rgba($col, 0.8);
+cursor: pointer;
+}
+
+}
+}

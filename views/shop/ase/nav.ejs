@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark ml-auto ">
+  <!-- Brand -->
+  <a class="navbar-brand" href="/"><%= shop.nam %></a>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="col">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      <a class="nav-link" href="/shop">shop</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="/shop/cart">cart</a>      </li>
+      <li class="nav-item"><a class="nav-link" href="/shop/my">my page</a>      </li>
+      <li class="nav-item"><a class="nav-link" href="/shop/history">history</a>      </li>
+      <li class="nav-item"><a class="nav-link" href="/shop/note/guide">guide</a>      </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+<li class="nav-item">
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop/cart?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a></li>
+
+<li class="nav-item">&nbsp;
+</li>
+<li class="nav-item">
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop/cart?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a></li>
+
+    </ul>
+
+  </div>
+</nav> 
+

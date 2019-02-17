@@ -1,0 +1,37 @@
+<div class="row">
+<%for(var i=0;i<seltmp.length;i++){%>
+<%if(seltmp[i].uni!==0){%>
+
+<div class="col-md-4">
+<div align="center">
+<img src="../../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
+</div></div>
+
+<div class="col-md-4" id="bei">
+<div class="pa2">
+商品名：&nbsp;  <%=mer[i].name%><br>
+商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
+単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
+注文数:&nbsp; <%=seltmp[i].uni%><br>
+</div>
+</div>
+
+<%}%>
+<%}%>
+
+
+<div class="col-md-4">
+<div class="pabox">商品合計(税込）：</div>
+
+<div class="pabox">
+<%if(sum){%>
+<%= Math.round(sum*1.08).toLocaleString()%> 円
+<%}%></div>
+
+合計(税込）：
+<%if(tsum){%>
+<%=tsum.toLocaleString()%> 円
+<%}%>
+</div>
+</div>
+

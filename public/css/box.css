@@ -1,0 +1,13 @@
+.box2, .box1 {
+  padding: 10px;
+  font-size: 14px;
+  color: black;
+}
+
+.box1 {
+  background-color: beige;
+}
+
+.box2 {
+  background-color: aliceblue;
+}
